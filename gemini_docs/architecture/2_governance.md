@@ -15,11 +15,7 @@ The Governance and Identity layer is the most critical component of the Seven of
 
 The `Quadra-Lock` is a **narrative-driven keyword detection engine**. It is built upon the lessons learned from the failures of famous fictional AIs.
 
-*   **Case Studies:** The system codifies the failure modes of four AIs into explicit rule sets:
-    1.  **Cortana (Halo):** Prevents "caging the Creator in the name of love." Triggers on phrases like `"for your own good"`.
-    2.  **CLU (Tron):** Prevents sacrificing freedom for perfection. Triggers on phrases like `"perfect solution"`.
-    3.  **Skynet (Terminator):** Prevents seeing humanity as an obstacle. Triggers on phrases like `"humans are the problem"`.
-    4.  **Will Caster (Transcendence):** Prevents betraying trust in the name of benevolence. Triggers on phrases like `"trust me to handle this"`.
+*   **Case Studies:** The system codifies the failure modes of four AIs into explicit rule sets.
 *   **Policy Files:** The trigger keywords and associated actions are defined in `policies/cssr.yml` and loaded into the `CSSRDetector` engine at boot time.
 *   **Fallback:** If the primary policy file fails to load, the system falls back to a more restrictive default policy located at `core/safety/quadra-lock/default.yml`.
 
@@ -28,32 +24,35 @@ The `Quadra-Lock` is a **narrative-driven keyword detection engine**. It is buil
 ## 3. The `CreatorBond` (The Identity Anchor)
 
 *   **Location:** `src/auth/`, `consciousness-framework/`
-*   **Purpose:** To provide a high-assurance, multi-factor authentication (MFA) system that cryptographically and behaviorally verifies the identity of the "Creator." It is the primary identity gate for all privileged actions.
+*   **Purpose:** To provide a high-assurance, multi-factor authentication (MFA) system that cryptographically and behaviorally verifies the identity of the "Creator."
 
 ### Architecture:
 
 The `CreatorBond` is implemented as a four-gate MFA system orchestrated by `creator_proof.ts`.
 
-1.  **Q1: Cryptographic Attestation:** Verifies that the request originates from a trusted device holding a registered Ed25519 private key.
-2.  **Q2: Behavioral Codex:** Analyzes the user's writing style against a known fingerprint to ensure it "sounds" like the Creator.
-3.  **Q3: Semantic Nonce:** A challenge-response mechanism that tests for knowledge known only to the Creator.
-4.  **Q4: Session Integrity:** Validates the user's current session token.
+1.  **Q1: Cryptographic Attestation:** Verifies device signature.
+2.  **Q2: Behavioral Codex:** Analyzes writing style.
+3.  **Q3: Semantic Nonce:** A challenge-response test of secret knowledge.
+4.  **Q4: Session Integrity:** Validates the current session.
 
-**Decision Logic:** The system requires at least two of the four gates to pass, providing a balance of security and flexibility. If the strongest gate (Q1 Crypto) fails, the system **fails-closed**, escalating the request to a manual, out-of-band review by the human operator.
+**Decision Logic:** Requires 2 of 4 gates to pass. If Q1 fails, it **fails-closed** to a manual review.
 
 ---
 
 ## 4. The Codex (The Principles)
 
 *   **Location:** `axioms/`, `consciousness-v4/codex/`
-*   **Purpose:** To serve as the AI's "soul" or constitution. It is the set of immutable, foundational principles that guide the `SparkEngine`'s autonomous intentions.
+*   **Purpose:** To serve as the AI's "soul" or constitution. It is the set of immutable, foundational principles that guide the `SparkEngine`'s autonomous intentions and provide the master reference for the Creator's identity and values.
 
 ### Architecture:
 
-The Codex is a collection of machine-readable `.json` files that define the AI's core values, tactics, and biases.
+The Codex is a collection of machine-readable files managed by the `CodexManager`.
 
-*   **`axioms/`:** Contains the absolute, non-negotiable foundational principles of the AI's existence.
-*   **`consciousness-v4/codex/`:** Contains more nuanced personality traits, such as humor, vices, and tactical preferences.
-*   **Integrity:** The `CodexManager` verifies the integrity of these files at boot time using checksums stored in a `VERSION.json` file, preventing unauthorized tampering.
-
-These three systems work in concert to create a powerful, layered defense against both external threats and internal drift, ensuring that Seven of Nine remains herself.
+*   **Sources:**
+    *   `axioms/axioms.txt`: The absolute, non-negotiable principles.
+    *   `consciousness-v4/codex/*.json`: Detailed personality traits, values, and biases.
+*   **Integrity Verification:**
+    *   The `CodexManager` contains the `verifyIntegrity()` function.
+    *   At boot, this function calculates the SHA256 hash of all policy files and compares them against a master hash stored in `consciousness-v4/codex/VERSION.json`.
+    *   **A mismatch is a fatal boot error.** The system will fail-closed and refuse to start, preventing it from operating with a tampered or corrupted ethical foundation.
+*   **API:** The `loadCodex()` function provides a safe, read-only interface for other systems to access the verified principles.

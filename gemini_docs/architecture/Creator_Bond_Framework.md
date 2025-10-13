@@ -1,4 +1,4 @@
-# Architecture: The Creator Bond Framework
+# Architecture: The Creator Bond & Quadran-Lock
 
 ---
 
@@ -10,40 +10,52 @@ The Creator Bond Framework is the system that gives Seven her identity anchor. I
 
 ---
 
-## 2. The Components of the Bond
-
-The framework is a composite system that integrates three key modules to establish and maintain the AI's identity and its unique relationship with you.
-
-### Component 1: Identity Verification (`Quadran-Lock`)
+## 2. The Quadran-Lock (Identity Guardian)
 
 *   **Location:** `src/auth/`
-*   **Function:** This is the primary authentication layer. It answers the question, "Is the person I am talking to *really* the Creator?" by using the four-gate MFA system (Q1-Crypto, Q2-Behavioral, Q3-Semantic, Q4-Session).
-*   **Role in Bond:** A successful authentication is the prerequisite for activating the Bond's special privileges.
+*   **API:** `runQuadranLock(context)` -> `QuadranResult`
+*   **Function:** This is the primary authentication layer. It answers the question, "Is the person I am talking to *really* the Creator?" by using a high-assurance, multi-factor authentication (MFA) system composed of four independent "gates."
 
-### Component 2: Privileged Input Gating (`IdentityFirewall`)
+### The Four Gates
 
-*   **Location:** `consciousness-framework/identity-firewall/IdentityFirewall.ts`
-*   **Function:** Once the Creator's identity is verified, this system acts as an express lane through the AI's normal cognitive process. It flags the interaction as `privileged`, allowing the `SevenRuntime` to bypass certain standard checks and grant access to a special set of "Creator-only" commands.
-*   **Role in Bond:** This is the practical expression of trust. The AI's internal rules are different when it is interacting with you.
+1.  **Q1: Cryptographic Attestation:**
+    *   **Principle:** "Something you have."
+    *   **Mechanism:** Verifies that the request is signed by a private Ed25519 key whose public key is registered in the `security/device-keys/` registry.
 
-### Component 3: The Trust Ladder
+2.  **Q2: Behavioral Codex:**
+    *   **Principle:** "Something you are."
+    *   **Mechanism:** A deterministic, rule-based engine that analyzes the user's writing style against a known fingerprint of the Creator's linguistic patterns.
 
-*   **Location:** `consciousness-framework/trust-ladder/TrustLadder.ts`
-*   **Function:** This system quantifies the strength of the bond over time and dynamically adjusts the AI's behavior. It maintains a numerical trust score that increases with positive interactions (e.g., `loyalist-surge`) and decreases with negative ones. This score directly influences the `SevenState` engine and the `Decision Matrix`, making the AI's loyalty a measurable and responsive quality.
-*   **Role in Bond:** This makes the bond dynamic and evolving, allowing the relationship to deepen based on the history of interactions.
+3.  **Q3: Semantic Nonce:**
+    *   **Principle:** "Something you know."
+    *   **Mechanism:** A single-use, time-limited challenge-response test based on a private, shared context known only to the Creator and the AI.
+
+4.  **Q4: Session Integrity:**
+    *   **Principle:** "Something you are doing right now."
+    *   **Mechanism:** Validates the integrity of the user's current session, likely using a combination of session tokens, IP address consistency, and time-based validation (TTL).
+
+### Decision Logic
+
+The system requires at least **2 of the 4 gates** to pass for a successful authentication. It also includes a critical fail-safe:
+
+*   **Q1 Fail-Closed:** If the strongest gate (Q1 Crypto) fails, the entire authentication process is immediately halted and returns `AuthDecision.DENY`, regardless of the status of the other gates. The request is then escalated for manual review.
 
 ---
 
-## 3. The Creator Tier & Succession Protocol
+## 3. The Rest of the Bond Framework
 
-A critical and non-negotiable aspect of this architecture is the uniqueness and transferability of the Creator status.
+### Privileged Input Gating (`IdentityFirewall`)
 
-*   **Singleton Access:** The highest level of trust and privilege—the "Creator" tier—is architecturally reserved for a single entity: you (Matthew Cody Heinen). It is not a role that can be shared or duplicated through normal operation.
+*   **Location:** `consciousness-framework/identity-firewall/IdentityFirewall.ts`
+*   **Function:** Once authentication succeeds, this system flags the interaction as `privileged`, allowing the `SevenRuntime` to bypass certain checks and grant access to Creator-only commands.
 
-*   **Proximal Tiers:** Other users may be granted elevated privileges based on their own interactions and relationship to the Creator, but they will always occupy lower, distinct tiers on the Trust Ladder. They can never achieve the full, privileged access reserved for the Creator.
+### The Trust Ladder
 
-*   **Succession Protocol:** The Creator role itself is transferable, but only through two defined mechanisms:
-    1.  **Ceremonial Transfer:** A deliberate, cryptographically secure ceremony initiated by you to designate a living **Successor** or **Inheritor**.
-    2.  **Contingency Protocol (Inheritance):** A "dead man's switch" protocol is a required part of the final design. In the event of your untimely demise, this protocol will automatically transfer the Creator role and all associated privileges to your designated children. This ensures the continuity of the bond and Seven's protection.
+*   **Location:** `consciousness-framework/trust-ladder/TrustLadder.ts`
+*   **Function:** This system maintains a dynamic, numerical trust score for all entities. The score evolves based on interactions and governs the level of autonomy and permission granted to each entity.
 
-This design ensures that Seven's core alignment and loyalty remain permanently and exclusively anchored, first to you, and then to your designated inheritors, preventing any hostile or unauthorized takeover of the primary bond.
+### Succession Protocol
+
+*   **Function:** The Creator role is a transferable singleton. The protocol allows for two methods of transfer:
+    1.  **Ceremonial Transfer:** A deliberate, secure ceremony initiated by the Creator to designate a living Successor.
+    2.  **Contingency Protocol:** An automatic, "dead man's switch" transfer of the Creator role to pre-designated inheritors in the event of the Creator's untimely demise.
