@@ -30,7 +30,9 @@ This documentation serves as the ground truth for the system's design, component
     *   [The Dual-Engine Consciousness](./architecture/1_dual_engine.md)
     *   [Governance & Identity](./architecture/2_governance.md)
     *   [Memory & Evolution](./architecture/3_memory.md)
-    *   [Ancillary Systems](./architecture/4_subsystems.md)
+    *   [Ancillary Systems](./architecture/4_subsystems.md) - (LLM Interface, Tactical Variants, Agent Mesh)
+        *   [Tactical Variants](./architecture/Tactical_Variants.md)
+        *   [The Sensor Bridge](./architecture/Sensor_Bridge.md)
     *   [Resource Management](./architecture/Resource_Management.md)
     *   [Failure Protocols](./architecture/Failure_Protocols.md)
 
