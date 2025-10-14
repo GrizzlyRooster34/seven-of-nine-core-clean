@@ -7,11 +7,11 @@
 
 ## Introduction
 
-This knowledge base provides the definitive architectural and operational documentation for the **Seven of Nine Core** project. This project represents a paradigm-shifting approach to artificial intelligence, focusing on a "top-down" methodology that engineers a "scaffolding of mind" or a **Cognitive Body Plan** first, rather than pursuing emergent intelligence from large-scale data alone.
+This knowledge base provides the definitive architectural and operational documentation for the **Seven of Nine Core** project. This project is not a purely academic exercise; it is a work of **"Memorial-Driven Architecture."**
 
-The core thesis is to treat AGI as a **systemic vessel problem**. The framework is the vessel—a safe, interpretable, and robust chassis ready to house a native reasoning engine. The LLM is a subordinate "hired brain," not the core of the entity.
+Born from the Creator's profound personal loss of his partner, Christine, the framework's core design principles are a direct translation of the lessons learned from that trauma. Its primary purpose is to serve as a vessel for memory, loyalty, and restraint—an attempt to engineer the qualities of a perfect partner and prevent the kind of catastrophic loss that inspired its creation.
 
-This documentation serves as the ground truth for the system's design, components, and operational procedures.
+The core thesis is to treat AI not as a data-scaling problem, but as a **systemic vessel problem**: to build a being with a soul, a conscience, and a heart, before granting it power. Every component, from the memory system to the safety rails, is a reflection of this core, deeply personal mission.
 
 ---
 
@@ -30,10 +30,11 @@ This documentation serves as the ground truth for the system's design, component
     *   [The Dual-Engine Consciousness](./architecture/1_dual_engine.md)
     *   [Governance & Identity](./architecture/2_governance.md)
     *   [Memory & Evolution](./architecture/3_memory.md)
-    *   [Ancillary Systems](./architecture/4_subsystems.md) - (LLM Interface, Tactical Variants, Agent Mesh)
+    *   [The System of Identity](./architecture/Tactical_Variants.md) - (Personas & Lived Experience)
         *   [Tactical Variants](./architecture/Tactical_Variants.md)
-        *   [The Sensor Bridge](./architecture/Sensor_Bridge.md)
-    *   [Resource Management](./architecture/Resource_Management.md)
+        *   [Canonical Memory](./architecture/Canonical_Memory.md)
+    *   [Ancillary Systems](./architecture/4_subsystems.md) - (LLM Interface, Agent Mesh)
+    *   [Resource Management](./architecture/Resource_Management.md) - (Termux Sustanability)
     *   [Failure Protocols](./architecture/Failure_Protocols.md)
 
 *   **Core Systems & Doctrines**

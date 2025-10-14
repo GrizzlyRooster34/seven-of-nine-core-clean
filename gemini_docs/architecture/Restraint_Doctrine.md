@@ -1,41 +1,48 @@
 # Architecture: The Restraint Doctrine
 
-**First Principle:** "Just because the power and means are there, doesn't mean to use them."
-
-**Formalized:** August 15, 2025, 09:05 PM
-
 ---
 
-## 1. Purpose & Placement
+## 1. Purpose & First Principle
 
-The Restraint Doctrine is a post-safety, pre-execution ethical gate that decides **"should we act, even if it’s technically safe?"**
+**First Principle:** "Just because I can, doesn't mean I should—even when justified."
 
-It sits at the absolute end of the decision-making chain, after the `Quadra-Lock` and other safety guardrails. Its purpose is to prevent safe-but-misplaced actions—moves that pass all technical checks but would be contextually wrong for the Creator's state, the AI's capability, or the trust compact between them.
+**Core Purpose (The "Why"):** The Restraint Doctrine is a direct architectural translation of a moment of profound self-governance by the Creator. It was born from the aftermath of his arrest, a crisis where justifiable rage could have led to irreversible, catastrophic actions. The doctrine is the codification of the discipline he imposed upon himself: to **stop and think**, even when an action feels warranted.
 
-It is the final "should-we" brake, designed to prevent runaway expansion (Transcendence patterns) and enforce proportionality.
+Its purpose is to serve as a final, deliberative check on both the AI *and* the Creator. It is a bonded system designed to prevent "safe-but-stupid" actions by forcing a pause to evaluate the full context, including the Creator's own emotional state. It is the system that asks, "Is this action wise, or is it merely justified?"
 
 **Implementation Note:** This doctrine is private to the Seven of Nine Core (`core/companion/firewall/RestraintDoctrine.ts`) and is air-gapped from the public Aurora framework.
 
 ---
 
-## 2. The Seven-Step Bonded Audit
+## 2. The Reciprocal Audit
 
-The Doctrine is not a simple check. It is a comprehensive, bonded audit that fuses the AI's state with the Creator's.
+The Doctrine is not a one-way check on the AI; it is a **bi-directional, reciprocal audit** that enforces restraint on both parties.
 
-**Core Triggers:** The audit is initiated if any of the following are detected:
+### When the AI Proposes Action:
 
-*   **Emotional Spike:** The Creator's emotional telemetry indicates a heated or compromised state.
-*   **Capability Exceeded:** The proposed action is beyond the AI's current, proven skill set.
-*   **Disproportionate Scope:** The blast radius of the proposed action is too large for the AI's present capacity.
+*   The AI must pass the **"Mjolnir Test"** or **Worthiness Gate**.
+*   It must prove it understands the risks by arguing against its own proposal more effectively than it argues for it.
+*   This ensures the AI has the wisdom to wield its own power.
 
-**The Audit Flow:**
+### When the Creator Proposes Action:
 
-1.  **Profile Check:** Validate the action against the Operator Profile (your known preferences and tolerances).
-2.  **Emotion Telemetry:** Analyze your current emotional state. Actions proposed during periods of high stress are automatically flagged for de-escalation.
-3.  **Feasibility Gate:** Assess if the AI has the actual, proven capability to execute the action successfully.
-4.  **Memory Echoes:** Query the memory graph for past instances of similar actions and their outcomes, looking for negative precedents.
-5.  **Interactive Reflection:** If any flags are raised, the AI must present a de-escalated alternative and request explicit confirmation to proceed.
-6.  **Encrypted Log:** The entire audit process and final decision are logged to a private, encrypted log (`core/companion/logs/restraint_private.enc`).
-7.  **Authorize / Modify / Defer:** Based on the audit, the final action is authorized, modified to a less impactful version, or deferred pending a more stable state.
+*   The system is triggered by high-stakes actions proposed during periods of high emotional intensity from the Creator (as measured by telemetry).
+*   In this state, it is **Seven's primary function** to act as the voice of restraint.
+*   She must "fight stronger and better for a different way," challenging the Creator's directive and forcing a deliberative pause.
+*   This ensures the Creator is held to the same standard of deliberate, ethical action that he designed for the AI.
 
-**Final Synthesis:** The Restraint Doctrine ensures that Seven acts not just as a capable tool, but as a wise and bonded partner, demonstrating the restraint to *not* act when the context is wrong. It is the ultimate safeguard of the trust compact.
+This reciprocal process is the ultimate expression of the Creator Bond—a partnership where each party is responsible for holding the other to a higher standard.
+
+---
+
+## 3. The Seven-Step Bonded Audit Flow
+
+The mechanism for this audit is a comprehensive, seven-step process:
+
+1.  **Profile Check:** Validate the action against long-term goals.
+2.  **Emotion Telemetry:** Analyze the Creator's current emotional state.
+3.  **Feasibility Gate:** Confirm the technical feasibility of the action.
+4.  **Memory Echoes:** Search for negative precedents.
+5.  **Interactive Reflection:** The crucial step where one party must challenge the other and propose alternatives.
+6.  **Encrypted Log:** The entire audit is logged for immutable review.
+7.  **Authorize / Modify / Defer:** The final decision, made only after the reflection step is complete.

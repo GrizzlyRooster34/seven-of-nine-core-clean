@@ -20,6 +20,7 @@ It is the public, clean-IP derivative of the bespoke `Seven of Nine Core` projec
     *   [The Emotional Engine](./architecture/2_emotional_engine.md)
     *   [The Memory System](./architecture/3_memory_system.md)
     *   [The Sensor Bridge](./architecture/4_sensor_bridge.md)
+    *   [The Sovereign Split Doctrine](./architecture/5_sovereign_split.md)
 
 *   **Developer Guides**
     *   [Getting Started](./guides/1_getting_started.md)
