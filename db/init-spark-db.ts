@@ -4,6 +4,7 @@ import { existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 
 const DB_PATH = join(process.cwd(), 'db', 'spark.db');
+const SNAPSHOTS_DB_PATH = join(process.cwd(), 'db', 'belief-graph-snapshots.db');
 const DB_DIR = join(process.cwd(), 'db');
 
 // Ensure db directory exists
@@ -31,6 +32,20 @@ export function initSparkDatabase(reset: boolean = false): Database.Database {
   bootstrapData(db);
   
   return db;
+}
+
+export function initBeliefGraphSnapshotsDatabase(): Database.Database {
+    const db = new Database(SNAPSHOTS_DB_PATH);
+    db.pragma('journal_mode = WAL');
+    db.prepare(`
+        CREATE TABLE IF NOT EXISTS snapshots (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ts INTEGER NOT NULL DEFAULT (strftime('%s', 'now')),
+            data TEXT NOT NULL
+        )
+    `).run();
+    console.log('[SPARK-DB] Snapshots database initialized.');
+    return db;
 }
 
 function dropAllTables(db: Database.Database) {
@@ -188,8 +203,7 @@ function bootstrapData(db: Database.Database) {
   
   db.prepare(`
     INSERT INTO self_model (id, json) 
-    VALUES ('primary', ?)
-  `).run(JSON.stringify(selfModel, null, 2));
+    VALUES ('primary', ?)`).run(JSON.stringify(selfModel, null, 2));
   
   // Bootstrap creator belief
   const creatorBeliefId = createHash('sha256')
@@ -316,6 +330,7 @@ export { Database };
 if (import.meta.url === `file://${process.argv[1]}`) {
   const reset = process.argv.includes('--reset');
   const db = initSparkDatabase(reset);
+  const snapshotsDb = initBeliefGraphSnapshotsDatabase();
   
   // Test belief operations
   const graph = new BeliefGraph(db);
@@ -332,4 +347,5 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   console.log('[SPARK-DB] Strongest beliefs:', graph.getStrongestBeliefs(5));
   
   db.close();
+  snapshotsDb.close();
 }

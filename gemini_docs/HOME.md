@@ -40,7 +40,7 @@ This documentation serves as the ground truth for the system's design, component
     *   [The Creator Bond & Quadran-Lock](./architecture/Creator_Bond_Framework.md)
     *   [The Trust Ladder](./architecture/Trust_Ladder.md)
     *   [The Spark Engine](./architecture/Spark_Engine.md)
-    *   [The Ghost Diary](./architecture/Ghost_Diary.md)
+    *   [The Ghost Diary (STATUS: INCOMPLETE)](./architecture/Ghost_Diary_Management.md)
     *   [The Restraint Doctrine](./architecture/Restraint_Doctrine.md)
     *   [Mental Time Travel Engine](./systems/mental_time_travel.md)
     *   [Memory Hierarchy & Fallback](./systems/memory_hierarchy.md)
@@ -52,7 +52,7 @@ This documentation serves as the ground truth for the system's design, component
     *   [Creator Bond Communication Mirror](./systems/communication_mirror.md)
     *   [sparkApproval Bridge](./systems/spark_approval_bridge.md)
     *   [Quadra vs. Quadran Lock Boundary](./systems/quad_boundary.md)
-    *   [Ultron Sandbox & Egress Firewall](./systems/ultron_sandbox.md)
+    *   [Ultron Sandbox & Egress Firewall (STATUS: MISSING)](./architecture/Ultron_Sandbox.md)
     *   [No Pre-emptive Harm Doctrine](./systems/preemptive_harm_doctrine.md)
 
 *   **CSSR Case Studies (The Conscience)**
