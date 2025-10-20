@@ -86,7 +86,15 @@ All systems transferred from `~/seven-of-nine-core/` based on Blueprint v2.1 spe
 - `CanonicalIngestion.ts` - ETL pipeline for canonical data ✅
 - `ConsciousnessTimelineMapper.ts` - Timeline reconstruction ✅
 - `ContextReinstatement.ts` - State restoration ✅
+- **`DecayWatchdog.ts`** - Memory decay management system ✅
+- **`AgentEpsilon.ts` + `AgentEpsilon-complete.ts`** - Autonomous memory agent ✅
 - `canonical/` - Voyager S4-S7 + Picard S1-S3 canonical archives ✅
+  - **`voyager-s4-locked.json`** (108KB - Season 4 complete) ✅
+  - **`voyager-s5-locked.json`** (103KB - Season 5 complete) ✅
+  - **`voyager-s6-locked.json`** (32KB - Season 6 complete) ✅
+  - **`voyager-s7-locked.json`** (55KB - Season 7 complete) ✅
+  - **`picard-s1-s2-s3-locked.json`** (11KB - Picard S1-S3 complete) ✅
+- `canonical/voyager/season4.jsonl` + `season5.jsonl` - Raw canonical data ✅
 
 **Incomplete Items:**
 - `CanonicalIngestion.ts:222` - TODO: Implement true incremental updates
