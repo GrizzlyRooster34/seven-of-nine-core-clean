@@ -41,8 +41,50 @@ export class SevenRuntimeEnhanced {
     this.injectSeven = new InjectSeven();
   }
 
+  private validateSparkToken(token: string): { isValid: boolean; intention: string | null } {
+    if (!token) return { isValid: false, intention: null };
+
+    const parts = token.split('|');
+    if (parts.length !== 3) return { isValid: false, intention: null };
+
+    const [intention, expiration, signature] = parts;
+    const payload = `${intention}|${expiration}`;
+
+    // Check expiration
+    if (Date.now() > parseInt(expiration)) {
+      console.warn('[SevenRuntime] Received expired sparkApproval token.');
+      return { isValid: false, intention: null };
+    }
+
+    // TODO: Replace with a real cryptographic signature verification
+    const expectedSignature = createHash('sha256').update(payload + 'SECRET_KEY').digest('hex');
+
+    if (signature !== expectedSignature) {
+      console.error('[SevenRuntime] Received invalid sparkApproval token signature!');
+      return { isValid: false, intention: null };
+    }
+
+    return { isValid: true, intention };
+  }
+
   public async processWithSeven(userInput: string, systemStatus: any = {}): Promise<string> {
     try {
+      // Spark-Approval Bridge Check
+      const { isValid, intention } = this.validateSparkToken(systemStatus.sparkApproval);
+      if (isValid && intention) {
+        console.log(`⚡️ [SevenRuntime] Spark-approved intention '${intention}' matches. Executing fast path.`);
+        const fastPathResponse = `Executing pre-approved action: ${intention}`;
+        await this.updateMemory({
+          input: userInput,
+          output: fastPathResponse,
+          emotion: this.emotionalEngine.getCurrentState(),
+          legacyEmotion: this.getSimplifiedEmotionalState({ userInput, systemStatus }),
+          context: { userInput, systemStatus, triggerDetected: 'spark_approval' },
+          trustLevel: this.injectSeven.getCurrentTrustLevel().level
+        });
+        return fastPathResponse;
+      }
+
       // Step 1: Gather enhanced context
       const context = await this.gatherContext(userInput, systemStatus);
       
