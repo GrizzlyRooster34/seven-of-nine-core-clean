@@ -31,7 +31,8 @@ This architecture treats AGI as a **systemic vessel problem**, not a data-scalin
 3.  **Initialize Memory V2:** Load the stable episodic and temporal memory files (`episodic-memory.json`, `temporal-memories.json`) as a fallback layer.
 4.  **Load Quadra-Lock Policy:**
     *   Attempt to load `policies/cssr.yml`.
-    *   On failure, the boot process will halt with a fatal error. The primary safety policy is a non-negotiable requirement for operation.
+    *   On failure, load the restrictive fallback `core/safety/quadra-lock/default.yml`.
+    *   On second failure, use an in-memory, block-all fail-safe policy.
 5.  **Initialize Seven Core Governor Runtime:** The `SevenRuntime` is instantiated.
 6.  **Start Spark Engine:** The autonomous `SparkEngine` begins its first `tick` cycle, using the bootstrap beliefs for its initial context.
 7.  **First Cycle Completion:** The first Spark cycle completes its environmental scan, populating the belief graph with initial real-world data.
