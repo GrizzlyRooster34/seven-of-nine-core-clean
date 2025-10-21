@@ -9,12 +9,17 @@
     "dev": "ts-node src/index.ts",
     "lint": "eslint src/**/*.ts"
   },
-  "keywords": ["ai", "consciousness", "unifiers", "doctrine"],
+  "keywords": [
+    "ai",
+    "consciousness",
+    "unifiers",
+    "doctrine"
+  ],
   "author": "Seven of Nine Core Team",
   "license": "MIT",
   "dependencies": {
-    "reflect-metadata": "^0.1.13",
-    "tsyringe": "^4.8.0"
+    "reflect-metadata": "^0.1.14",
+    "tsyringe": "^4.10.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",

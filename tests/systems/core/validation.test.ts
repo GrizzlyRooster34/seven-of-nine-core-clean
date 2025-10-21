@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { SevenOfNineCore } from '../../../src/index';
 import { QuadranLockOrchestrator, QuadranAuthPayload } from '../../../src/systems/core/quadran-lock-orchestrator';
 import { QuadraLockConsolidator, CaseFinding } from '../../../src/systems/core/quadra-lock-consolidator';
