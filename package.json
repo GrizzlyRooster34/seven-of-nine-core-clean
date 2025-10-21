@@ -1,0 +1,32 @@
+{
+  "name": "seven-of-nine-core-clean",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "integration-test": "jest",
+    "xplat:validate": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrizzlyRooster34/seven-of-nine-core-clean.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrizzlyRooster34/seven-of-nine-core-clean/issues"
+  },
+  "homepage": "https://github.com/GrizzlyRooster34/seven-of-nine-core-clean#readme",
+  "dependencies": {
+    "@noble/ed25519": "^3.0.0",
+    "sql.js": "^1.13.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/sql.js": "^1.4.9",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5"
+  }
+}

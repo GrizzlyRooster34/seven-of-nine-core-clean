@@ -1,0 +1,9 @@
+[
+  {
+    "skillName": "getSystemInfo",
+    "description": "Retrieves current system status, including CPU, memory, and battery.",
+    "filePath": "./SystemInfo.ts",
+    "requiredTrustLevel": 2,
+    "allowedTacticalVariants": ["Drone", "Ranger", "Captain"]
+  }
+]
