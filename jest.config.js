@@ -10,7 +10,7 @@ module.exports = {
     'src/**/*.ts',
     '!src/**/*.d.ts',
   ],
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@systems/(.*)$': '<rootDir>/src/systems/$1',
     '^@core/(.*)$': '<rootDir>/src/systems/core/$1',
