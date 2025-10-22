@@ -31,17 +31,20 @@ export class GhostDiary {
   private logFilePath: string;
   private privateKey: string; // For signing
   private publicKey: string; // For verification
-  private policy: RetentionPolicy;
+  private policy!: RetentionPolicy;
 
-  constructor(logDir: string, policyPath: string, privateKey: string, publicKey: string) {
+  constructor(logDir: string, private policyPath: string, privateKey: string, publicKey: string) {
     this.logFilePath = path.join(logDir, `ghost-diary-${new Date().toISOString().split('T')[0]}.jsonl`);
     this.privateKey = privateKey;
     this.publicKey = publicKey;
-    this.policy = this.loadPolicy(policyPath);
   }
 
-  private loadPolicy(policyPath: string): RetentionPolicy {
-    const policyFile = fs.readFileSync(policyPath, 'utf8');
+  public async initialize(): Promise<void> {
+    this.policy = await this.loadPolicy(this.policyPath);
+  }
+
+  private async loadPolicy(policyPath: string): Promise<RetentionPolicy> {
+    const policyFile = await fs.promises.readFile(policyPath, 'utf8');
     return load(policyFile) as RetentionPolicy;
   }
 

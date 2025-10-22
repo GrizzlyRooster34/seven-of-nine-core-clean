@@ -280,8 +280,11 @@ export class SparkEngine extends EventEmitter {
     const expiration = Date.now() + 5000; // Token is valid for 5 seconds
     const payload = `${intention.goal}|${expiration}`;
     
-    // TODO: Replace with a real cryptographic signature (e.g., HMAC-SHA256)
-    const signature = createHash('sha256').update(payload + 'SECRET_KEY').digest('hex');
+    const secret = process.env.SPARK_APPROVAL_SECRET;
+    if (!secret) {
+      console.warn('[SPARK] SPARK_APPROVAL_SECRET environment variable not set. Token generation will be insecure.');
+    }
+    const signature = createHash('sha256').update(payload + (secret || 'fallback_secret')).digest('hex');
 
     const token = `${payload}|${signature}`;
 
