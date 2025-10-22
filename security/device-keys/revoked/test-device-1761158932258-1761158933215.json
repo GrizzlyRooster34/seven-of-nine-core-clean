@@ -1,0 +1,10 @@
+{
+  "deviceId": "test-device-1761158932258",
+  "publicKey": "MCowBQYDK2VwAyEAnBtXy/c3410OWSCf5tWo+b5OMstBJn0xZIqErMLJYLI=",
+  "privateKey": "MC4CAQAwBQYDK2VwBCIEIJCNg59MK7HmWlBT7V1ah8sr7MeQNoSn4+A2Vk9aTikX",
+  "created": "2025-10-22T18:48:53.193Z",
+  "lastUsed": "2025-10-22T18:48:53.194Z",
+  "trustLevel": 8,
+  "revokedAt": "2025-10-22T18:48:53.215Z",
+  "revocationReason": "Test cleanup"
+}

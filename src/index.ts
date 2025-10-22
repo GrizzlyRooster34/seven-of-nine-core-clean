@@ -6,12 +6,16 @@ import { QuadranLockOrchestrator } from './systems/core/quadran-lock-orchestrato
 import { QuadraLockConsolidator } from './systems/core/quadra-lock-consolidator';
 import { RestraintGate } from './systems/core/restraint-gate';
 import { SparkHeartbeat } from './systems/core/spark-heartbeat';
+import { SkillLoader } from '../skills/skill-loader';
+import { UltronSandbox } from '../sandbox/ultron';
 
 export class SevenOfNineCore {
   private orchestrator: QuadranLockOrchestrator;
   private consolidator: QuadraLockConsolidator;
   private restraintGate: RestraintGate;
   private heartbeat: SparkHeartbeat;
+  private skillLoader: SkillLoader;
+  private sandbox: UltronSandbox;
 
   constructor() {
     // Register services in DI container
@@ -25,6 +29,8 @@ export class SevenOfNineCore {
     this.consolidator = container.resolve(QuadraLockConsolidator);
     this.restraintGate = container.resolve(RestraintGate);
     this.heartbeat = container.resolve(SparkHeartbeat);
+    this.skillLoader = new SkillLoader('./skills/core');
+    this.sandbox = new UltronSandbox();
   }
 
   public async initialize(): Promise<void> {
@@ -34,6 +40,7 @@ export class SevenOfNineCore {
     await this.consolidator.initialize();
     await this.restraintGate.initialize();
     await this.heartbeat.initialize();
+    await this.skillLoader.loadSkills();
     
     console.log('Seven of Nine Core initialized successfully');
   }
