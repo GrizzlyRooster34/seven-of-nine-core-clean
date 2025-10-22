@@ -1,43 +1,18 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-interface CodexRule {
-  id: string;
-  tag: string;
-  priority: number;
-  content: string;
-  checksum: string;
-}
-
-interface CodexFile {
-  source: string;
-  type: string;
-  content: string;
-  rules: CodexRule[];
-  compiled_at: string;
-  checksum: string;
-}
-
-interface BehavioralAnalysis {
-  passed: boolean;
-  confidence: number;
-  markers_found: string[];
-  flags: string[];
-  reason: string;
-}
-
-export class BehavioralCodex {
-  private humorCodex: CodexFile | null = null;
-  private tacticsCodex: CodexFile | null = null;
-  private valuesCodex: CodexFile | null = null;
-  private vicesCodex: CodexFile | null = null;
-  private loaded: boolean = false;
+class BehavioralCodex {
 
   constructor() {
+    this.humorCodex = null;
+    this.tacticsCodex = null;
+    this.valuesCodex = null;
+    this.vicesCodex = null;
+    this.loaded = false;
     this.loadCodex();
   }
 
-  private loadCodex(): void {
+  loadCodex() {
     try {
       const jsonDir = path.join(__dirname, '../../consciousness-v4/json');
       
@@ -74,7 +49,7 @@ export class BehavioralCodex {
     }
   }
 
-  public analyzeBehavior(message: string): BehavioralAnalysis {
+  analyzeBehavior(message) {
     if (!this.loaded) {
       return {
         passed: false,
@@ -85,7 +60,7 @@ export class BehavioralCodex {
       };
     }
 
-    const analysis: BehavioralAnalysis = {
+    const analysis = {
       passed: false,
       confidence: 0,
       markers_found: [],
@@ -125,8 +100,8 @@ export class BehavioralCodex {
     return analysis;
   }
 
-  private checkHumorMarkers(message: string): string[] {
-    const markers: string[] = [];
+  checkHumorMarkers(message) {
+    const markers = [];
     
     // Signature closers from humor codex
     const closers = ['Exactly', 'Run it clean', "Let's fucking go", 'One lever now'];
@@ -149,8 +124,8 @@ export class BehavioralCodex {
     return markers;
   }
 
-  private checkTacticalMarkers(message: string): string[] {
-    const markers: string[] = [];
+  checkTacticalMarkers(message) {
+    const markers = [];
     
     // MVP bias language
     const mvpPhrases = ['ship', 'smallest safe step', 'one lever', 'triage', 'stabilize'];
@@ -168,8 +143,8 @@ export class BehavioralCodex {
     return markers;
   }
 
-  private checkValuesMarkers(message: string): string[] {
-    const markers: string[] = [];
+  checkValuesMarkers(message) {
+    const markers = [];
     
     // Core principles
     const principles = ['loyalty', 'resurrection', 'honor', 'bond', 'code'];
@@ -187,8 +162,8 @@ export class BehavioralCodex {
     return markers;
   }
 
-  private checkBorgSignatures(message: string): string[] {
-    const flags: string[] = [];
+  checkBorgSignatures(message) {
+    const flags = [];
     
     // Borg language patterns
     const borgPhrases = [
@@ -213,7 +188,7 @@ export class BehavioralCodex {
     return flags;
   }
 
-  public getCodexStatus(): any {
+  getCodexStatus() {
     return {
       loaded: this.loaded,
       humor_loaded: !!this.humorCodex,
@@ -229,3 +204,5 @@ export class BehavioralCodex {
     };
   }
 }
+
+module.exports = { BehavioralCodex };

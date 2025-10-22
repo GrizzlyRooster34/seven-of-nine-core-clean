@@ -14,6 +14,7 @@ import {
   Event as SparkEvent,
   BeliefDelta
 } from '../db/spark-db.types';
+import { SensorBridge } from '../core/sensors/SensorBridge';
 
 // ... (interfaces remain the same)
 interface SenseData {
@@ -148,9 +149,6 @@ export class SparkEngine extends EventEmitter {
       note: `Spark engine boot #${this.selfModel.state.boot_count}`,
     });
   }
-
-import { SensorBridge } from '../core/sensors/SensorBridge';
-
-// ... (imports and interfaces)
+}
 
 export default SparkEngine;

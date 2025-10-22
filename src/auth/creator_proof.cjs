@@ -1,29 +1,14 @@
 const { BehavioralCodex } = require('./behavioral/behavioralCodex');
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-interface QuadranResult {
-  passed: boolean;
-  failed_gate: string | null;
-  reason: string;
-  ts: number;
-  gate_results: {
-    Q1?: boolean;
-    Q2?: boolean;
-    Q3?: boolean;
-    Q4?: boolean;
-  };
-}
-
-export class CreatorProof {
-  private behavioralCodex: BehavioralCodex;
-
+class CreatorProof {
   constructor() {
     this.behavioralCodex = new BehavioralCodex();
   }
 
-  public async runQuadranLock(context: any): Promise<QuadranResult> {
-    const result: QuadranResult = {
+  async runQuadranLock(context) {
+    const result = {
       passed: false,
       failed_gate: null,
       reason: '',
@@ -93,12 +78,12 @@ export class CreatorProof {
     }
   }
 
-  private async runQ1Gate(context: any): Promise<boolean> {
+  async runQ1Gate(context) {
     // Placeholder for Ed25519 device attestation
     return true; // TODO: Implement device registry check
   }
 
-  private async runQ2Gate(context: any): Promise<boolean> {
+  async runQ2Gate(context) {
     try {
       // Extract message from context
       const message = context.message || context.input || '';
@@ -133,17 +118,17 @@ export class CreatorProof {
     }
   }
 
-  private async runQ3Gate(context: any): Promise<boolean> {
+  async runQ3Gate(context) {
     // Placeholder for semantic nonce validation
     return true; // TODO: Implement TTL=90s, entropy>128b
   }
 
-  private async runQ4Gate(context: any): Promise<boolean> {
+  async runQ4Gate(context) {
     // Placeholder for session MFA/TTL
     return true; // TODO: Implement TOTP + rate limiting
   }
 
-  private logAuditTrail(result: QuadranResult): void {
+  logAuditTrail(result) {
     try {
       const logDir = path.join(__dirname, '../../logs');
       if (!fs.existsSync(logDir)) {
@@ -164,3 +149,5 @@ export class CreatorProof {
     }
   }
 }
+
+module.exports = { CreatorProof };

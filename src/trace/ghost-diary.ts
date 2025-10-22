@@ -3,7 +3,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { sign, verify } from 'crypto';
 
-import yaml from 'js-yaml';
 import * as lz4 from 'lz4js';
 
 // Define the structure of a Trace event based on the blueprint
@@ -42,7 +41,17 @@ export class GhostDiary {
 
   private loadPolicy(policyPath: string): RetentionPolicy {
     const policyFile = fs.readFileSync(policyPath, 'utf8');
-    return yaml.load(policyFile) as RetentionPolicy;
+    // Simple YAML parsing without external dependency
+    const lines = policyFile.split('\n').filter(l => l.trim() && !l.trim().startsWith('#'));
+    const policy: any = {};
+    lines.forEach(line => {
+      const [key, ...valueParts] = line.split(':');
+      if (key && valueParts.length > 0) {
+        const value = valueParts.join(':').trim().replace(/['"]/g, '');
+        policy[key.trim()] = isNaN(Number(value)) ? value : Number(value);
+      }
+    });
+    return policy as RetentionPolicy;
   }
 
   private hasLegalHold(filePath: string): boolean {

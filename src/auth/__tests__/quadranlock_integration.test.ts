@@ -1,4 +1,4 @@
-import { AuthDecision, CreatorProofOrchestrator } from '../creator_proof';
+import { AuthDecision, CreatorProofOrchestrator } from '../creator_proof.ts';
 import { Ed25519Attestation } from '../crypto/ed25519_attest';
 
 /**

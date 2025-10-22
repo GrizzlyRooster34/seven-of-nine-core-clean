@@ -8,15 +8,28 @@ import { createHash } from 'crypto';
 
 // Extract stableHash function for testing
 function stableHash(obj: any): string {
-  const replacer = (key: string, value: any) =>
-    value && typeof value === 'object' && !Array.isArray(value)
-      ? Object.keys(value)
+  const seen = new WeakSet();
+
+  const replacer = (key: string, value: any): any => {
+    if (value && typeof value === 'object') {
+      // Handle circular references
+      if (seen.has(value)) {
+        return '[Circular]';
+      }
+      seen.add(value);
+
+      // Sort object keys for deterministic serialization
+      if (!Array.isArray(value)) {
+        return Object.keys(value)
           .sort()
-          .reduce((sorted: any, key: any) => {
-            sorted[key] = value[key];
+          .reduce((sorted: any, k: string) => {
+            sorted[k] = value[k];
             return sorted;
-          }, {})
-      : value;
+          }, {});
+      }
+    }
+    return value;
+  };
 
   const str = JSON.stringify(obj, replacer);
   return createHash('sha256').update(str).digest('hex');
