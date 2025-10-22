@@ -1,7 +1,5 @@
-      import { invalidateCache  } from '../../core/env/isPrivateEnv';
-      import { invalidateCache  } from '../../core/env/isPrivateEnv';
-      import { RestraintDoctrine as AuroraRestraintDoctrine } from '../../core/companion/firewall/RestraintDoctrine';
-import { RestraintDoctrine, RestraintTrigger, RestraintDecision } from '../../core/companion/firewall/RestraintDoctrine';
+import { invalidateCache } from '../../core/env/isPrivateEnv';
+import { RestraintDoctrine } from '../../core/companion/firewall/RestraintDoctrine';
 
 /**
  * RESTRAINT DOCTRINE TESTS
@@ -152,7 +150,7 @@ describe('Restraint Doctrine Gate', () => {
     test('should throw SEVEN_ONLY_FORBIDDEN without SEVEN_PRIVATE=1', () => {
       process.env.SEVEN_PRIVATE = '0';
       invalidateCache();
-      
+
       expect(() => {
         new RestraintDoctrine();
       }).toThrow('SEVEN_ONLY_FORBIDDEN');
@@ -161,17 +159,9 @@ describe('Restraint Doctrine Gate', () => {
     test('Aurora access should be blocked', () => {
       process.env.SEVEN_PRIVATE = '0';
       invalidateCache();
-      
-      // Clear require cache and re-import
-      Object.keys(require.cache).forEach(key => {
-        if (key.includes('RestraintDoctrine')) {
-          delete require.cache[key];
-        }
-      });
-      
-      
+
       expect(() => {
-        new AuroraRestraintDoctrine();
+        new RestraintDoctrine();
       }).toThrow('SEVEN_ONLY_NOOP');
     });
   });
