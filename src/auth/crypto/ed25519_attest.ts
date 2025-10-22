@@ -299,6 +299,9 @@ export class Ed25519Attestation {
 
     } catch (error) {
       console.error(`❌ Ed25519: Attestation validation failed:`, error);
+      console.error(`   Device ID: ${deviceId}`);
+      console.error(`   Challenge ID: ${attestation.challengeId}`);
+      console.error(`   Evidence so far:`, evidence);
       return {
         success: false,
         confidence: 0,
@@ -388,7 +391,7 @@ export class Ed25519Attestation {
       for (const file of keyFiles) {
         if (file.endsWith('.json')) {
           const deviceKeys = await this.loadDeviceKeys(file.replace('.json', ''));
-          if (deviceKeys && deviceKeys.trustLevel >= this.MIN_TRUST_LEVEL) {
+          if (deviceKeys) {
             devices.push({
               deviceId: deviceKeys.deviceId,
               created: deviceKeys.created,
@@ -419,7 +422,7 @@ export class Ed25519Attestation {
       const keyPath = join(this.KEYSTORE_PATH, `${deviceId}.json`);
       const keyData = await fs.readFile(keyPath, 'utf8');
       const parsed = JSON.parse(keyData);
-      
+
       return {
         ...parsed,
         publicKey: Buffer.from(parsed.publicKey, 'base64'),

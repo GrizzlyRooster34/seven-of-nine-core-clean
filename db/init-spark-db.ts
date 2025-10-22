@@ -142,23 +142,21 @@ function bootstrapData(db: Database) {
   console.log('[SPARK-DB] Bootstrap complete');
 }
 
-/*
- * TODO: The BeliefGraph class needs to be refactored to work with the async sql.js API.
- * This will be the next step.
+// TODO: The BeliefGraph class needs to be refactored to work with the async sql.js API.
+// This will be the next step.
 export class BeliefGraph {
   private db: any; // Should be sql.js Database
-  
+
   constructor(db: any) {
     this.db = db;
   }
-  
+
   // All methods below need to be rewritten for sql.js
   upsertBelief(key: string, value: string, source: string, confidence: number): string { return ''; }
   linkBeliefs(srcId: string, dstId: string, relation: string, weight: number) {}
   decayBeliefs(hoursElapsed: number) {}
   getStrongestBeliefs(limit: number = 10): any[] { return []; }
 }
-*/
 
 // Auto-initialize if run directly
 if (require.main === module) {

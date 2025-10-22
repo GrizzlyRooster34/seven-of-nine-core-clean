@@ -1,8 +1,8 @@
 import initSqlJs from 'sql.js';
 import type { Database } from 'sql.js';
 import { initSparkDatabase, BeliefGraph } from '../db/init-spark-db';
-import { CodexManager } from '../consciousness-v4/codex/codex-manager';
-import { SparkEngine } from '../spark/engine-spark';
+import CodexManager from '../consciousness-v4/codex/codex-manager.ts';
+import SparkEngine from '../spark/engine-spark';
 import { existsSync, unlinkSync } from 'fs';
 
 const TEST_DB = 'db/test-spark.db';

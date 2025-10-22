@@ -7,12 +7,32 @@ import { createHash } from 'crypto';
 
 
 // Extract stableHash function for testing
-function stableHash(obj: unknown): string {
-  const s = JSON.stringify(obj, (key, value) => {
-    if (key === 'self' && value === obj) return '[Circular]';
+function stableHash(obj: any): string {
+  const seen = new WeakSet();
+
+  const replacer = (key: string, value: any): any => {
+    if (value && typeof value === 'object') {
+      // Handle circular references
+      if (seen.has(value)) {
+        return '[Circular]';
+      }
+      seen.add(value);
+
+      // Sort object keys for deterministic serialization
+      if (!Array.isArray(value)) {
+        return Object.keys(value)
+          .sort()
+          .reduce((sorted: any, k: string) => {
+            sorted[k] = value[k];
+            return sorted;
+          }, {});
+      }
+    }
     return value;
-  }, Object.keys(obj as any).sort());
-  return createHash('sha256').update(s).digest('hex');
+  };
+
+  const str = JSON.stringify(obj, replacer);
+  return createHash('sha256').update(str).digest('hex');
 }
 
 describe('Tactical Fallback Checksum', () => {

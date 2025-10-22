@@ -1,5 +1,5 @@
-const { AuthDecision, CreatorProofOrchestrator } = require('../creator_proof');
-const { Ed25519Attestation } = require('../crypto/ed25519_attest');
+import { AuthDecision, CreatorProofOrchestrator } from '../creator_proof.ts';
+import { Ed25519Attestation } from '../crypto/ed25519_attest';
 
 /**
  * QUADRAN-LOCK Q1 INTEGRATION TESTS
@@ -96,9 +96,14 @@ describe('Quadran-Lock Q1 Integration', () => {
 
     test('Complete challenge-response cycle', async () => {
       const challenge = await ed25519.generateChallenge(testDeviceId);
+      await new Promise(resolve => setTimeout(resolve, 150)); // Min response time
       const signature = await ed25519.signChallenge(challenge.challengeId, testDeviceId);
       const validation = await ed25519.validateAttestation(testDeviceId, signature);
-      
+
+      if (!validation.success) {
+        console.log('❌ Validation failed:', validation);
+      }
+
       expect(validation.success).toBe(true);
       expect(validation.confidence).toBeGreaterThan(0);
       expect(validation.evidence.signatureValid).toBe(true);
@@ -109,8 +114,9 @@ describe('Quadran-Lock Q1 Integration', () => {
 
     test('Replay protection prevents nonce reuse', async () => {
       const challenge = await ed25519.generateChallenge(testDeviceId);
+      await new Promise(resolve => setTimeout(resolve, 150)); // Min response time
       const signature = await ed25519.signChallenge(challenge.challengeId, testDeviceId);
-      
+
       // First validation should succeed
       const validation1 = await ed25519.validateAttestation(testDeviceId, signature);
       expect(validation1.success).toBe(true);
@@ -130,6 +136,7 @@ describe('Quadran-Lock Q1 Integration', () => {
     test('Authentication with Q1 crypto success', async () => {
       // Generate challenge and sign it
       const challenge = await ed25519.generateChallenge(testDeviceId);
+      await new Promise(resolve => setTimeout(resolve, 150)); // Min response time
       const signature = await ed25519.signChallenge(challenge.challengeId, testDeviceId);
       
       const result = await orchestrator.authenticateCreator(
@@ -197,6 +204,7 @@ describe('Quadran-Lock Q1 Integration', () => {
     test('Device revocation blocks access', async () => {
       // First, confirm device works
       const challenge1 = await ed25519.generateChallenge(testDeviceId);
+      await new Promise(resolve => setTimeout(resolve, 150)); // Min response time
       const signature1 = await ed25519.signChallenge(challenge1.challengeId, testDeviceId);
       const validation1 = await ed25519.validateAttestation(testDeviceId, signature1);
       expect(validation1.success).toBe(true);
@@ -229,8 +237,9 @@ describe('Quadran-Lock Q1 Integration', () => {
 
     test('Authentication completes within acceptable time', async () => {
       const startTime = Date.now();
-      
+
       const challenge = await ed25519.generateChallenge(testDeviceId);
+      await new Promise(resolve => setTimeout(resolve, 150)); // Min response time
       const signature = await ed25519.signChallenge(challenge.challengeId, testDeviceId);
       const validation = await ed25519.validateAttestation(testDeviceId, signature);
       
