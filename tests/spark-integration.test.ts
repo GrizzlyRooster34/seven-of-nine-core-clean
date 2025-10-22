@@ -1,23 +1,25 @@
-import Database from 'better-sqlite3';
+import initSqlJs from 'sql.js';
+import type { Database } from 'sql.js';
 import { initSparkDatabase, BeliefGraph } from '../db/init-spark-db';
-import CodexManager from '../consciousness-v4/codex/codex-manager';
-import SparkEngine from '../spark/engine-spark';
+import { CodexManager } from '../consciousness-v4/codex/codex-manager';
+import { SparkEngine } from '../spark/engine-spark';
 import { existsSync, unlinkSync } from 'fs';
 
 const TEST_DB = 'db/test-spark.db';
 
 describe('Spark Engine Integration Tests', () => {
-  let db: Database.Database;
+  let db: Database;
   let engine: SparkEngine;
   
-  beforeEach(() => {
+  beforeEach(async () => {
     // Clean up test database if exists
     if (existsSync(TEST_DB)) {
       unlinkSync(TEST_DB);
     }
     
     // Initialize test database
-    db = initSparkDatabase(false);
+    const SQL = await initSqlJs({ locateFile: file => `https://sql.js.org/dist/${file}` });
+    db = new SQL.Database();
     engine = new SparkEngine(TEST_DB);
   });
   
@@ -32,11 +34,11 @@ describe('Spark Engine Integration Tests', () => {
   });
   
   test('Database initialization creates all tables', () => {
-    const tables = db.prepare(`
+    const tables = db.exec(`
       SELECT name FROM sqlite_master 
       WHERE type='table' 
       ORDER BY name
-    `).all() as Array<{name: string}>;
+    `);
     
     const expectedTables = [
       'belief_links',
@@ -48,7 +50,7 @@ describe('Spark Engine Integration Tests', () => {
       'traces'
     ];
     
-    const tableNames = tables.map(t => t.name);
+    const tableNames = tables[0].values.map(t => t[0]);
     expectedTables.forEach(table => {
       expect(tableNames).toContain(table);
     });
@@ -238,19 +240,19 @@ describe('Spark Engine Integration Tests', () => {
   
   test('Event processing queue', () => {
     // Test event insertion
-    const eventInsert = db.prepare(`
+    db.run(`
       INSERT INTO events (channel, payload) VALUES (?, ?)
-    `);
-    
-    eventInsert.run('test_channel', JSON.stringify({ test: 'data' }));
-    eventInsert.run('system', JSON.stringify({ memory: 0.5, cpu: 0.3 }));
+    `, ['test_channel', JSON.stringify({ test: 'data' })]);
+    db.run(`
+      INSERT INTO events (channel, payload) VALUES (?, ?)
+    `, ['system', JSON.stringify({ memory: 0.5, cpu: 0.3 })]);
     
     // Check unprocessed events
-    const unprocessed = db.prepare(`
+    const unprocessed = db.exec(`
       SELECT COUNT(*) as count FROM events WHERE processed = 0
-    `).get() as { count: number };
+    `);
     
-    expect(unprocessed.count).toBe(2);
+    expect(unprocessed[0].values[0][0]).toBe(2);
   });
   
   test('Style markers from codex', () => {

@@ -1,6 +1,6 @@
       import { invalidateCache  } from '../../core/env/isPrivateEnv';
       import { invalidateCache  } from '../../core/env/isPrivateEnv';
-      import { RestraintDoctrine: AuroraRestraintDoctrine  } from '../../core/companion/firewall/RestraintDoctrine';
+      import { RestraintDoctrine as AuroraRestraintDoctrine } from '../../core/companion/firewall/RestraintDoctrine';
 import { RestraintDoctrine, RestraintTrigger, RestraintDecision } from '../../core/companion/firewall/RestraintDoctrine';
 
 /**

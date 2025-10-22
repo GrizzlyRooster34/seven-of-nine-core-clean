@@ -1,0 +1,5 @@
+# policies/ghost-diary-retention.yaml
+hot_storage_days: 7
+warm_storage_days: 30
+cold_storage_path: "data/ghost-diary/archive/" # Can be an external path later
+compression_algorithm: "lz4"

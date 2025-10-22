@@ -1,6 +1,5 @@
-import { AuthDecision } from '../creator_proof';
-import { CreatorProofOrchestrator } from '../creator_proof';
-import { Ed25519Attestation } from '../crypto/ed25519_attest';
+const { AuthDecision, CreatorProofOrchestrator } = require('../creator_proof');
+const { Ed25519Attestation } = require('../crypto/ed25519_attest');
 
 /**
  * QUADRAN-LOCK Q1 INTEGRATION TESTS

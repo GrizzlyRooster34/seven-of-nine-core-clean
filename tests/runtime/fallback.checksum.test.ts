@@ -8,7 +8,10 @@ import { createHash } from 'crypto';
 
 // Extract stableHash function for testing
 function stableHash(obj: unknown): string {
-  const s = JSON.stringify(obj, Object.keys(obj as any).sort?.() || undefined);
+  const s = JSON.stringify(obj, (key, value) => {
+    if (key === 'self' && value === obj) return '[Circular]';
+    return value;
+  }, Object.keys(obj as any).sort());
   return createHash('sha256').update(s).digest('hex');
 }
 
