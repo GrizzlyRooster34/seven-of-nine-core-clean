@@ -6,6 +6,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@systems/(.*)$': '<rootDir>/src/systems/$1',
     '^@core/(.*)$': '<rootDir>/src/systems/core/$1',
+    '^lz4js$': '<rootDir>/node_modules/lz4js/lz4.js',
   },
   transform: {
     // '^' means 'start of string'

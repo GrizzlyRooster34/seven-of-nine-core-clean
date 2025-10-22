@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { sign, verify } from 'crypto';
 
-import { load } from 'js-yaml';
+import yaml from 'js-yaml';
 import * as lz4 from 'lz4js';
 
 // Define the structure of a Trace event based on the blueprint
@@ -42,7 +42,7 @@ export class GhostDiary {
 
   private loadPolicy(policyPath: string): RetentionPolicy {
     const policyFile = fs.readFileSync(policyPath, 'utf8');
-    return load(policyFile) as RetentionPolicy;
+    return yaml.load(policyFile) as RetentionPolicy;
   }
 
   private hasLegalHold(filePath: string): boolean {

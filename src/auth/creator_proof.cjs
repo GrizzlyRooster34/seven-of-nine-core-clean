@@ -1,4 +1,4 @@
-import { BehavioralCodex } from './behavioral/behavioralCodex';
+const { BehavioralCodex } = require('./behavioral/behavioralCodex');
 import fs from 'fs';
 import path from 'path';
 

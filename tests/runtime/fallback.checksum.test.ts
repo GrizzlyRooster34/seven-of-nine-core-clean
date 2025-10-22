@@ -7,12 +7,19 @@ import { createHash } from 'crypto';
 
 
 // Extract stableHash function for testing
-function stableHash(obj: unknown): string {
-  const s = JSON.stringify(obj, (key, value) => {
-    if (key === 'self' && value === obj) return '[Circular]';
-    return value;
-  }, Object.keys(obj as any).sort());
-  return createHash('sha256').update(s).digest('hex');
+function stableHash(obj: any): string {
+  const replacer = (key: string, value: any) =>
+    value && typeof value === 'object' && !Array.isArray(value)
+      ? Object.keys(value)
+          .sort()
+          .reduce((sorted: any, key: any) => {
+            sorted[key] = value[key];
+            return sorted;
+          }, {})
+      : value;
+
+  const str = JSON.stringify(obj, replacer);
+  return createHash('sha256').update(str).digest('hex');
 }
 
 describe('Tactical Fallback Checksum', () => {
