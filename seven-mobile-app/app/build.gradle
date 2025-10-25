@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.application'
+    id 'com.janeasystems.nodejs-mobile'
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.seven"
+        minSdk 30
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.janeasystems.nodejs-mobile:nodejs-mobile-android:0.4.0'
+}
+
+nodejs {
+    nodeDir = file("src/main/nodejs-project")
+}
