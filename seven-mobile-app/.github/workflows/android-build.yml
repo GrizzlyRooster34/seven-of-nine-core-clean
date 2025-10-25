@@ -1,0 +1,60 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ deployments, main ]
+    paths:
+      - 'seven-mobile-app/**'
+      - '.github/workflows/android-build.yml'
+  pull_request:
+    branches: [ deployments, main ]
+    paths:
+      - 'seven-mobile-app/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+        cache: 'gradle'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Generate Gradle Wrapper
+      run: |
+        cd seven-mobile-app
+        if [ ! -f "gradlew" ]; then
+          gradle wrapper --gradle-version 8.0
+        fi
+        chmod +x gradlew
+
+    - name: Build Debug APK
+      run: |
+        cd seven-mobile-app
+        ./gradlew assembleDebug --stacktrace
+
+    - name: Upload Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: seven-mobile-debug-apk
+        path: seven-mobile-app/app/build/outputs/apk/debug/app-debug.apk
+        retention-days: 30
+
+    - name: Upload build reports on failure
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: build-reports
+        path: seven-mobile-app/app/build/reports/
+        retention-days: 7
