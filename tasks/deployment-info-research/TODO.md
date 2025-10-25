@@ -2,14 +2,20 @@
 
 ## Phase 1: Cross-Platform Deployment (Docker & Google Cloud)
 
-- [ ] `[docker]` `[setup]` Create a `Dockerfile` for the application.
-- [ ] `[docker]` `[setup]` Create a `docker-compose.yml` for local development.
+- [x] `[docker]` `[setup]` Create a `Dockerfile` for the application.
+- [x] `[docker]` `[setup]` Create a `docker-compose.yml` for local development.
+- [x] `[docker]` `[setup]` Create a `.dockerignore` file.
+- [x] `[docker]` `[docs]` Create Docker deployment documentation (DOCKER.md).
+- [x] `[docker]` `[validation]` Create validation script for Docker configuration.
 - [ ] `[docker]` `[test]` [PARALLEL] Test Docker deployment on Windows 11.
 - [ ] `[docker]` `[test]` [PARALLEL] Test Docker deployment on Manjaro Linux.
-- [ ] `[gcp]` `[setup]` Create a `cloudbuild.yaml` for CI/CD.
-- [ ] `[gcp]` `[setup]` Configure Google Cloud Artifact Registry.
-- [ ] `[gcp]` `[script]` Create a `gcloud` deployment script for Cloud Run.
-- [ ] `[gcp]` `[test]` Test the Google Cloud deployment.
+- [x] `[gcp]` `[setup]` Create a `cloudbuild.yaml` for CI/CD.
+- [x] `[gcp]` `[setup]` Create `.gcloudignore` file.
+- [x] `[gcp]` `[script]` Create GCP setup script (`setup-gcp.sh`).
+- [x] `[gcp]` `[script]` Create `gcloud` deployment script for Cloud Run (`deploy-gcp.sh`).
+- [x] `[gcp]` `[config]` Create environment configuration template (`.env.gcp.example`).
+- [x] `[gcp]` `[docs]` Create GCP deployment documentation (`GCP_DEPLOYMENT.md`).
+- [ ] `[gcp]` `[test]` Test the Google Cloud deployment on actual GCP account.
 
 ## Phase 2: Native Desktop Deployment (Windows & Linux)
 
