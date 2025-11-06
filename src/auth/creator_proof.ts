@@ -3,12 +3,13 @@
  * Implements 2-of-4 minimum gate evaluation with deny-by-default security
  */
 
-import { Ed25519Attestation, AttestationSignature } from './crypto/ed25519_attest';
-import { SemanticNonceChallenge, SemanticResponse } from './challenge/semanticNonce';
-import { BehavioralCodex } from './behavioral/behavioralCodex';
-import { SessionIntegrity } from './session/sessionIntegrity';
+import { Ed25519Attestation, AttestationSignature } from './crypto/ed25519_attest.js';
+import { SemanticNonceChallenge, SemanticResponse } from './challenge/semanticNonce.js';
+import { BehavioralCodex } from './behavioral/behavioralCodex.js';
+import { SessionIntegrity } from './session/sessionIntegrity.js';
 import fs from 'fs';
 import path from 'path';
+import { randomBytes, createHmac } from 'crypto';
 
 export enum AuthGate {
   Q1_CRYPTO_ATTESTATION = 'crypto_attestation',
@@ -222,10 +223,10 @@ export class CreatorProofOrchestrator {
       gates: successfulGates,
       accessLevel,
       timestamp: Date.now(),
-      nonce: crypto.randomBytes(16).toString('hex')
+      nonce: randomBytes(16).toString('hex')
     };
     const payload = Buffer.from(JSON.stringify(sessionData)).toString('base64url');
-    const signature = crypto.createHmac('sha256', key).update(payload).digest('hex');
+    const signature = createHmac('sha256', key).update(payload).digest('hex');
     return `${payload}.${signature}`;
   }
 

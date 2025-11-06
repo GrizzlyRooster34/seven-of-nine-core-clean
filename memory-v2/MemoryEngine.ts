@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import { MemoryEncryptionEngine } from '../memory-v3/MemoryEncryption';
+import { MemoryEncryptionEngine } from '../memory-v3-amalgum/MemoryEncryption.js';
 
 /**
  * SEVEN OF NINE - MEMORY ENGINE v2.0

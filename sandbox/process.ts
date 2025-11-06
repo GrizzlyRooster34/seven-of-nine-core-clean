@@ -14,7 +14,7 @@ export class SandboxProcess {
 
   public run(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.process.on('message', (result) => {
+      this.process.on('message', (result: any) => {
         if (result.error) {
           reject(new Error(result.error));
         } else {

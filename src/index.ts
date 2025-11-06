@@ -2,12 +2,12 @@ import { container } from 'tsyringe';
 import 'reflect-metadata';
 
 // Core unifiers
-import { QuadranLockOrchestrator } from './systems/core/quadran-lock-orchestrator';
-import { QuadraLockConsolidator } from './systems/core/quadra-lock-consolidator';
-import { RestraintGate } from './systems/core/restraint-gate';
-import { SparkHeartbeat } from './systems/core/spark-heartbeat';
-import { SkillLoader } from '../skills/skill-loader';
-import { UltronSandbox } from '../sandbox/ultron';
+import { QuadranLockOrchestrator } from './systems/core/quadran-lock-orchestrator.js';
+import { QuadraLockConsolidator } from './systems/core/quadra-lock-consolidator.js';
+import { RestraintGate } from './systems/core/restraint-gate.js';
+import { SparkHeartbeat } from './systems/core/spark-heartbeat.js';
+import { SkillLoader } from '../skills/skill-loader.js';
+import { UltronSandbox } from '../sandbox/ultron.js';
 
 export class SevenOfNineCore {
   private orchestrator: QuadranLockOrchestrator;
@@ -57,7 +57,7 @@ export class SevenOfNineCore {
   }
 }
 
-export * from './systems/core/quadran-lock-orchestrator';
-export * from './systems/core/quadra-lock-consolidator';
-export * from './systems/core/restraint-gate';
-export * from './systems/core/spark-heartbeat';
+export * from './systems/core/quadran-lock-orchestrator.js';
+export * from './systems/core/quadra-lock-consolidator.js';
+export * from './systems/core/restraint-gate.js';
+export * from './systems/core/spark-heartbeat.js';
