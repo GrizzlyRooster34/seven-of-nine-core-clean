@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import crypto from 'crypto';
+import { createHash } from 'crypto';
 import { MemoryFragment, MemoryCategory, ConsolidationLevel, temporalMemoryDecay } from './TemporalMemoryDecay.js';
 
 /**

@@ -71,7 +71,7 @@ describe('Security Encryption', () => {
       const originalSignature = 'original_sig';
       const currentSignature = 'tampered_sig';
 
-      const isTampered = originalSignature !== currentSignature;
+      const isTampered = (originalSignature as string) !== (currentSignature as string);
       expect(isTampered).toBe(true);
     });
   });

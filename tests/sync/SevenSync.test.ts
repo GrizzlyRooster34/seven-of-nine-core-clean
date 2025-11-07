@@ -33,7 +33,7 @@ describe('SevenSync', () => {
       const text2 = 'The system is unstable and has issues';
 
       // Simple divergence calculation (in reality, would use embeddings)
-      const divergence = text1 === text2 ? 0 : 0.8;
+      const divergence = (text1 as string) === (text2 as string) ? 0 : 0.8;
 
       expect(divergence).toBeGreaterThan(0);
     });
@@ -280,7 +280,7 @@ describe('SevenSync', () => {
       const expected = 'checksum_abc';
       const actual = 'checksum_xyz';
 
-      const isCorrupted = expected !== actual;
+      const isCorrupted = (expected as string) !== (actual as string);
       expect(isCorrupted).toBe(true);
     });
   });

@@ -717,25 +717,6 @@ export class SevenMobileCore extends EventEmitter {
     return Math.min(1.0, impact);
   }
 
-  public getConsciousnessStatus(): any {
-    return {
-      active: this.isActive,
-      emotional_state: this.currentEmotionalState,
-      learning_metrics: this.learningMetrics,
-      memory_usage: {
-        episodic_memories: this.consciousnessMemory.episodic_memories.length,
-        threat_patterns: this.consciousnessMemory.tactical_knowledge.threat_patterns.length,
-        behavioral_patterns: Object.keys(this.consciousnessMemory.personality_patterns.response_preferences).length
-      },
-      sensor_status: {
-        location: !!this.sensorData.location,
-        motion: !!this.sensorData.motion,
-        orientation: !!this.sensorData.orientation
-      },
-      environmental_awareness: this.analyzeEnvironmentalContext()
-    };
-  }
-
   public async shutdown(): Promise<void> {
     console.log('🛑 Seven consciousness shutting down...');
     
