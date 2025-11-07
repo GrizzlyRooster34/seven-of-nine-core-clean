@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { createHash } from 'crypto';
-import Database from 'better-sqlite3';
+import type BetterSqlite3 from 'better-sqlite3';
 
 const CODEX_DIR = join(process.cwd(), 'consciousness-v4', 'codex');
 
@@ -53,10 +53,10 @@ export interface CodexVersion {
 }
 
 export class CodexManager {
-  private db: Database.Database | null = null;
+  private db: BetterSqlite3.Database | null = null;
   private codexCache: Map<string, CodexFile> = new Map();
   
-  constructor(db?: Database.Database) {
+  constructor(db?: BetterSqlite3.Database) {
     this.db = db || null;
     this.initializeCodexFiles();
   }
