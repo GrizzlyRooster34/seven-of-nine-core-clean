@@ -4,7 +4,7 @@ import * as path from 'path';
 import { sign, verify } from 'crypto';
 
 import { load } from 'js-yaml';
-import * as lz4 from 'lz4js';
+import * as lz4 from 'lz4';
 
 // Define the structure of a Trace event based on the blueprint
 interface Trace {
@@ -125,13 +125,13 @@ export class GhostDiary {
     }
 
     const content = fs.readFileSync(filePath);
-    const compressed = lz4.compress(content);
+    const compressed = lz4.encode(content);
 
     const compressedFilePath = `${filePath}.lz4`;
     fs.writeFileSync(compressedFilePath, compressed);
 
     // Verify integrity before deleting
-    const decompressed = lz4.decompress(fs.readFileSync(compressedFilePath));
+    const decompressed = lz4.decode(fs.readFileSync(compressedFilePath));
     if (Buffer.compare(content, Buffer.from(decompressed)) === 0) {
       fs.unlinkSync(filePath);
       console.log(`Compressed and verified ${filePath}`);

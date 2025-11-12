@@ -12,7 +12,7 @@
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import { MemoryItem, MemoryFilter, MemoryEngine } from '../memory-v2/MemoryEngine.js';
-import { MemoryEncryptionEngine } from './MemoryEncryption';
+import { MemoryEncryptionEngine } from '../memory-v3-amalgum/MemoryEncryption';
 
 // Enhanced interfaces for Temporal Memory Architecture
 export interface CognitiveState {

@@ -3,6 +3,7 @@ import { createHash } from 'crypto';
 import { promises as fs } from 'fs';
 import initSqlJs from 'sql.js';
 import type { Database } from 'sql.js';
+import { SensorBridge } from '../core/sensors/SensorBridge';
 
 // Note: The dependent files 'codex-manager' and 'init-spark-db' will also need refactoring
 // to work with the new async, sql.js-based database. This is only the first step.
@@ -57,6 +58,7 @@ export class SparkEngine extends EventEmitter {
   private tickCount: number = 0;
   private isRunning: boolean = false;
   private isInitialized: boolean = false;
+  private sensorBridge: SensorBridge;
 
   private readonly CANDIDATE_INTENTIONS = [
     'stabilize_creator',
@@ -70,13 +72,13 @@ export class SparkEngine extends EventEmitter {
   constructor(dbPath: string = 'db/spark.db') {
     super();
     this.dbPath = dbPath;
+    this.sensorBridge = new SensorBridge();
   }
 
   public async initialize(): Promise<void> {
     if (this.isInitialized) return;
 
     console.log('[SPARK] Initializing SQL.js...');
-    // sql.js needs to locate the wasm file. This is a common pattern for wasm libraries.
     this.SQL = await initSqlJs({ locateFile: file => `https://sql.js.org/dist/${file}` });
 
     try {
@@ -86,14 +88,12 @@ export class SparkEngine extends EventEmitter {
     } catch (error) {
       console.log('[SPARK] Database file not found, creating new in-memory database.');
       this.db = new this.SQL.Database();
-      // This assumes an empty DB is valid. If a schema is needed, it would be applied here.
-      await this.saveDatabase(); // Save initial empty DB
+      await this.saveDatabase();
     }
 
     this.db.run("PRAGMA foreign_keys = ON;");
     this.db.run("PRAGMA journal_mode = WAL;");
 
-    // These dependencies will also need to be refactored to accept the async sql.js DB object.
     this.codex = new CodexManager(this.db);
     this.beliefs = new BeliefGraph(this.db);
 
@@ -126,7 +126,6 @@ export class SparkEngine extends EventEmitter {
       "UPDATE self_model SET json = ?, updated_at = strftime('%s', 'now') WHERE id = 'primary'",
       [JSON.stringify(this.selfModel, null, 2)]
     );
-    // No need to save the whole DB for every model save, we can do it periodically or on stop().
   }
 
   private async logBoot(): Promise<void> {
@@ -135,8 +134,6 @@ export class SparkEngine extends EventEmitter {
     console.log('[SPARK] ==========================================');
     this.selfModel.state.boot_count++;
     console.log(`[SPARK] Boot Count: ${this.selfModel.state.boot_count}`);
-
-    // await this.codex.logBootChecksum(); // This method would need to be async
 
     await this.saveSelfModel();
     await this.writeTrace({
@@ -147,22 +144,6 @@ export class SparkEngine extends EventEmitter {
       note: `Spark engine boot #${this.selfModel.state.boot_count}`,
     });
   }
-
-import { SensorBridge } from '../core/sensors/SensorBridge';
-
-// ... (imports and interfaces)
-
-export class SparkEngine extends EventEmitter {
-  // ... (properties)
-  private sensorBridge: SensorBridge;
-
-  constructor(dbPath: string = 'db/spark.db') {
-    super();
-    this.dbPath = dbPath;
-    this.sensorBridge = new SensorBridge();
-  }
-
-  // ... (initialize, saveDatabase, etc.)
 
   private async getPowerState(): Promise<{ charging: boolean }> {
     const powerState = await this.sensorBridge.getPowerState();
@@ -178,9 +159,6 @@ export class SparkEngine extends EventEmitter {
     const powerState = await this.sensorBridge.getPowerState();
     return powerState.level * 100;
   }
-
-  // ... (start, scheduleNextTick, stop, tick, etc.)
-
 
   public async start(): Promise<void> {
     if (!this.isInitialized) await this.initialize();
@@ -224,7 +202,7 @@ export class SparkEngine extends EventEmitter {
       act: 'stop',
       note: 'Spark engine stopped gracefully'
     });
-    await this.saveDatabase(); // Save DB on graceful stop
+    await this.saveDatabase();
   }
 
   private async tick(): Promise<void> {
@@ -233,7 +211,7 @@ export class SparkEngine extends EventEmitter {
     const cpuUsage = await this.getCpuUsage();
     if (cpuUsage > 80) {
         console.log('[SPARK] Skipped cycle: CPU > 80%');
-        this.scheduleNextTick(); // Reschedule for the next interval
+        this.scheduleNextTick();
         return;
     }
 
@@ -247,7 +225,6 @@ export class SparkEngine extends EventEmitter {
       let action: string | undefined;
       if (guardrails.allow) {
         action = await this.act(intention);
-        // If the intention was high confidence, generate a sparkApproval token
         if (intention.score > 0.85) {
           this.generateSparkApproval(intention);
         }
@@ -262,7 +239,7 @@ export class SparkEngine extends EventEmitter {
       });
       this.selfModel.state.last_tick = tickStart;
       await this.saveSelfModel();
-      this.emit('tick', { /* ... tick data */ });
+      this.emit('tick', { });
     } catch (error: any) {
       console.error('[SPARK] Tick error:', error);
       await this.writeTrace({
@@ -272,12 +249,11 @@ export class SparkEngine extends EventEmitter {
       });
     }
 
-    // Schedule the next tick
     this.scheduleNextTick();
   }
 
   private generateSparkApproval(intention: Intention): void {
-    const expiration = Date.now() + 5000; // Token is valid for 5 seconds
+    const expiration = Date.now() + 5000;
     const payload = `${intention.goal}|${expiration}`;
     
     const secret = process.env.SPARK_APPROVAL_SECRET;
@@ -293,7 +269,6 @@ export class SparkEngine extends EventEmitter {
   }
 
   private sense(): SenseData {
-    // This remains synchronous as it reads from system state
     const memUsage = process.memoryUsage();
     return {
       system: {
@@ -313,8 +288,6 @@ export class SparkEngine extends EventEmitter {
 
   private async updateBeliefs(sense: SenseData): Promise<BeliefDelta[]> {
     if (!this.db) throw new Error("Database not initialized");
-    // This method depends on BeliefGraph, which needs to be refactored for sql.js
-    // For now, this is a placeholder.
     console.log('[SPARK] Belief update skipped - BeliefGraph needs refactoring.');
     return [];
   }
@@ -323,12 +296,10 @@ export class SparkEngine extends EventEmitter {
     if (!this.db) throw new Error("Database not initialized");
     const unprocessedResult = this.db.exec("SELECT COUNT(*) as count FROM events WHERE processed = 0");
     const unprocessed = (unprocessedResult.length > 0) ? { count: unprocessedResult[0].values[0][0] as number } : { count: 0 };
-    // ... rest of scoring logic would go here
     return { goal: 'journal_state', why: 'Default intention', horizon: 'soon', score: 0.5 };
   }
 
   private async checkRails(intention: Intention): Promise<GuardrailResult> {
-    // This logic remains largely the same as it doesn't directly use the DB
     return { allow: true, reason: null };
   }
 
@@ -344,7 +315,6 @@ export class SparkEngine extends EventEmitter {
             await this.saveDatabase();
         }
         return `Processed ${events.length} events`;
-      // ... other cases
       default:
         return 'No action defined for intention';
     }
@@ -375,12 +345,10 @@ export class SparkEngine extends EventEmitter {
     if (!this.db) throw new Error("Database not initialized");
     const results = this.db.exec(`SELECT * FROM traces ORDER BY ts DESC LIMIT ${limit}`);
     if (results.length === 0) return [];
-    // Manually map results to Trace objects
     return results[0].values.map(row => ({
         ts: row[0],
         valence: row[1],
         arousal: row[2],
-        // ... map other fields
     } as Trace));
   }
 

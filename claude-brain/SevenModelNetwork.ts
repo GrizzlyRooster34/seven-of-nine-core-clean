@@ -1,4 +1,4 @@
-      import stream from 'fs'.createReadStream(filePath);
+
 import { createHash } from 'crypto';
 import { join } from 'path';
 import { promises as fs } from 'fs';

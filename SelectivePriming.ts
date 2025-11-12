@@ -7,7 +7,7 @@
  */
 
 import { EventEmitter } from 'events';
-import { TemporalMemoryItem, MemoryFragment, ContextualCue, ProgressiveRevelation, RevelationStage } from './TemporalMemoryItem';
+import { TemporalMemoryItem } from './memory-v3-amalgum/TemporalMemoryItem';
 
 interface PrimingStrategy {
   name: string;
