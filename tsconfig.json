@@ -17,6 +17,7 @@
     "emitDecoratorMetadata": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "downlevelIteration": true,
     "declaration": true,
     "sourceMap": true,
     "baseUrl": ".",
