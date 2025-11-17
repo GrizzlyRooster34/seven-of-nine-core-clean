@@ -442,7 +442,7 @@ export class MentalTimeTravelEngine {
       mentalTimeline,
       consciousnessSnapshot,
       environmentalContext,
-      personalityState: personalityState || {
+      personalityState: (personalityState as any) || {
         sevenOfNinePersonalityCorrelation: 0.5,
         dominantTraits: [],
         temporaryCharacteristics: [],

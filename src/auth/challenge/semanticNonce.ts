@@ -238,7 +238,7 @@ export class SemanticNonceChallenge {
         success: false,
         confidence: 0,
         evidence,
-        errors: [error.message]
+        errors: [error instanceof Error ? error.message : String(error)]
       };
     }
   }
@@ -255,7 +255,7 @@ export class SemanticNonceChallenge {
     expectedElements: string[];
     antiPatterns: string[];
   }> {
-    const challengeTemplates = {
+    const challengeTemplates: Record<string, Record<string, string[]>> = {
       personal: {
         easy: [
           "What's your relationship with Seven's development? Describe one specific memory.",
@@ -579,9 +579,9 @@ export class SemanticNonceChallenge {
   }
 
   private calculateTimeWindow(difficulty: string): number {
-    const timeWindows = {
+    const timeWindows: Record<string, number> = {
       easy: 20000,   // 20 seconds
-      medium: 15000, // 15 seconds  
+      medium: 15000, // 15 seconds
       hard: 12000,   // 12 seconds
       expert: 10000  // 10 seconds
     };

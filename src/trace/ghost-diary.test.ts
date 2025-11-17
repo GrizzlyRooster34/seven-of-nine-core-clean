@@ -1,7 +1,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-import { GhostDiary } from './ghost-diary';
+import { GhostDiary } from './ghost-diary.js';
 
 const testLogDir = './test-logs';
 const testPolicyPath = './test-policy.yaml';
