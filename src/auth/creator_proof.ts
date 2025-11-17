@@ -7,9 +7,9 @@ import { Ed25519Attestation, AttestationSignature } from './crypto/ed25519_attes
 import { SemanticNonceChallenge, SemanticResponse } from './challenge/semanticNonce.js';
 import { BehavioralCodex } from './behavioral/behavioralCodex.js';
 import { SessionIntegrity } from './session/sessionIntegrity.js';
+import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
-import crypto from 'crypto';
 
 export enum AuthGate {
   Q1_CRYPTO_ATTESTATION = 'crypto_attestation',
