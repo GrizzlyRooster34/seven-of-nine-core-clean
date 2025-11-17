@@ -42,5 +42,9 @@ temp/
 *.sqlite
 *.sqlite3
 
+# Memory files
+memory/*.json
+memory/*.log
+
 # OS files
 Thumbs.db
