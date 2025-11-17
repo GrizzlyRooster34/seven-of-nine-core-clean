@@ -1,0 +1,27 @@
+# Android/Gradle Build
+.gradle/
+build/
+*/build/
+*.iml
+.idea/
+local.properties
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Generated files
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Signing keys
+*.jks
+*.keystore
+
+# Local configuration
+local.properties

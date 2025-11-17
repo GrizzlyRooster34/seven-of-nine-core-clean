@@ -1,0 +1,88 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Build outputs
+dist
+*.tsbuildinfo
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git
+.gitignore
+.github
+
+# Documentation
+*.md
+!README.md
+gemini_docs
+aurora_docs
+documentation
+
+# Tests
+tests
+__tests__
+*.test.ts
+*.test.js
+*.spec.ts
+*.spec.js
+jest.config.*
+tsconfig.jest.json
+
+# Docker files (don't copy into build context)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# Logs and runtime data
+logs
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Environment files (use docker-compose environment instead)
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+tmp
+temp
+*.tmp
+
+# Runtime LLM data
+runtime/llm/llama.cpp
+
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Large data files
+flow charts
+
+# Task planning (documentation)
+tasks
+PLAN.md
+RESEARCH.md
+TODO.md
+*SUMMARY.md
+*REPORT.md
+*INVENTORY*.md

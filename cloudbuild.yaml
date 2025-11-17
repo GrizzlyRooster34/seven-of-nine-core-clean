@@ -1,0 +1,92 @@
+# Google Cloud Build Configuration
+# Builds Docker image and deploys to Cloud Run
+
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/seven-of-nine-core:$COMMIT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/seven-of-nine-core:latest'
+      - '--cache-from'
+      - 'gcr.io/$PROJECT_ID/seven-of-nine-core:latest'
+      - '.'
+    id: 'build-image'
+
+  # Step 2: Push the image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/seven-of-nine-core:$COMMIT_SHA'
+    id: 'push-image-sha'
+    waitFor: ['build-image']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/seven-of-nine-core:latest'
+    id: 'push-image-latest'
+    waitFor: ['build-image']
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'seven-of-nine-core'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/seven-of-nine-core:$COMMIT_SHA'
+      - '--region'
+      - '${_DEPLOY_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '${_MEMORY}'
+      - '--cpu'
+      - '${_CPU}'
+      - '--max-instances'
+      - '${_MAX_INSTANCES}'
+      - '--min-instances'
+      - '${_MIN_INSTANCES}'
+      - '--timeout'
+      - '${_TIMEOUT}'
+      - '--set-env-vars'
+      - 'NODE_ENV=production,LOG_LEVEL=info'
+      # Add Cloud SQL connection if needed
+      # - '--add-cloudsql-instances'
+      # - '${_CLOUDSQL_INSTANCE}'
+    id: 'deploy-cloud-run'
+    waitFor: ['push-image-sha']
+
+# Substitution variables with defaults
+substitutions:
+  _DEPLOY_REGION: 'us-central1'  # Change to your preferred region
+  _MEMORY: '2Gi'                  # Memory allocation
+  _CPU: '2'                       # CPU allocation
+  _MAX_INSTANCES: '10'            # Maximum instances for autoscaling
+  _MIN_INSTANCES: '0'             # Minimum instances (0 = scale to zero)
+  _TIMEOUT: '300s'                # Request timeout (5 minutes)
+
+# Build options
+options:
+  machineType: 'N1_HIGHCPU_8'     # Use high-CPU machine for faster builds
+  logging: 'CLOUD_LOGGING_ONLY'
+  substitutionOption: 'ALLOW_LOOSE'
+
+# Timeout for entire build
+timeout: '1200s'  # 20 minutes
+
+# Images to be stored in Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/seven-of-nine-core:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/seven-of-nine-core:latest'
+
+# Tags for organization
+tags:
+  - 'seven-of-nine'
+  - 'cloud-run'
+  - 'ai-consciousness'
