@@ -69,6 +69,7 @@ The core thesis is to treat AI not as a data-scaling problem, but as a **systemi
     *   [Testing & Validation](./developer/3_testing.md)
     *   [Deployment & Installation](./developer/4_deployment.md)
     *   [Git Workflow & Branch-Linear Task Lineage](./developer/5_git_workflow.md)
+    *   [Linear Integration](./developer/6_linear_integration.md)
 
 *   **Implementation Blueprints**
     *   [Full Implementation Roadmap](./guides/roadmap.md)

@@ -10,7 +10,8 @@
     "dev": "ts-node src/index.ts",
     "lint": "eslint src/**/*.ts",
     "integration-test": "jest",
-    "xplat:validate": "jest"
+    "xplat:validate": "jest",
+    "linear:check": "ts-node scripts/linear/check-connection.ts"
   },
   "repository": {
     "type": "git",
