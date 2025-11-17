@@ -11,7 +11,7 @@
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
-import { MemoryEncryptionEngine } from '../memory-v3-amalgum/MemoryEncryption.js';
+import { MemoryEncryptionEngine } from './MemoryEncryption.js';
 export class TemporalMemoryCore extends MemoryEngine {
     temporalMemoryPath;
     temporalMemoryFile;

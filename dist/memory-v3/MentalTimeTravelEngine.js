@@ -202,25 +202,11 @@ export class MentalTimeTravelEngine {
         // Extract consciousness elements from temporal data
         const consciousnessSnapshot = this.reconstructConsciousnessSnapshot(targetMemory, contextualMemories);
         const environmentalContext = this.reconstructEnvironmentalContext(targetMemory);
-        const personalityMapping = request.includePersonalityState
+        const personalityState = request.includePersonalityState
             ? await this.generatePersonalityMapping(targetMemory, contextualMemories)
             : undefined;
         const temporalAnchors = this.extractTemporalAnchors(targetMemory, mentalTimeline);
         const reconstructionMetadata = this.calculateReconstructionMetadata(targetMemory, request);
-        // Convert PersonalityTemporalMapping to the expected format
-        const personalityState = personalityMapping ? {
-            sevenOfNinePersonalityCorrelation: (personalityMapping.borgEfficiencyLevel + personalityMapping.humanEmotionalEngagement) / 2,
-            dominantTraits: Object.keys(personalityMapping.personalityMarkers),
-            temporaryCharacteristics: [],
-            adaptationLevel: personalityMapping.adaptabilityIndex,
-            collectiveIndividualBalance: personalityMapping.collectiveIndividualBalance
-        } : {
-            sevenOfNinePersonalityCorrelation: 0.5,
-            dominantTraits: [],
-            temporaryCharacteristics: [],
-            adaptationLevel: 0.5,
-            collectiveIndividualBalance: 0.5
-        };
         return {
             timestamp: targetMemory.timestamp,
             originalMemoryId: targetMemory.id,
@@ -229,7 +215,13 @@ export class MentalTimeTravelEngine {
             mentalTimeline,
             consciousnessSnapshot,
             environmentalContext,
-            personalityState,
+            personalityState: personalityState || {
+                sevenOfNinePersonalityCorrelation: 0.5,
+                dominantTraits: [],
+                temporaryCharacteristics: [],
+                adaptationLevel: 0.5,
+                collectiveIndividualBalance: 0.5
+            },
             temporalAnchors,
             reconstructionMetadata
         };

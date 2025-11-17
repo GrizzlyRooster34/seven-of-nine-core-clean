@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import { MemoryEncryptionEngine } from '../memory-v3-amalgum/MemoryEncryption.js';
+import { MemoryEncryptionEngine } from '../memory-v3/MemoryEncryption.js';
 export class MemoryEngine {
     memoryPath;
     memoryFile;

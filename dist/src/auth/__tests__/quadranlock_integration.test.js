@@ -43,23 +43,20 @@ describe('Quadran-Lock Q1 Integration', () => {
             await ed25519.registerDevice(testDeviceId, { test: true }, 10);
             const devices = await ed25519.listTrustedDevices();
             const device = devices.find((d) => d.deviceId === testDeviceId);
-            expect(device).toBeDefined();
-            expect(device.trustLevel).toBe(10);
+            expect(device?.trustLevel).toBe(10);
         });
         test('Device registration enforces trust level bounds', async () => {
             // Test upper bound
             await ed25519.registerDevice(testDeviceId, { test: true }, 15);
             let devices = await ed25519.listTrustedDevices();
             let device = devices.find((d) => d.deviceId === testDeviceId);
-            expect(device).toBeDefined();
-            expect(device.trustLevel).toBe(10); // Clamped to maximum
+            expect(device?.trustLevel).toBe(10); // Clamped to maximum
             await ed25519.revokeDevice(testDeviceId, 'Cleanup for next test');
             // Test lower bound
             await ed25519.registerDevice(secondDeviceId, { test: true }, -5);
             devices = await ed25519.listTrustedDevices();
             device = devices.find((d) => d.deviceId === secondDeviceId);
-            expect(device).toBeDefined();
-            expect(device.trustLevel).toBe(0); // Clamped to minimum
+            expect(device?.trustLevel).toBe(0); // Clamped to minimum
         });
     });
     describe('Challenge-Response Flow', () => {
@@ -154,8 +151,7 @@ describe('Quadran-Lock Q1 Integration', () => {
             const signature = await ed25519.signChallenge(challenge.challengeId, testDeviceId);
             const validation = await ed25519.validateAttestation(testDeviceId, signature);
             expect(validation.success).toBe(false);
-            expect(validation.errors).toBeDefined();
-            expect(validation.errors[0]).toContain('Invalid timing');
+            expect(validation.errors?.[0]).toContain('Invalid timing');
         });
         test('Device revocation blocks access', async () => {
             // First, confirm device works

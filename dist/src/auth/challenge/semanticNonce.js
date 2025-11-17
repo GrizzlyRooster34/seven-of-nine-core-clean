@@ -422,7 +422,7 @@ export class SemanticNonceChallenge {
     calculateTimeWindow(difficulty) {
         const timeWindows = {
             easy: 20000, // 20 seconds
-            medium: 15000, // 15 seconds  
+            medium: 15000, // 15 seconds
             hard: 12000, // 12 seconds
             expert: 10000 // 10 seconds
         };

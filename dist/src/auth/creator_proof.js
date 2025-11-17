@@ -6,7 +6,7 @@ import { Ed25519Attestation } from './crypto/ed25519_attest.js';
 import { SemanticNonceChallenge } from './challenge/semanticNonce.js';
 import { BehavioralCodex } from './behavioral/behavioralCodex.js';
 import { SessionIntegrity } from './session/sessionIntegrity.js';
-import { randomBytes, createHmac } from 'crypto';
+import crypto from 'crypto';
 export var AuthGate;
 (function (AuthGate) {
     AuthGate["Q1_CRYPTO_ATTESTATION"] = "crypto_attestation";
@@ -170,10 +170,10 @@ export class CreatorProofOrchestrator {
             gates: successfulGates,
             accessLevel,
             timestamp: Date.now(),
-            nonce: randomBytes(16).toString('hex')
+            nonce: crypto.randomBytes(16).toString('hex')
         };
         const payload = Buffer.from(JSON.stringify(sessionData)).toString('base64url');
-        const signature = createHmac('sha256', key).update(payload).digest('hex');
+        const signature = crypto.createHmac('sha256', key).update(payload).digest('hex');
         return `${payload}.${signature}`;
     }
     async logAuthenticationAttempt(deviceId, authRequest, result) {
