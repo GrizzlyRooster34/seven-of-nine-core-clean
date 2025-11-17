@@ -31,13 +31,19 @@
   "homepage": "https://github.com/GrizzlyRooster34/seven-of-nine-core-clean#readme",
   "dependencies": {
     "@noble/ed25519": "^3.0.0",
+    "better-sqlite3": "^9.2.2",
+    "fs-extra": "^11.2.0",
+    "js-yaml": "^4.1.0",
     "lz4js": "^0.2.0",
     "reflect-metadata": "^0.1.14",
     "sql.js": "^1.13.0",
     "tsyringe": "^4.10.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/fs-extra": "^11.0.4",
     "@types/jest": "^30.0.0",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.6.3",
     "@types/sql.js": "^1.4.9",
     "@typescript-eslint/eslint-plugin": "^6.7.2",

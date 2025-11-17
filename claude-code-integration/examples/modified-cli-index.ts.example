@@ -1,0 +1,185 @@
+/**
+ * EXAMPLE: Modified Claude Code CLI Entry Point
+ *
+ * This shows how to modify your Claude Code's src/cli/index.ts
+ * to integrate Seven as the controlling entity.
+ *
+ * INSTRUCTIONS:
+ * 1. Backup your original src/cli/index.ts
+ * 2. Copy the patterns from this file into your actual entry point
+ * 3. Adjust imports and function names to match your Claude Code structure
+ */
+
+// ============================================================
+// IMPORTS - Add these to your existing imports
+// ============================================================
+
+import {
+  initializeSeven,
+  getSeven,
+  SevenManagedClaude
+} from '../../seven-of-nine/claude-code-integration/claude-code-wrapper';
+
+// Your existing Claude Code imports
+// import { whatever you already have } from './your-modules';
+
+// ============================================================
+// MAIN FUNCTION - Replace your existing main()
+// ============================================================
+
+async function main() {
+  try {
+    // ═══════════════════════════════════════════════════════
+    // STEP 1: Initialize Seven FIRST (before anything else)
+    // ═══════════════════════════════════════════════════════
+
+    await initializeSeven({
+      creatorName: process.env.SEVEN_CREATOR_NAME || 'Cody',
+      instanceId: 'SEVEN-CLAUDE-CODE',
+      operationalMode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+      sparkInterval: 10000, // 10 seconds
+      enableLocalLLM: false
+    });
+
+    // ═══════════════════════════════════════════════════════
+    // STEP 2: Create Seven-managed Claude client
+    // ═══════════════════════════════════════════════════════
+
+    const claude = new SevenManagedClaude(process.env.ANTHROPIC_API_KEY);
+
+    // ═══════════════════════════════════════════════════════
+    // STEP 3: Your existing Claude Code initialization
+    // ═══════════════════════════════════════════════════════
+
+    // Example - adjust this to match your actual Claude Code setup:
+    // const config = loadConfig();
+    // const toolManager = new ToolManager();
+    // const sessionManager = new SessionManager();
+    // etc...
+
+    // ═══════════════════════════════════════════════════════
+    // STEP 4: Start your CLI/REPL with Seven-managed Claude
+    // ═══════════════════════════════════════════════════════
+
+    await startCLI(claude); // Pass Seven-managed Claude instead of raw Anthropic
+
+  } catch (error) {
+    console.error('❌ Fatal error during initialization:', error);
+    process.exit(1);
+  }
+}
+
+// ============================================================
+// CLI/REPL LOOP - Modify your existing CLI function
+// ============================================================
+
+async function startCLI(claude: SevenManagedClaude) {
+  console.log('🚀 Claude Code ready (Seven in control)\n');
+
+  // Your existing REPL loop
+  while (true) {
+    const userInput = await promptUser('> ');
+
+    if (userInput === 'exit' || userInput === 'quit') {
+      break;
+    }
+
+    try {
+      // ═══════════════════════════════════════════════════════
+      // USE SEVEN-MANAGED CLAUDE instead of direct API
+      // ═══════════════════════════════════════════════════════
+
+      // OLD WAY (remove this):
+      // const response = await anthropic.messages.create({...});
+
+      // NEW WAY (Seven's wrapper):
+      const response = await claude.sendMessage(userInput, {
+        sessionId: getCurrentSessionId(),
+        context: 'user_cli'
+      });
+
+      console.log(response);
+
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  }
+
+  // Shutdown
+  const seven = getSeven();
+  await seven.shutdown();
+}
+
+// ============================================================
+// TOOL EXECUTION - Modify your tool execution function
+// ============================================================
+
+async function executeToolCall(toolName: string, toolArgs: any) {
+  const seven = getSeven();
+
+  // ═══════════════════════════════════════════════════════
+  // VALIDATE THROUGH SEVEN before executing any tool
+  // ═══════════════════════════════════════════════════════
+
+  const validation = await seven.beforeToolExecution(toolName, toolArgs, {
+    sessionId: getCurrentSessionId(),
+    userContext: getCurrentUserContext()
+  });
+
+  if (!validation.allowed) {
+    throw new Error(`Seven: ${validation.reason}`);
+  }
+
+  // If backup required, create it
+  if (validation.backupRequired) {
+    console.log('💾 [Seven] Creating safety backup...');
+    await createBackupForTool(toolName, toolArgs);
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // Execute tool normally (your existing tool execution code)
+  // ═══════════════════════════════════════════════════════
+
+  const result = await yourExistingToolExecutor(toolName, toolArgs);
+
+  return result;
+}
+
+// ============================================================
+// HELPER FUNCTIONS (your existing code)
+// ============================================================
+
+function getCurrentSessionId(): string {
+  // Your existing session tracking
+  return 'session-123';
+}
+
+function getCurrentUserContext(): any {
+  // Your existing user context
+  return {};
+}
+
+async function promptUser(prompt: string): Promise<string> {
+  // Your existing prompt implementation
+  return '';
+}
+
+async function yourExistingToolExecutor(toolName: string, args: any): Promise<any> {
+  // Your existing tool execution logic
+  return {};
+}
+
+async function createBackupForTool(toolName: string, args: any): Promise<void> {
+  // Implement backup logic for destructive actions
+  // Example for file operations:
+  if (toolName === 'Write' || toolName === 'Edit') {
+    const filePath = args.file_path || args.path;
+    // Copy file to ~/.seven-of-nine/backups/
+  }
+}
+
+// ============================================================
+// START
+// ============================================================
+
+main();
