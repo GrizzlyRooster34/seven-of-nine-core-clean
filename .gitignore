@@ -1,1 +1,4 @@
 node_modules/
+
+# Seven Core Runtime Directory
+/usr/var/seven/
