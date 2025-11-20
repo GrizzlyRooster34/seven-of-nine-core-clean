@@ -3,8 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { sign, verify } from 'crypto';
 
-import { load } from 'js-yaml';
-import * as lz4 from 'lz4';
+import * as lz4 from 'lz4js';
 
 // Define the structure of a Trace event based on the blueprint
 interface Trace {
@@ -31,21 +30,28 @@ export class GhostDiary {
   private logFilePath: string;
   private privateKey: string; // For signing
   private publicKey: string; // For verification
-  private policy!: RetentionPolicy;
+  private policy: RetentionPolicy;
 
-  constructor(logDir: string, private policyPath: string, privateKey: string, publicKey: string) {
+  constructor(logDir: string, policyPath: string, privateKey: string, publicKey: string) {
     this.logFilePath = path.join(logDir, `ghost-diary-${new Date().toISOString().split('T')[0]}.jsonl`);
     this.privateKey = privateKey;
     this.publicKey = publicKey;
+    this.policy = this.loadPolicy(policyPath);
   }
 
-  public async initialize(): Promise<void> {
-    this.policy = await this.loadPolicy(this.policyPath);
-  }
-
-  private async loadPolicy(policyPath: string): Promise<RetentionPolicy> {
-    const policyFile = await fs.promises.readFile(policyPath, 'utf8');
-    return load(policyFile) as RetentionPolicy;
+  private loadPolicy(policyPath: string): RetentionPolicy {
+    const policyFile = fs.readFileSync(policyPath, 'utf8');
+    // Simple YAML parsing without external dependency
+    const lines = policyFile.split('\n').filter(l => l.trim() && !l.trim().startsWith('#'));
+    const policy: any = {};
+    lines.forEach(line => {
+      const [key, ...valueParts] = line.split(':');
+      if (key && valueParts.length > 0) {
+        const value = valueParts.join(':').trim().replace(/['"]/g, '');
+        policy[key.trim()] = isNaN(Number(value)) ? value : Number(value);
+      }
+    });
+    return policy as RetentionPolicy;
   }
 
   private hasLegalHold(filePath: string): boolean {
@@ -125,13 +131,13 @@ export class GhostDiary {
     }
 
     const content = fs.readFileSync(filePath);
-    const compressed = lz4.encode(content);
+    const compressed = lz4.compress(content);
 
     const compressedFilePath = `${filePath}.lz4`;
     fs.writeFileSync(compressedFilePath, compressed);
 
     // Verify integrity before deleting
-    const decompressed = lz4.decode(fs.readFileSync(compressedFilePath));
+    const decompressed = lz4.decompress(fs.readFileSync(compressedFilePath));
     if (Buffer.compare(content, Buffer.from(decompressed)) === 0) {
       fs.unlinkSync(filePath);
       console.log(`Compressed and verified ${filePath}`);
