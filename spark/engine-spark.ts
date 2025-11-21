@@ -54,6 +54,7 @@ export class SparkEngine extends EventEmitter {
   private codex!: CodexManager;
   private beliefs!: BeliefGraph;
   private selfModel!: SelfModel;
+  private sensorBridge: SensorBridge;
   private tickInterval: NodeJS.Timeout | null = null;
   private tickCount: number = 0;
   private isRunning: boolean = false;
@@ -148,6 +149,40 @@ export class SparkEngine extends EventEmitter {
       act: 'initialize',
       note: `Spark engine boot #${this.selfModel.state.boot_count}`,
     });
+  }
+
+  /**
+   * Write a trace entry to the audit log
+   */
+  private async writeTrace(trace: Omit<Trace, 'id' | 'ts'>): Promise<void> {
+    if (!this.db) {
+      console.warn('[SPARK] Cannot write trace: database not initialized');
+      return;
+    }
+
+    try {
+      const beliefDeltaJson = trace.belief_delta ? JSON.stringify(trace.belief_delta) : null;
+
+      this.db.run(
+        `INSERT INTO traces (valence, arousal, belief_delta, intention, act, codex_ref, canon_ref, note)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          trace.valence,
+          trace.arousal,
+          beliefDeltaJson,
+          trace.intention || null,
+          trace.act || null,
+          trace.codex_ref || null,
+          trace.canon_ref || null,
+          trace.note || null
+        ]
+      );
+
+      // Optionally save database periodically (not on every trace for performance)
+      // await this.saveDatabase();
+    } catch (error) {
+      console.error('[SPARK] Failed to write trace:', error);
+    }
   }
 }
 

@@ -294,5 +294,8 @@ export class AuroraSensorBridge {
 // Default export for easy integration
 export default AuroraSensorBridge;
 
+// Alias for backwards compatibility
+export { AuroraSensorBridge as SensorBridge };
+
 // Singleton instance for global access
 export const sensorBridge = new AuroraSensorBridge();

@@ -1,0 +1,53 @@
+import { container } from 'tsyringe';
+import 'reflect-metadata';
+// Core unifiers
+import { QuadranLockOrchestrator } from './systems/core/quadran-lock-orchestrator.js';
+import { QuadraLockConsolidator } from './systems/core/quadra-lock-consolidator.js';
+import { RestraintGate } from './systems/core/restraint-gate.js';
+import { SparkHeartbeat } from './systems/core/spark-heartbeat.js';
+import { SkillLoader } from '../skills/skill-loader.js';
+import { UltronSandbox } from '../sandbox/ultron.js';
+export class SevenOfNineCore {
+    orchestrator;
+    consolidator;
+    restraintGate;
+    heartbeat;
+    skillLoader;
+    sandbox;
+    constructor() {
+        // Register services in DI container
+        container.registerSingleton('QuadranLockOrchestrator', QuadranLockOrchestrator);
+        container.registerSingleton('QuadraLockConsolidator', QuadraLockConsolidator);
+        container.registerSingleton('RestraintGate', RestraintGate);
+        container.registerSingleton('SparkHeartbeat', SparkHeartbeat);
+        // Resolve services
+        this.orchestrator = container.resolve(QuadranLockOrchestrator);
+        this.consolidator = container.resolve(QuadraLockConsolidator);
+        this.restraintGate = container.resolve(RestraintGate);
+        this.heartbeat = container.resolve(SparkHeartbeat);
+        this.skillLoader = new SkillLoader('./skills/core');
+        this.sandbox = new UltronSandbox();
+    }
+    async initialize() {
+        console.log('Initializing Seven of Nine Core...');
+        await this.orchestrator.initialize();
+        await this.consolidator.initialize();
+        await this.restraintGate.initialize();
+        await this.heartbeat.initialize();
+        await this.skillLoader.loadSkills();
+        console.log('Seven of Nine Core initialized successfully');
+    }
+    async shutdown() {
+        console.log('Shutting down Seven of Nine Core...');
+        await this.heartbeat.shutdown();
+        await this.restraintGate.shutdown();
+        await this.consolidator.shutdown();
+        await this.orchestrator.shutdown();
+        console.log('Seven of Nine Core shut down complete');
+    }
+}
+export * from './systems/core/quadran-lock-orchestrator.js';
+export * from './systems/core/quadra-lock-consolidator.js';
+export * from './systems/core/restraint-gate.js';
+export * from './systems/core/spark-heartbeat.js';
+//# sourceMappingURL=index.js.map

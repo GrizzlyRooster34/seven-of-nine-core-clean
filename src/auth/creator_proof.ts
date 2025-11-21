@@ -3,10 +3,11 @@
  * Implements 2-of-4 minimum gate evaluation with deny-by-default security
  */
 
-import { Ed25519Attestation, AttestationSignature } from './crypto/ed25519_attest';
-import { SemanticNonceChallenge, SemanticResponse } from './challenge/semanticNonce';
-import { BehavioralCodex } from './behavioral/behavioralCodex';
-import { SessionIntegrity } from './session/sessionIntegrity';
+import { Ed25519Attestation, AttestationSignature } from './crypto/ed25519_attest.js';
+import { SemanticNonceChallenge, SemanticResponse } from './challenge/semanticNonce.js';
+import { BehavioralCodex } from './behavioral/behavioralCodex.js';
+import { SessionIntegrity } from './session/sessionIntegrity.js';
+import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 

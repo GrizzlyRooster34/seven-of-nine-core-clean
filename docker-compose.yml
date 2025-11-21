@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # Seven of Nine Core Application
+  seven-core:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: seven-of-nine-core
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      # Ollama service URL (if using the ollama service below)
+      - OLLAMA_HOST=http://ollama:11434
+    volumes:
+      # Persist database
+      - ./db:/app/db
+      # Persist logs
+      - ./logs:/app/logs
+      # Persist memory
+      - ./memory:/app/memory
+      - ./memory-v2:/app/memory-v2
+      - ./memory-v3:/app/memory-v3
+    networks:
+      - seven-network
+    depends_on:
+      - ollama
+    # Uncomment if you add a web interface
+    # ports:
+    #   - "3000:3000"
+
+  # Ollama Service (Optional - for local LLM)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: seven-ollama
+    restart: unless-stopped
+    volumes:
+      # Persist ollama models
+      - ollama-data:/root/.ollama
+    networks:
+      - seven-network
+    ports:
+      - "11434:11434"
+    # Uncomment for GPU support (NVIDIA)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+networks:
+  seven-network:
+    driver: bridge
+
+volumes:
+  ollama-data:
+    driver: local

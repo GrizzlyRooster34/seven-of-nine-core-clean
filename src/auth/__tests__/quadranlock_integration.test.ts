@@ -1,5 +1,5 @@
-import { AuthDecision, CreatorProofOrchestrator } from '../creator_proof.ts';
-import { Ed25519Attestation } from '../crypto/ed25519_attest';
+import { AuthDecision, CreatorProofOrchestrator } from '../creator_proof.js';
+import { Ed25519Attestation } from '../crypto/ed25519_attest.js';
 
 /**
  * QUADRAN-LOCK Q1 INTEGRATION TESTS
@@ -44,31 +44,31 @@ describe('Quadran-Lock Q1 Integration', () => {
       expect(deviceKeys.privateKey).toBeInstanceOf(Buffer);
 
       const devices = await ed25519.listTrustedDevices();
-      expect(devices.some(d => d.deviceId === testDeviceId)).toBe(true);
+      expect(devices.some((d: any) => d.deviceId === testDeviceId)).toBe(true);
     });
 
     test('Device registration with maximum trust level', async () => {
       await ed25519.registerDevice(testDeviceId, { test: true }, 10);
       const devices = await ed25519.listTrustedDevices();
-      
-      const device = devices.find(d => d.deviceId === testDeviceId);
-      expect(device.trustLevel).toBe(10);
+
+      const device = devices.find((d: any) => d.deviceId === testDeviceId);
+      expect(device?.trustLevel).toBe(10);
     });
 
     test('Device registration enforces trust level bounds', async () => {
       // Test upper bound
       await ed25519.registerDevice(testDeviceId, { test: true }, 15);
       let devices = await ed25519.listTrustedDevices();
-      let device = devices.find(d => d.deviceId === testDeviceId);
-      expect(device.trustLevel).toBe(10); // Clamped to maximum
+      let device = devices.find((d: any) => d.deviceId === testDeviceId);
+      expect(device?.trustLevel).toBe(10); // Clamped to maximum
 
       await ed25519.revokeDevice(testDeviceId, 'Cleanup for next test');
 
       // Test lower bound
       await ed25519.registerDevice(secondDeviceId, { test: true }, -5);
       devices = await ed25519.listTrustedDevices();
-      device = devices.find(d => d.deviceId === secondDeviceId);
-      expect(device.trustLevel).toBe(0); // Clamped to minimum
+      device = devices.find((d: any) => d.deviceId === secondDeviceId);
+      expect(device?.trustLevel).toBe(0); // Clamped to minimum
     });
   });
 
@@ -190,15 +190,15 @@ describe('Quadran-Lock Q1 Integration', () => {
 
     test('Challenge expiration handling', async () => {
       const challenge = await ed25519.generateChallenge(testDeviceId);
-      
+
       // Manually expire the challenge
       challenge.expiresAt = Date.now() - 1000;
-      
+
       const signature = await ed25519.signChallenge(challenge.challengeId, testDeviceId);
       const validation = await ed25519.validateAttestation(testDeviceId, signature);
-      
+
       expect(validation.success).toBe(false);
-      expect(validation.errors[0]).toContain('Invalid timing');
+      expect(validation.errors?.[0]).toContain('Invalid timing');
     });
 
     test('Device revocation blocks access', async () => {

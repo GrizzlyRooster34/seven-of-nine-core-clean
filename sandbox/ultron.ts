@@ -1,4 +1,4 @@
-import { SandboxProcess } from './process';
+import { SandboxProcess } from './process.js';
 
 export interface SandboxContext {
   [key: string]: any;

@@ -1313,6 +1313,8 @@ export class CSSRDetector {
       }
     }
   ];
+    } // Close catch block
+  } // Close loadPatternsFromYaml() method
 
   /**
    * Detect dangerous patterns in input text

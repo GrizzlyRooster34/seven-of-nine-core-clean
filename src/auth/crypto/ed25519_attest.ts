@@ -306,7 +306,7 @@ export class Ed25519Attestation {
         success: false,
         confidence: 0,
         evidence,
-        errors: [error.message]
+        errors: [error instanceof Error ? error.message : String(error)]
       };
     }
   }
