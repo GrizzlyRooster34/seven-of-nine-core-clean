@@ -2,3 +2,15 @@ node_modules/
 
 # Seven Core Runtime Directory
 /usr/var/seven/
+
+dist/
+*.log
+.DS_Store
+*.swp
+*.swo
+*~
+.env
+.env.local
+memory/*.json
+memory/*.log
+*.tsbuildinfo
