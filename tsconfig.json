@@ -27,11 +27,23 @@
     }
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "memory-v2/**/*",
+    "memory-v3/**/*",
+    "sandbox/**/*",
+    "spark/**/*",
+    "claude-brain/**/*",
+    "*.ts"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "tests"
+    "tests",
+    "src/__tests__",
+    "src/trace/ghost-diary.test.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }

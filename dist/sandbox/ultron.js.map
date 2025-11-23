@@ -1,0 +1,1 @@
+{"version":3,"file":"ultron.js","sourceRoot":"","sources":["../../sandbox/ultron.ts"],"names":[],"mappings":";;;AAAA,uCAA2C;AAM3C;;;;;GAKG;AACH,MAAa,aAAa;IACjB,KAAK,CAAC,OAAO,CAAC,IAAY,EAAE,UAA0B,EAAE;QAC7D,MAAM,cAAc,GAAG,IAAI,wBAAc,CAAC,IAAI,EAAE,OAAO,CAAC,CAAC;QACzD,OAAO,cAAc,CAAC,GAAG,EAAE,CAAC;IAC9B,CAAC;CACF;AALD,sCAKC"}
