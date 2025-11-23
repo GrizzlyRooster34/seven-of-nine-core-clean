@@ -1,8 +1,8 @@
 #!/usr/bin/env npx tsx
 
 import { promises as fs } from 'fs';
-import { OllamaMemoryBridge } from '../claude-brain/OllamaMemoryBridge';
-import OllamaMemoryBridgeV2 from '../claude-brain/OllamaMemoryBridgeV2';
+import { OllamaMemoryBridge } from '../claude-brain/OllamaMemoryBridge.js';
+import OllamaMemoryBridgeV2 from '../claude-brain/OllamaMemoryBridgeV2.js';
 
 /**
  * SEVEN'S OLLAMA MEMORY BRIDGE COMPATIBILITY TEST

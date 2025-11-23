@@ -9,9 +9,9 @@
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import { EventEmitter } from 'events';
-import { TemporalMemoryItem, DecayMetrics, InterventionRecord, BatchRescueOperation, DecayModel } from './TemporalMemoryItem';
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
-import { MemoryStore } from '../seven-runtime/memory-store';
+import { TemporalMemoryItem, DecayMetrics, InterventionRecord, BatchRescueOperation, DecayModel } from './TemporalMemoryItem.js';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
+import { MemoryStore } from '../seven-runtime/memory-store.js';
 
 interface WatchdogConfig {
   monitoring_interval: number; // milliseconds between checks

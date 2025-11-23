@@ -1,7 +1,6 @@
-        import { exec  } from 'child_process';
+import { exec, spawn } from 'child_process';
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import { spawn, exec } from 'child_process';
 
 /**
  * Seven of Nine - Local LLM Manager

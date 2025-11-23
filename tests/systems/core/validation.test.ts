@@ -1,9 +1,9 @@
 import 'reflect-metadata';
-import { SevenOfNineCore } from '../../../src/index';
-import { QuadranLockOrchestrator, QuadranAuthPayload } from '../../../src/systems/core/quadran-lock-orchestrator';
-import { QuadraLockConsolidator, CaseFinding } from '../../../src/systems/core/quadra-lock-consolidator';
-import { RestraintGate, ArousalSignal, RiskSignal } from '../../../src/systems/core/restraint-gate';
-import { SparkHeartbeat } from '../../../src/systems/core/spark-heartbeat';
+import { SevenOfNineCore } from '../../../src/index.js';
+import { QuadranLockOrchestrator, QuadranAuthPayload } from '../../../src/systems/core/quadran-lock-orchestrator.js';
+import { QuadraLockConsolidator, CaseFinding } from '../../../src/systems/core/quadra-lock-consolidator.js';
+import { RestraintGate, ArousalSignal, RiskSignal } from '../../../src/systems/core/restraint-gate.js';
+import { SparkHeartbeat } from '../../../src/systems/core/spark-heartbeat.js';
 import { container } from 'tsyringe';
 
 describe('Seven of Nine Core Unifier Validation', () => {

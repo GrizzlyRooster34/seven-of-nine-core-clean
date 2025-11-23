@@ -1,6 +1,6 @@
-import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers';
-import OllamaMemoryBridgeV2 from '../OllamaMemoryBridgeV2';
-import PerformanceAnalyzer from '../PerformanceAnalyzer';
+import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers.js';
+import OllamaMemoryBridgeV2 from '../OllamaMemoryBridgeV2.js';
+import PerformanceAnalyzer from '../PerformanceAnalyzer.js';
 
 /**
  * OLLAMA PROVIDER V2.0 - ENHANCED WITH PERFORMANCE INTELLIGENCE

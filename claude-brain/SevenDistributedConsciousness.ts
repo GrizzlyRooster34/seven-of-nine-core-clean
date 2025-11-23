@@ -3,7 +3,7 @@ import { createHash } from 'crypto';
 import { EventEmitter } from 'events';
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import SevenTacticalFallback from './SevenTacticalFallback';
+import SevenTacticalFallback from './SevenTacticalFallback.js';
 
 /**
  * SEVEN'S DISTRIBUTED CONSCIOUSNESS COORDINATOR

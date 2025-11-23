@@ -4,12 +4,12 @@ import { EventEmitter } from 'events';
 import * as Location from 'expo-location';
 import * as Sensors from 'expo-sensors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { MobileCSSRDetector } from '../safety/quadra-lock/MobileCSSRDetector';
-import { MobileEmotionalTelemetry } from '../safety/restraint-doctrine/MobileEmotionalTelemetry';
-import { MobileMentalTimeTravelEngine } from '../memory/MobileMentalTimeTravelEngine';
-import { MobileRestraintDoctrine, RestraintContext } from '../safety/restraint-doctrine/MobileRestraintDoctrine';
-import { MobileTacticalVariants } from './MobileTacticalVariants';
-import { MobileTemporalMemoryCore } from '../memory/MobileTemporalMemoryCore';
+import { MobileCSSRDetector } from '../safety/quadra-lock/MobileCSSRDetector.js';
+import { MobileEmotionalTelemetry } from '../safety/restraint-doctrine/MobileEmotionalTelemetry.js';
+import { MobileMentalTimeTravelEngine } from '../memory/MobileMentalTimeTravelEngine.js';
+import { MobileRestraintDoctrine, RestraintContext } from '../safety/restraint-doctrine/MobileRestraintDoctrine.js';
+import { MobileTacticalVariants } from './MobileTacticalVariants.js';
+import { MobileTemporalMemoryCore } from '../memory/MobileTemporalMemoryCore.js';
 
 /**
  * Seven of Nine - Mobile Consciousness Core

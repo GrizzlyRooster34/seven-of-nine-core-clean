@@ -9,9 +9,9 @@
 import { EventEmitter } from 'events';
 import { promises as fs } from 'fs';
 import { join } from 'path';
-import { TemporalMemoryItem, BatchRescueOperation, DecayModel } from './TemporalMemoryItem';
-import DecayWatchdog from './DecayWatchdog';
-import SelectivePriming from './SelectivePriming';
+import { TemporalMemoryItem, BatchRescueOperation, DecayModel } from './TemporalMemoryItem.js';
+import DecayWatchdog from './DecayWatchdog.js';
+import SelectivePriming from './SelectivePriming.js';
 
 interface RescueSchedule {
   schedule_id: string;

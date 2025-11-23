@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
 import { spawn, exec } from 'child_process';
-import { SevenOptimalLLMSelector, SEVEN_LLM_RECOMMENDATIONS } from './seven-optimal-llm-config';
+import { SevenOptimalLLMSelector, SEVEN_LLM_RECOMMENDATIONS } from './seven-optimal-llm-config.js';
 
 /**
  * Seven of Nine - Model Management System

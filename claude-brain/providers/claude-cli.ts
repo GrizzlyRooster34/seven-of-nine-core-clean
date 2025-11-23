@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers';
+import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers.js';
 
 /**
  * CLAUDE CLI PROVIDER for Seven of Nine

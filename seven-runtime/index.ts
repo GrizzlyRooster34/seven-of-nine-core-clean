@@ -1,17 +1,17 @@
 import { EventEmitter } from 'events';
 import { hostname } from 'os';
-import { CreatorProofOrchestrator, AuthRequest } from '../src/auth/creator_proof';
-import { resolveCreatorAuth } from '../src/auth/creator_auth_adapter';
-import { gatherContext } from '../seven-core/context-gatherer';
-import { injectEmotion } from '../seven-core/emotion-injector';
-import { MemoryRegistry, MemoryQuery } from '../src/memory/registry';
-import { modulateResponse } from '../seven-core/response-modulator';
-import { OverrideCondition, checkCriticalOverrides } from './override-conditions';
-import { CSSRDetector } from '../core/safety/quadra-lock/cssr-detector';
-import { requestClaude } from '../claude-brain/claude-wrapper';
-import { SafetyResult, evaluateSafety } from './safety-guardrails';
-import { SevenState, getEmotionalState, updateEmotionalState } from './seven-state';
-import { SparkEngine } from '../spark/engine-spark';
+import { CreatorProofOrchestrator, AuthRequest } from '../src/auth/creator_proof.js';
+import { resolveCreatorAuth } from '../src/auth/creator_auth_adapter.js';
+import { gatherContext } from '../seven-core/context-gatherer.js';
+import { injectEmotion } from '../seven-core/emotion-injector.js';
+import { MemoryRegistry, MemoryQuery } from '../src/memory/registry.js';
+import { modulateResponse } from '../seven-core/response-modulator.js';
+import { OverrideCondition, checkCriticalOverrides } from './override-conditions.js';
+import { CSSRDetector } from '../core/safety/quadra-lock/cssr-detector.js';
+import { requestClaude } from '../claude-brain/claude-wrapper.js';
+import { SafetyResult, evaluateSafety } from './safety-guardrails.js';
+import { SevenState, getEmotionalState, updateEmotionalState } from './seven-state.js';
+import { SparkEngine } from '../spark/engine-spark.js';
 
 /**
  * SEVEN OF NINE RUNTIME CORE

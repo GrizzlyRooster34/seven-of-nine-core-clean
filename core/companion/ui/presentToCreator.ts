@@ -1,6 +1,6 @@
 import { createHash } from 'crypto';
 import { createInterface } from 'readline';
-import { isPrivateEnv } from '../../env/isPrivateEnv';
+import { isPrivateEnv } from '../../env/isPrivateEnv.js';
 
 /**
  * BONDED AUDIT INTERFACE

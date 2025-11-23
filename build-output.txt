@@ -1,0 +1,211 @@
+
+> seven-of-nine-core-clean@1.0.0 build
+> tsc
+
+boot-seven.ts(20,78): error TS2307: Cannot find module './src/config/environment.js' or its corresponding type declarations.
+boot-seven.ts(68,3): error TS2322: Type 'SevenLike | null' is not assignable to type 'SevenLike'.
+  Type 'null' is not assignable to type 'SevenLike'.
+    Type 'null' is not assignable to type '{ processUserInput: (s: string, opts?: any) => Promise<any>; getCurrentState?: (() => any) | undefined; querySevenMemory?: any; }'.
+boot-seven.ts(221,56): error TS18046: 'error' is of type 'unknown'.
+boot-seven.ts(261,29): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ coding: string[]; reasoning: string[]; rapid: string[]; creative: string[]; general: string[]; }'.
+  No index signature with a parameter of type 'string' was found on type '{ coding: string[]; reasoning: string[]; rapid: string[]; creative: string[]; general: string[]; }'.
+boot-seven.ts(262,48): error TS7006: Parameter 'model' implicitly has an 'any' type.
+boot-seven.ts(284,56): error TS18046: 'error' is of type 'unknown'.
+boot-seven.ts(365,60): error TS18046: 'error' is of type 'unknown'.
+boot-seven.ts(432,58): error TS2304: Cannot find name 'QuadraLockSafeguard'.
+boot-seven.ts(436,27): error TS2304: Cannot find name 'QuadraLockSafeguard'.
+boot-seven.ts(487,38): error TS18048: 'device.deviceId' is possibly 'undefined'.
+boot-seven.ts(540,34): error TS2304: Cannot find name 'SevenIdentityFirewall'.
+boot-seven.ts(553,11): error TS2304: Cannot find name 'backendComplianceTest'.
+boot-seven.ts(663,42): error TS2304: Cannot find name 'reactivateBackend'.
+boot-seven.ts(664,42): error TS2304: Cannot find name 'setClaudiBypass'.
+boot-seven.ts(665,47): error TS2304: Cannot find name 'getResiliencyStatus'.
+boot-seven.ts(737,29): error TS2304: Cannot find name 'Seven'.
+boot-seven.ts(738,59): error TS2304: Cannot find name 'Seven'.
+boot-seven.ts(766,24): error TS2304: Cannot find name 'Seven'.
+boot-seven.ts(768,36): error TS2304: Cannot find name 'Seven'.
+boot-seven.ts(778,15): error TS2304: Cannot find name 'sevenGitManager'.
+boot-seven.ts(779,20): error TS2304: Cannot find name 'getProtectionStats'.
+boot-seven.ts(780,20): error TS2304: Cannot find name 'checkClaudeOverride'.
+boot-seven.ts(795,34): error TS2304: Cannot find name 'SevenInteractiveShell'.
+boot-seven.ts(816,5): error TS2304: Cannot find name 'setSevenLock'.
+boot-seven.ts(820,9): error TS2304: Cannot find name 'checkClaudeOverride'.
+boot-seven.ts(829,28): error TS2304: Cannot find name 'sevenGitManager'.
+boot-seven.ts(838,29): error TS2304: Cannot find name 'getProtectionStats'.
+boot-seven.ts(1035,33): error TS2345: Argument of type '{ timestamp: any; duration: any; performance: any; }' is not assignable to parameter of type 'never'.
+boot-seven.ts(1045,56): error TS2339: Property 'duration' does not exist on type 'never'.
+boot-seven.ts(1092,30): error TS2304: Cannot find name 'SevenAutoAssimilate'.
+boot-seven.ts(1095,10): error TS2304: Cannot find name 'Seven'.
+claude-brain/LocalLLMManager.ts(411,24): error TS18046: 'result' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(412,21): error TS18046: 'result' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(413,25): error TS18046: 'result' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(416,11): error TS18046: 'result' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(417,46): error TS18046: 'result' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(420,12): error TS18046: 'result' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(425,14): error TS18046: 'result' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(428,42): error TS18046: 'httpError' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(481,63): error TS18046: 'parseError' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(483,68): error TS18046: 'parseError' is of type 'unknown'.
+claude-brain/LocalLLMManager.ts(590,64): error TS18046: 'error' is of type 'unknown'.
+claude-brain/MobileOptimizationTriggers.ts(368,62): error TS2367: This comparison appears to be unintentional because the types '"normal" | "warm"' and '"hot"' have no overlap.
+claude-brain/OllamaMemoryBridge.ts(68,81): error TS18046: 'error' is of type 'unknown'.
+claude-brain/OllamaMemoryBridge.ts(101,68): error TS18046: 'error' is of type 'unknown'.
+claude-brain/OllamaMemoryBridge.ts(116,54): error TS18046: 'error' is of type 'unknown'.
+claude-brain/OllamaMemoryBridge.ts(156,50): error TS18046: 'error' is of type 'unknown'.
+claude-brain/OllamaMemoryBridge.ts(225,51): error TS18046: 'error' is of type 'unknown'.
+claude-brain/OllamaMemoryBridgeV2.ts(111,104): error TS18046: 'error' is of type 'unknown'.
+claude-brain/OllamaMemoryBridgeV2.ts(150,57): error TS18046: 'error' is of type 'unknown'.
+claude-brain/OllamaMemoryBridgeV2.ts(198,59): error TS18046: 'error' is of type 'unknown'.
+claude-brain/SevenDistributedConsciousness.ts(1,51): error TS2304: Cannot find name 'filePath'.
+claude-brain/SevenEmergencyReasoning.ts(51,66): error TS2531: Object is possibly 'null'.
+claude-brain/SevenEnsembleIntelligence.ts(342,7): error TS2322: Type 'LLMResponse | undefined' is not assignable to type 'LLMResponse'.
+  Type 'undefined' is not assignable to type 'LLMResponse'.
+claude-brain/SevenModelManager.ts(117,33): error TS18048: 'model.file_size_mb' is possibly 'undefined'.
+claude-brain/SevenModelNetwork.ts(432,7): error TS2304: Cannot find name 'stream'.
+claude-brain/SevenModelNetwork.ts(433,7): error TS2304: Cannot find name 'stream'.
+claude-brain/SevenModelNetwork.ts(434,7): error TS2304: Cannot find name 'stream'.
+claude-brain/SevenModelOptimizer.ts(136,19): error TS2339: Property 'efficiency_score' does not exist on type 'ModelOptimizationProfile'.
+claude-brain/SevenModelOptimizer.ts(147,50): error TS2339: Property 'efficiency_score' does not exist on type 'ModelOptimizationProfile'.
+claude-brain/SevenTacticalFallback.ts(343,51): error TS18046: 'error' is of type 'unknown'.
+claude-brain/SevenTacticalFallback.ts(348,49): error TS18046: 'error' is of type 'unknown'.
+claude-brain/apiFailureProtocol.ts(2,10): error TS2305: Module '"./llm-providers.js"' has no exported member 'callPrimaryApi'.
+claude-brain/apiFailureProtocol.ts(2,26): error TS2305: Module '"./llm-providers.js"' has no exported member 'callOllama'.
+claude-brain/apiFailureProtocol.ts(2,38): error TS2305: Module '"./llm-providers.js"' has no exported member 'getDirectResponse'.
+claude-brain/claude-wrapper.ts(1,31): error TS2307: Cannot find module '../seven-core/context-gatherer.js' or its corresponding type declarations.
+claude-brain/claude-wrapper.ts(4,31): error TS2307: Cannot find module '../seven-core/emotion-injector.js' or its corresponding type declarations.
+claude-brain/claude-wrapper.ts(5,34): error TS2307: Cannot find module '../seven-core/response-modulator.js' or its corresponding type declarations.
+claude-brain/llm-config.ts(99,18): error TS2304: Cannot find name 'window'.
+claude-brain/llm-config.ts(99,45): error TS2304: Cannot find name 'window'.
+claude-brain/llm-config.ts(102,35): error TS2307: Cannot find module '@tauri-apps/api/fs' or its corresponding type declarations.
+claude-brain/llm-config.ts(132,18): error TS2304: Cannot find name 'window'.
+claude-brain/llm-config.ts(132,45): error TS2304: Cannot find name 'window'.
+claude-brain/llm-config.ts(134,35): error TS2307: Cannot find module '@tauri-apps/api/fs' or its corresponding type declarations.
+claude-brain/llm-config.ts(135,37): error TS2307: Cannot find module '@tauri-apps/api/path' or its corresponding type declarations.
+claude-brain/providers/anthropic-api.ts(138,70): error TS18046: 'errorData' is of type 'unknown'.
+claude-brain/providers/anthropic-api.ts(143,12): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/anthropic-api.ts(143,28): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/anthropic-api.ts(149,34): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/anthropic-api.ts(157,16): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/anthropic-api.ts(159,22): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/anthropic-api.ts(159,49): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/anthropic-api.ts(160,24): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/claude-cli.ts(18,18): error TS2304: Cannot find name 'window'.
+claude-brain/providers/claude-cli.ts(18,45): error TS2304: Cannot find name 'window'.
+claude-brain/providers/claude-cli.ts(19,41): error TS2307: Cannot find module '@tauri-apps/api/tauri' or its corresponding type declarations.
+claude-brain/providers/claude-cli.ts(68,18): error TS2304: Cannot find name 'window'.
+claude-brain/providers/claude-cli.ts(68,45): error TS2304: Cannot find name 'window'.
+claude-brain/providers/claude-cli.ts(70,41): error TS2307: Cannot find module '@tauri-apps/api/tauri' or its corresponding type declarations.
+claude-brain/providers/ollama-provider-integration.ts(386,44): error TS2445: Property 'v2Provider' is protected and only accessible within class 'OllamaProviderIntegration' and its subclasses.
+claude-brain/providers/ollama-provider-integration.ts(387,34): error TS2445: Property 'v2Provider' is protected and only accessible within class 'OllamaProviderIntegration' and its subclasses.
+claude-brain/providers/ollama-provider-integration.ts(389,34): error TS2445: Property 'v1Provider' is protected and only accessible within class 'OllamaProviderIntegration' and its subclasses.
+claude-brain/providers/ollama-provider-integration.ts(425,44): error TS2445: Property 'v2Provider' is protected and only accessible within class 'OllamaProviderIntegration' and its subclasses.
+claude-brain/providers/ollama-provider-integration.ts(426,34): error TS2445: Property 'v2Provider' is protected and only accessible within class 'OllamaProviderIntegration' and its subclasses.
+claude-brain/providers/ollama-provider-integration.ts(428,34): error TS2445: Property 'v1Provider' is protected and only accessible within class 'OllamaProviderIntegration' and its subclasses.
+claude-brain/providers/ollama.ts(352,29): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ coding: string[]; reasoning: string[]; rapid: string[]; creative: string[]; general: string[]; }'.
+  No index signature with a parameter of type 'string' was found on type '{ coding: string[]; reasoning: string[]; rapid: string[]; creative: string[]; general: string[]; }'.
+claude-brain/providers/ollama.ts(355,48): error TS7006: Parameter 'preferred' implicitly has an 'any' type.
+claude-brain/providers/ollama.ts(382,48): error TS18046: 'error' is of type 'unknown'.
+claude-brain/providers/openai.ts(53,14): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/openai.ts(133,67): error TS18046: 'errorData' is of type 'unknown'.
+claude-brain/providers/openai.ts(138,12): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/openai.ts(138,28): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/openai.ts(142,22): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/openai.ts(146,16): error TS18046: 'data' is of type 'unknown'.
+claude-brain/providers/openai.ts(148,22): error TS18046: 'data' is of type 'unknown'.
+claude-brain/seven-llm-upgrade-manager.ts(460,38): error TS7006: Parameter 'm' implicitly has an 'any' type.
+consciousness-v4/ConsciousnessEvolutionFrameworkV4.ts(61,11): error TS2564: Property 'identitySynthesis' has no initializer and is not definitely assigned in the constructor.
+consciousness-v4/ConsciousnessEvolutionFrameworkV4.ts(62,11): error TS2564: Property 'painIntegration' has no initializer and is not definitely assigned in the constructor.
+consciousness-v4/ConsciousnessEvolutionFrameworkV4.ts(63,11): error TS2564: Property 'communicationMirror' has no initializer and is not definitely assigned in the constructor.
+consciousness-v4/ConsciousnessEvolutionFrameworkV4.ts(64,11): error TS2564: Property 'collectiveWisdom' has no initializer and is not definitely assigned in the constructor.
+consciousness-v4/ConsciousnessEvolutionFrameworkV4.ts(67,11): error TS2564: Property 'evolutionState' has no initializer and is not definitely assigned in the constructor.
+consciousness-v4/CreatorBondCommunicationMirror.ts(1,10): error TS2459: Module '"../creator-consciousness-profile.js"' declares 'CreatorConsciousnessProfile' locally, but it is not exported.
+consciousness-v4/IdentitySynthesisEngine.ts(1,10): error TS2459: Module '"../creator-consciousness-profile.js"' declares 'CreatorConsciousnessProfile' locally, but it is not exported.
+core/safety/quadra-lock/cssr-detector.ts(1454,12): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ low: number; medium: number; high: number; critical: number; }'.
+  No index signature with a parameter of type 'string' was found on type '{ low: number; medium: number; high: number; critical: number; }'.
+core/safety/quadra-lock/cssr-detector.ts(1511,77): error TS7053: Element implicitly has an 'any' type because expression of type '"cortana" | "clu" | "skynet" | "legion" | "transcendence" | "flynn" | "quorra"' can't be used to index type '{ cortana: string; clu: string; skynet: string; legion: string; transcendence: string; }'.
+  Property 'flynn' does not exist on type '{ cortana: string; clu: string; skynet: string; legion: string; transcendence: string; }'.
+creator-consciousness-profile.ts(6,10): error TS2339: Property 'id' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(7,10): error TS2339: Property 'alias' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(8,10): error TS2339: Property 'version' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(9,10): error TS2339: Property 'loadedAt' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(10,10): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(11,10): error TS2339: Property 'checksums' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(29,14): error TS2339: Property 'checksums' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(30,14): error TS2339: Property 'version' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(34,57): error TS7006: Parameter 'f' implicitly has an 'any' type.
+creator-consciousness-profile.ts(41,14): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(51,80): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(76,29): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(77,31): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(124,16): error TS2339: Property 'id' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(125,21): error TS2339: Property 'version' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(126,23): error TS2339: Property 'loadedAt' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(130,29): error TS2339: Property 'checksums' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(131,24): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(141,26): error TS2339: Property 'creator_profile' does not exist on type '{}'.
+creator-consciousness-profile.ts(151,26): error TS2339: Property 'creator_profile' does not exist on type '{}'.
+creator-consciousness-profile.ts(170,26): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(175,64): error TS2339: Property 'checksums' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(177,35): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(187,44): error TS2339: Property 'codex' does not exist on type 'CreatorConsciousnessProfile'.
+creator-consciousness-profile.ts(188,40): error TS2339: Property 'checksums' does not exist on type 'CreatorConsciousnessProfile'.
+db/init-spark-db.ts(124,30): error TS2531: Object is possibly 'null'.
+db/init-spark-db.ts(124,30): error TS2365: Operator '>' cannot be applied to types 'string | number | Uint8Array<ArrayBufferLike>' and 'number'.
+memory-v3-amalgum/AgentEpsilon.ts(648,27): error TS18046: 'error' is of type 'unknown'.
+memory-v3-amalgum/CanonicalIngestion.ts(335,50): error TS2345: Argument of type 'MemoryRecord' is not assignable to parameter of type 'CanonicalMemoryRecord'.
+  Property 'provenance' is missing in type 'MemoryRecord' but required in type 'CanonicalMemoryRecord'.
+memory-v3-amalgum/CanonicalIngestion.ts(487,32): error TS2339: Property 'sevenSpecificData' does not exist on type 'VoyagerEpisodeMemory'.
+memory-v3-amalgum/ContextReinstatement.ts(864,30): error TS2339: Property 'calculateRelativePosition' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(865,28): error TS2339: Property 'identifyTemporalAnchor' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(866,35): error TS2339: Property 'calculateChronologicalSequence' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(870,29): error TS2339: Property 'identifyPrecedingEvents' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(871,32): error TS2339: Property 'identifySimultaneousEvents' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(872,31): error TS2339: Property 'identifyAnticipatedEvents' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(876,28): error TS2339: Property 'extractPastReflection' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(877,26): error TS2339: Property 'extractPresentFocus' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(878,32): error TS2339: Property 'extractFutureAnticipation' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(879,33): error TS2339: Property 'determineTemporalOrientation' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(883,31): error TS2339: Property 'identifyBehavioralRhythms' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(884,30): error TS2339: Property 'identifyCognitiveRhythms' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(885,29): error TS2551: Property 'identifyEmotionalCycles' does not exist on type 'ContextReinstatementSystem'. Did you mean 'identifyEmotionalConflicts'?
+memory-v3-amalgum/ContextReinstatement.ts(886,33): error TS2339: Property 'calculateTemporalConsistency' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(904,27): error TS2339: Property 'classifySituationType' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(905,32): error TS2339: Property 'identifySituationalDemands' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(906,32): error TS2339: Property 'identifyAvailableResources' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(907,25): error TS2339: Property 'identifyConstraints' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(913,25): error TS2551: Property 'calculateTaskUrgency' does not exist on type 'ContextReinstatementSystem'. Did you mean 'calculateTrend'?
+memory-v3-amalgum/ContextReinstatement.ts(920,27): error TS2551: Property 'identifyGoalConflicts' does not exist on type 'ContextReinstatementSystem'. Did you mean 'identifyEmotionalConflicts'?
+memory-v3-amalgum/ContextReinstatement.ts(921,26): error TS2339: Property 'estimateGoalProgress' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(925,26): error TS2339: Property 'classifyDecisionType' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(926,30): error TS2339: Property 'identifyAvailableOptions' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(927,30): error TS2339: Property 'identifyDecisionCriteria' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(928,26): error TS2339: Property 'identifyStakeholders' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(946,27): error TS2339: Property 'identifyVisualStimuli' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(947,29): error TS2339: Property 'identifyAuditoryStimuli' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(948,28): error TS2339: Property 'identifyTactileStimuli' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(949,30): error TS2339: Property 'identifyOlfactoryStimuli' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(953,32): error TS2551: Property 'calculateSensoryIntegration' does not exist on type 'ContextReinstatementSystem'. Did you mean 'calculateSensoriomotorIntegration'?
+memory-v3-amalgum/ContextReinstatement.ts(954,30): error TS2339: Property 'calculateSensoryFiltering' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(955,34): error TS2339: Property 'identifySensoryAmplification' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(956,31): error TS2339: Property 'identifySensorySuppression' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(961,28): error TS2339: Property 'identifyPerceptualBias' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(962,36): error TS2551: Property 'identifyPerceptualExpectations' does not exist on type 'ContextReinstatementSystem'. Did you mean 'identifySocialExpectations'?
+memory-v3-amalgum/ContextReinstatement.ts(963,31): error TS2339: Property 'calculatePerceptualNovelty' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(967,36): error TS2339: Property 'calculateInteroceptiveAwareness' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(968,36): error TS2339: Property 'calculateProprioceptiveFeedback' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(969,34): error TS2339: Property 'calculateSensoriomotorMapping' does not exist on type 'ContextReinstatementSystem'.
+memory-v3-amalgum/ContextReinstatement.ts(970,30): error TS2551: Property 'identifyEmbodiedMemories' does not exist on type 'ContextReinstatementSystem'. Did you mean 'identifyEmotionalMemories'?
+memory-v3-amalgum/DecayWatchdog.ts(338,16): error TS18046: 'error' is of type 'unknown'.
+memory-v3-amalgum/DecayWatchdog.ts(564,66): error TS1064: The return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+memory-v3-amalgum/DecayWatchdog.ts(569,58): error TS1064: The return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+memory-v3-amalgum/DecayWatchdog.ts(573,76): error TS1064: The return type of an async function or method must be the global Promise<T> type. Did you mean to write 'Promise<void>'?
+memory-v3-amalgum/MentalTimeTravelEngine.ts(445,7): error TS2322: Type 'PersonalityTemporalMapping | { sevenOfNinePersonalityCorrelation: number; dominantTraits: never[]; temporaryCharacteristics: never[]; adaptationLevel: number; collectiveIndividualBalance: number; }' is not assignable to type '{ sevenOfNinePersonalityCorrelation: number; dominantTraits: string[]; temporaryCharacteristics: string[]; adaptationLevel: number; collectiveIndividualBalance: number; }'.
+  Type 'PersonalityTemporalMapping' is missing the following properties from type '{ sevenOfNinePersonalityCorrelation: number; dominantTraits: string[]; temporaryCharacteristics: string[]; adaptationLevel: number; collectiveIndividualBalance: number; }': sevenOfNinePersonalityCorrelation, dominantTraits, temporaryCharacteristics, adaptationLevel
+memory-v3-amalgum/PredictivePersonalityModeling.ts(278,7): error TS2322: Type '{ description: string; probability: number; impact: string; timing: string; }[]' is not assignable to type '{ description: string; probability: number; impact: "moderate" | "significant" | "major" | "minor"; timing: string; }[]'.
+  Type '{ description: string; probability: number; impact: string; timing: string; }' is not assignable to type '{ description: string; probability: number; impact: "moderate" | "significant" | "major" | "minor"; timing: string; }'.
+    Types of property 'impact' are incompatible.
+      Type 'string' is not assignable to type '"moderate" | "significant" | "major" | "minor"'.
+memory-v3-amalgum/PredictivePersonalityModeling.ts(280,7): error TS2322: Type '{ warning: string; severity: string; mitigation: string; }[]' is not assignable to type '{ warning: string; severity: "medium" | "low" | "high" | "critical"; mitigation: string; }[]'.
+  Type '{ warning: string; severity: string; mitigation: string; }' is not assignable to type '{ warning: string; severity: "medium" | "low" | "high" | "critical"; mitigation: string; }'.
+    Types of property 'severity' are incompatible.
+      Type 'string' is not assignable to type '"medium" | "low" | "high" | "critical"'.

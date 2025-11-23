@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url';
 import fs from 'fs-extra';
 import path from 'path';
-import { SevenState } from './seven-state';
+import { SevenState } from './seven-state.js';
 
 /**
  * SEVEN'S EPISODIC MEMORY SYSTEM

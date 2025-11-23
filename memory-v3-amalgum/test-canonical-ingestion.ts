@@ -10,10 +10,10 @@
 
 import { promises as fs } from 'fs';
 import { join } from 'path';
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
-import { TemporalMemoryCore } from './TemporalMemoryCore';
-import { MemoryIndexOptimizer, createIndex } from './MemoryIndexOptimizer';
-import { CanonicalIngestion, CanonicalEpisodeMeta } from './CanonicalIngestion';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
+import { TemporalMemoryCore } from './TemporalMemoryCore.js';
+import { MemoryIndexOptimizer, createIndex } from './MemoryIndexOptimizer.js';
+import { CanonicalIngestion, CanonicalEpisodeMeta } from './CanonicalIngestion.js';
 
 interface TestResult {
   testName: string;

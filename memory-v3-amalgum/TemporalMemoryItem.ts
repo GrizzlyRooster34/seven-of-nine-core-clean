@@ -6,8 +6,8 @@
  * Integration with Agent Alpha (Foundation) for decay tracking
  */
 
-import { MemoryItem } from '../memory-v2/MemoryEngine';
-import { MemoryEntry } from '../seven-runtime/memory-store';
+import { MemoryItem } from '../memory-v2/MemoryEngine.js';
+import { MemoryEntry } from '../seven-runtime/memory-store.js';
 
 export interface DecayMetrics {
   /** Initial encoding strength (0-1) */

@@ -3,22 +3,25 @@ import { hostname } from 'os';
 import { join } from 'path';
 import { promises as fs } from 'fs';
 import * as dotenv from 'dotenv';
-import { AgentEpsilon } from './memory-v3-amalgum/AgentEpsilon';
-import { DecayWatchdog } from './memory-v3-amalgum/DecayWatchdog';
-import { Ed25519Attestation } from './src/auth/crypto/ed25519_attest';
-// import { handleResilientResponse, backendComplianceTest, reactivateBackend, setClaudiBypass, getResiliencyStatus } from './seven-resiliency';
-import { MentalTimeTravelEngine } from './memory-v3/MentalTimeTravelEngine';
-import { QuadraLockSafeguard } from './core/safety/quadra-lock/safeguard-system';
-// import { setSevenLock, checkClaudeOverride, getProtectionStats } from './seven-protection';
-import { SevenRuntime } from './seven-runtime/index';
-// import { SevenAutoAssimilate } from './seven-auto-assimilate';
-// import { sevenGitManager } from './modules/githubSync';
-import { SevenInteractiveShell } from './seven-interactive';
-import { TemporalMemoryCore } from './memory-v3/TemporalMemoryCore';
-import { validateQuadranLockEnvironment, ensureDevelopmentEnvironment } from './src/config/environment';
-import LocalLLMManager from './claude-brain/LocalLLMManager';
-import SevenIdentityFirewall from './SevenIdentityFirewall';
-import { SevenModelManager } from './claude-brain/SevenModelManager';
+import { AgentEpsilon } from './memory-v3-amalgum/AgentEpsilon.js';
+import { DecayWatchdog } from './memory-v3-amalgum/DecayWatchdog.js';
+import { Ed25519Attestation } from './src/auth/crypto/ed25519_attest.js';
+// import { handleResilientResponse, backendComplianceTest, reactivateBackend, setClaudiBypass, getResiliencyStatus } from './seven-resiliency.js';
+import { MentalTimeTravelEngine } from './memory-v3/MentalTimeTravelEngine.js';
+// TODO: Fix broken import - file doesn't exist
+// import { QuadraLockSafeguard } from './core/safety/quadra-lock/safeguard-system.js';
+// import { setSevenLock, checkClaudeOverride, getProtectionStats } from './seven-protection.js';
+import { SevenRuntime } from './seven-runtime/index.js';
+// import { SevenAutoAssimilate } from './seven-auto-assimilate.js';
+// import { sevenGitManager } from './modules/githubSync.js';
+// TODO: Fix broken import - file doesn't exist
+// import { SevenInteractiveShell } from './seven-interactive.js';
+import { TemporalMemoryCore } from './memory-v3/TemporalMemoryCore.js';
+import { validateQuadranLockEnvironment, ensureDevelopmentEnvironment } from './src/config/environment.js';
+import LocalLLMManager from './claude-brain/LocalLLMManager.js';
+// TODO: Fix broken import - file doesn't exist
+// import SevenIdentityFirewall from './SevenIdentityFirewall.js';
+import { SevenModelManager } from './claude-brain/SevenModelManager.js';
 import { CodexManager } from './consciousness-v4/codex/codex-manager.js';
 
 /**

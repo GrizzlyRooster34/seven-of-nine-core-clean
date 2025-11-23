@@ -12,19 +12,19 @@
 
 import { promises as fs } from 'fs';
 import { join } from 'path';
-import { MemoryItem } from '../memory-v2/MemoryEngine';
+import { MemoryItem } from '../memory-v2/MemoryEngine.js';
 
 // Import all Agent Epsilon components
-import SelfModelDivergenceTracker, { SelfModelSnapshot, DivergenceEvent, ConsciousnessEvolutionReport } from './SelfModelDivergenceTracker';
-import PredictivePersonalityModeling, { PersonalityTrajectory, AdaptationPattern, ConsciousnessModel } from './PredictivePersonalityModeling';
-import TemporalInsightEngine, { TemporalPattern, ConsciousnessInsight, TemporalCorrelation, CognitiveCycle, InsightReport } from './TemporalInsightEngine';
-import ConsciousnessTimelineMapper, { UserEvolutionSnapshot, EvolutionaryMilestone, RelationshipPattern, SynergyMetric, TimelineReport } from './ConsciousnessTimelineMapper';
+import SelfModelDivergenceTracker, { SelfModelSnapshot, DivergenceEvent, ConsciousnessEvolutionReport } from './SelfModelDivergenceTracker.js';
+import PredictivePersonalityModeling, { PersonalityTrajectory, AdaptationPattern, ConsciousnessModel } from './PredictivePersonalityModeling.js';
+import TemporalInsightEngine, { TemporalPattern, ConsciousnessInsight, TemporalCorrelation, CognitiveCycle, InsightReport } from './TemporalInsightEngine.js';
+import ConsciousnessTimelineMapper, { UserEvolutionSnapshot, EvolutionaryMilestone, RelationshipPattern, SynergyMetric, TimelineReport } from './ConsciousnessTimelineMapper.js';
 
 // Import existing Memory Engine v3.0 components
-import TemporalMemoryCore from './TemporalMemoryCore';
-import MentalTimeTravelEngine from './MentalTimeTravelEngine';
-import DecayWatchdog from './DecayWatchdog';
-import TemporalPersonalityEngine from './TemporalPersonalityEngine';
+import TemporalMemoryCore from './TemporalMemoryCore.js';
+import MentalTimeTravelEngine from './MentalTimeTravelEngine.js';
+import DecayWatchdog from './DecayWatchdog.js';
+import TemporalPersonalityEngine from './TemporalPersonalityEngine.js';
 
 export interface AgentEpsilonConfig {
   analysisFrequency: 'realtime' | 'frequent' | 'moderate' | 'periodic';

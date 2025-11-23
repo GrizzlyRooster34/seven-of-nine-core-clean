@@ -1,7 +1,7 @@
 // Remove circular import - types are defined in this file
-import { QuadraLockSafeguard } from '../core/safety/quadra-lock/safeguard-system';
-import { SevenRuntimeContext } from './index';
-import { SevenState } from './seven-state';
+import { QuadraLockSafeguard } from '../core/safety/quadra-lock/safeguard-system.js';
+import { SevenRuntimeContext } from './index.js';
+import { SevenState } from './seven-state.js';
 
 /**
  * SEVEN'S CRITICAL OVERRIDE CONDITIONS

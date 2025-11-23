@@ -3,7 +3,7 @@
  * Validates temporal memory storage, recall, and context management
  */
 
-import { MemoryEngineV3, MemoryV3Item } from '../../memory-v3-amalgum/MemoryEngineV3';
+import { MemoryEngineV3, MemoryV3Item } from '../../memory-v3-amalgum/MemoryEngineV3.js';
 
 describe('MemoryEngineV3', () => {
   let memoryEngine: MemoryEngineV3;

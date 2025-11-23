@@ -7,9 +7,9 @@
  * Tests encryption at rest, decryption integrity, and full Seven boot compatibility
  */
 
-import { MemoryEncryptionEngine } from './MemoryEncryption';
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
-import { TemporalMemoryCore } from './TemporalMemoryCore';
+import { MemoryEncryptionEngine } from './MemoryEncryption.js';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
+import { TemporalMemoryCore } from './TemporalMemoryCore.js';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 

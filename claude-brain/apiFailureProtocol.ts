@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events';
-import { callPrimaryApi, callOllama, getDirectResponse } from './llm-providers'; // Assuming these functions exist
+import { callPrimaryApi, callOllama, getDirectResponse } from './llm-providers.js'; // Assuming these functions exist
 
 export const apiFailureEmitter = new EventEmitter();
 

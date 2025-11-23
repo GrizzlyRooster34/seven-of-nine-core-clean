@@ -4,7 +4,7 @@
  * @version 1.0.0
  */
 
-import { VoyagerEpisodeMemory, MergeConflict } from './VoyagerMemorySchema';
+import { VoyagerEpisodeMemory, MergeConflict } from './VoyagerMemorySchema.js';
 
 export enum MemoryProtocolAction {
   OVERWRITE = 'OVERWRITE',

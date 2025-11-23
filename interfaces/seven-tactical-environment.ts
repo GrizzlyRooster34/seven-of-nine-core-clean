@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
-import { SensorReading, PredictionResult, EnvironmentalPattern } from './seven-predictive-sensor-fusion';
-import { SevenEmotionalState } from './seven-emotional-sensor-mapper';
+import { SensorReading, PredictionResult, EnvironmentalPattern } from './seven-predictive-sensor-fusion.js';
+import { SevenEmotionalState } from './seven-emotional-sensor-mapper.js';
 
 /**
  * Seven of Nine - Tactical Environment Awareness Engine

@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import LocalLLMManager from './LocalLLMManager';
-import SevenEmergencyReasoning from './SevenEmergencyReasoning';
+import LocalLLMManager from './LocalLLMManager.js';
+import SevenEmergencyReasoning from './SevenEmergencyReasoning.js';
 
 /**
  * Seven of Nine - Advanced Reasoning Engine

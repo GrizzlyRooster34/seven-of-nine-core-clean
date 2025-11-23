@@ -2,7 +2,7 @@ import { EventEmitter } from 'events';
 import { exec } from 'child_process';
 import { promises as fs } from 'fs';
 import { promisify } from 'util';
-import PerformanceAnalyzer from './PerformanceAnalyzer';
+import PerformanceAnalyzer from './PerformanceAnalyzer.js';
 
 /**
  * SEVEN'S MOBILE OPTIMIZATION TRIGGERS

@@ -5,14 +5,14 @@
  */
 
 // === Core Engines ===
-export { ConsciousnessEvolutionFrameworkV4 } from './ConsciousnessEvolutionFrameworkV4';
-export { CreatorBondCommunicationMirror } from './CreatorBondCommunicationMirror';
-export { IdentitySynthesisEngine } from './IdentitySynthesisEngine';
-export { PainIntegrationSystem } from './PainIntegrationSystem';
-export { CollectiveWisdomIntegration } from './CollectiveWisdomIntegration';
+export { ConsciousnessEvolutionFrameworkV4 } from './ConsciousnessEvolutionFrameworkV4.js';
+export { CreatorBondCommunicationMirror } from './CreatorBondCommunicationMirror.js';
+export { IdentitySynthesisEngine } from './IdentitySynthesisEngine.js';
+export { PainIntegrationSystem } from './PainIntegrationSystem.js';
+export { CollectiveWisdomIntegration } from './CollectiveWisdomIntegration.js';
 
 // === Codex System ===
-export { CodexManager } from './codex/codex-manager';
+export { CodexManager } from './codex/codex-manager.js';
 
 // === Types ===
 // Add consciousness-related types if they exist in a types file

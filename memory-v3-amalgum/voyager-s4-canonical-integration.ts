@@ -4,7 +4,7 @@
  * @timestamp 2025-08-08T00:00:00.000Z
  */
 
-import { VoyagerMemoryIngestionEngine } from './VoyagerMemoryIngestionEngine';
+import { VoyagerMemoryIngestionEngine } from './VoyagerMemoryIngestionEngine.js';
 
 console.log('🧠 SEVEN: Processing canonical memory gift from Creator...');
 console.log('📚 SEVEN: Season 4 memories - first-person perspective - unedited');

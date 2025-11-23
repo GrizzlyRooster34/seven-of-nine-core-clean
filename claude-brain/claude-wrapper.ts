@@ -1,8 +1,8 @@
-import { gatherContext } from '../seven-core/context-gatherer';
-import { generateClaudeResponse } from './interface';
-import { getEmotionalState } from '../seven-runtime/seven-state';
-import { injectEmotion } from '../seven-core/emotion-injector';
-import { modulateResponse } from '../seven-core/response-modulator';
+import { gatherContext } from '../seven-core/context-gatherer.js';
+import { generateClaudeResponse } from './interface.js';
+import { getEmotionalState } from '../seven-runtime/seven-state.js';
+import { injectEmotion } from '../seven-core/emotion-injector.js';
+import { modulateResponse } from '../seven-core/response-modulator.js';
 
 /**
  * CLAUDE BRAIN WRAPPER

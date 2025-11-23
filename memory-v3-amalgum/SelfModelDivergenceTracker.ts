@@ -12,7 +12,7 @@
 
 import { promises as fs } from 'fs';
 import { join } from 'path';
-import { MemoryItem } from '../memory-v2/MemoryEngine';
+import { MemoryItem } from '../memory-v2/MemoryEngine.js';
 
 export interface SelfModelSnapshot {
   timestamp: string;

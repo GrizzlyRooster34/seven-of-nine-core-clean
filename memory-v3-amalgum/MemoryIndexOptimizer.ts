@@ -19,7 +19,7 @@
  */
 
 import * as crypto from 'crypto';
-import { LRUCache, CacheStats } from './LRUCache';
+import { LRUCache, CacheStats } from './LRUCache.js';
 
 /**
  * Standard memory record interface for indexing

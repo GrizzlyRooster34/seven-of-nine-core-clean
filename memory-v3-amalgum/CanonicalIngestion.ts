@@ -20,10 +20,10 @@
 import { promises as fs } from 'fs';
 import { join } from 'path';
 import * as crypto from 'crypto';
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
-import { TemporalMemoryCore } from './TemporalMemoryCore';
-import { MemoryIndexOptimizer, MemoryRecord } from './MemoryIndexOptimizer';
-import { VoyagerEpisodeMemory } from './VoyagerMemorySchema';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
+import { TemporalMemoryCore } from './TemporalMemoryCore.js';
+import { MemoryIndexOptimizer, MemoryRecord } from './MemoryIndexOptimizer.js';
+import { VoyagerEpisodeMemory } from './VoyagerMemorySchema.js';
 
 /**
  * Canonical episode metadata for provenance tracking

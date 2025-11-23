@@ -1,6 +1,6 @@
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
-import { PersonalityMiddleware } from '../persona-v2/PersonalityMiddleware';
-import { TacticalVariants } from './TacticalVariants';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
+import { PersonalityMiddleware } from '../persona-v2/PersonalityMiddleware.js';
+import { TacticalVariants } from './TacticalVariants.js';
 
 /**
  * SEVEN OF NINE - TACTICAL VARIANTS TEST

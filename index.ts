@@ -34,17 +34,20 @@ export {
 } from './memory-v3-amalgum/index.js';
 
 // === Core Systems ===
-export { QuadraLockSafeguard } from './core/safety/quadra-lock/safeguard-system.js';
+// TODO: Fix broken import - file doesn't exist
+// export { QuadraLockSafeguard } from './core/safety/quadra-lock/safeguard-system.js';
 
 // === Authentication ===
 export { Ed25519Attestation } from './src/auth/crypto/ed25519_attest.js';
 
 // === Runtime ===
 export { SevenRuntime } from './seven-runtime/index.js';
-export { SevenInteractiveShell } from './seven-interactive.js';
+// TODO: Fix broken import - file doesn't exist
+// export { SevenInteractiveShell } from './seven-interactive.js';
 
 // === Identity & Security ===
-export { default as SevenIdentityFirewall } from './SevenIdentityFirewall.js';
+// TODO: Fix broken import - file doesn't exist
+// export { default as SevenIdentityFirewall } from './SevenIdentityFirewall.js';
 
 // === Codex ===
 export { CodexManager } from './consciousness-v4/codex/codex-manager.js';

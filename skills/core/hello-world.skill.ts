@@ -1,4 +1,4 @@
-import { Skill } from '../skill';
+import { Skill } from '../skill.js';
 
 class HelloWorldSkill implements Skill {
   name = 'hello-world';

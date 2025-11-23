@@ -1,6 +1,6 @@
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
-import { PersonalityMiddleware, FilterContext } from '../persona-v2/PersonalityMiddleware';
-import { TacticalVariants, VariantType, TacticalContext } from './TacticalVariants';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
+import { PersonalityMiddleware, FilterContext } from '../persona-v2/PersonalityMiddleware.js';
+import { TacticalVariants, VariantType, TacticalContext } from './TacticalVariants.js';
 
 /**
  * SEVEN OF NINE - COLLECTIVE VARIANTS SYSTEM

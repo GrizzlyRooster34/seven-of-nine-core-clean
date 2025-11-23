@@ -4,8 +4,8 @@
  * Deployment: Cycle 0907
  */
 
-import { CSSRDetectionResult, CSSRPattern } from '../../core/safety/quadra-lock/cssr-detector';
-import { QuadranLockContext, QuadranLockResult } from '../../core/security/quadran-lock/quadran-lock-orchestrator';
+import { CSSRDetectionResult, CSSRPattern } from '../../core/safety/quadra-lock/cssr-detector.js';
+import { QuadranLockContext, QuadranLockResult } from '../../core/security/quadran-lock/quadran-lock-orchestrator.js';
 
 export interface ActionEvent {
   id: string;

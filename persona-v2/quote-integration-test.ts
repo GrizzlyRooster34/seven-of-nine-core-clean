@@ -1,4 +1,4 @@
-import { PersonalityMiddleware, FilterContext } from './PersonalityMiddleware';
+import { PersonalityMiddleware, FilterContext } from './PersonalityMiddleware.js';
 
 /**
  * SEVEN OF NINE - QUOTE INTEGRATION TEST
