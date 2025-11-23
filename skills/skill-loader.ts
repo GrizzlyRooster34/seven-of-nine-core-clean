@@ -1,4 +1,4 @@
-import { Skill } from './skill';
+import { Skill } from './skill.js';
 import * as fs from 'fs';
 import * as path from 'path';
 

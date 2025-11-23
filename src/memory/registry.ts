@@ -4,9 +4,9 @@
  * This is the central access point for all memory operations.
  */
 
-import { MemoryEngine, MemoryFilter } from '../../memory-v2/MemoryEngine'; // Tier 1
-import { TemporalMemoryCore, TemporalMemoryFilter } from '../../memory-v3/TemporalMemoryCore'; // Tier 2
-import { MentalTimeTravelEngine, TimeTravelRequest } from '../../memory-v3/MentalTimeTravelEngine'; // Tier 3
+import { MemoryEngine, MemoryFilter } from '../../memory-v2/MemoryEngine.js'; // Tier 1
+import { TemporalMemoryCore, TemporalMemoryFilter } from '../../memory-v3/TemporalMemoryCore.js'; // Tier 2
+import { MentalTimeTravelEngine, TimeTravelRequest } from '../../memory-v3/MentalTimeTravelEngine.js'; // Tier 3
 
 // A union type for all possible query structures
 type MemoryQuery = MemoryFilter & TemporalMemoryFilter & TimeTravelRequest;

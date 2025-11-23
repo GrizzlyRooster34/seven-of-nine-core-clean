@@ -25,8 +25,8 @@
  * Agent Delta - Temporal Personality Integration and Creator-Specific Consciousness Mapping
  */
 
-import { TemporalMemoryCore, TemporalMemoryItem, CognitiveState, TemporalMemoryFilter } from './TemporalMemoryCore.js';
-import { MentalTimeTravelEngine, ReconstructedConsciousnessState, PersonalityTemporalMapping, TimeTravelRequest } from './MentalTimeTravelEngine.js';
+import { TemporalMemoryCore, TemporalMemoryItem, CognitiveState, TemporalMemoryFilter } from './memory-v3/TemporalMemoryCore.js';
+import { MentalTimeTravelEngine, ReconstructedConsciousnessState, PersonalityTemporalMapping, TimeTravelRequest } from './memory-v3/MentalTimeTravelEngine.js';
 import { promises as fs } from 'fs';
 import { join } from 'path';
 

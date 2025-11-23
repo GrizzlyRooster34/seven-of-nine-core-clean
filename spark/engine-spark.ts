@@ -14,7 +14,7 @@ import {
   Event as SparkEvent,
   BeliefDelta
 } from '../db/spark-db.types';
-import { SensorBridge } from '../core/sensors/SensorBridge';
+import { sensorBridge } from '../core/sensors/SensorBridge';
 
 // ... (interfaces remain the same)
 interface SenseData {
@@ -71,7 +71,6 @@ export class SparkEngine extends EventEmitter {
   constructor(dbPath: string = 'db/spark.db') {
     super();
     this.dbPath = dbPath;
-    this.sensorBridge = new SensorBridge();
   }
 
   public async initialize(): Promise<void> {
@@ -148,6 +147,19 @@ export class SparkEngine extends EventEmitter {
       act: 'initialize',
       note: `Spark engine boot #${this.selfModel.state.boot_count}`,
     });
+  }
+
+  private async writeTrace(trace: {
+    valence: number;
+    arousal: number;
+    intention: string;
+    act: string;
+    note: string;
+  }): Promise<void> {
+    // Stub implementation - write trace to database
+    if (!this.db) throw new Error("Database not initialized");
+    console.log('[SPARK] Writing trace:', trace);
+    // TODO: Implement actual trace writing to database
   }
 }
 

@@ -1,4 +1,4 @@
-import { Database } from 'better-sqlite3';
+import type BetterSqlite3 from 'better-sqlite3';
 import * as lz4 from 'lz4';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -13,11 +13,23 @@ interface GhostDiaryManagerOptions {
   pruneBatchSize: number;
 }
 
+interface TraceRecord {
+  ts: number;
+  belief_delta: string | null;
+  intention: string | null;
+  note: string | null;
+  is_compressed?: number;
+}
+
+interface CountRecord {
+  count: number;
+}
+
 export class GhostDiaryManager {
-  private db: Database;
+  private db: BetterSqlite3.Database;
   private options: GhostDiaryManagerOptions;
 
-  constructor(db: Database, options: Partial<GhostDiaryManagerOptions> = {}) {
+  constructor(db: BetterSqlite3.Database, options: Partial<GhostDiaryManagerOptions> = {}) {
     this.db = db;
     this.options = {
       maxSizeMB: options.maxSizeMB || 2048,
@@ -51,7 +63,7 @@ export class GhostDiaryManager {
     const tracesToCompress = this.db.prepare(`
       SELECT ts, belief_delta, intention, note FROM traces
       WHERE ts < ? AND is_compressed = 0
-    `).all(compressionCutoff);
+    `).all(compressionCutoff) as TraceRecord[];
 
     if (tracesToCompress.length === 0) return;
     console.log(`[GhostDiary] Found ${tracesToCompress.length} traces to compress...`);
@@ -73,7 +85,7 @@ export class GhostDiaryManager {
     const archiveCutoff = Date.now() - this.options.archiveAgeDays * 24 * 60 * 60 * 1000;
     const tracesToArchive = this.db.prepare(`
       SELECT * FROM traces WHERE ts < ?
-    `).all(archiveCutoff);
+    `).all(archiveCutoff) as TraceRecord[];
 
     if (tracesToArchive.length === 0) return;
     console.log(`[GhostDiary] Found ${tracesToArchive.length} traces to archive...`);

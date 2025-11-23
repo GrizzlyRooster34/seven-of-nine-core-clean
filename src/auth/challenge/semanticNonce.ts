@@ -238,7 +238,7 @@ export class SemanticNonceChallenge {
         success: false,
         confidence: 0,
         evidence,
-        errors: [error.message]
+        errors: [error instanceof Error ? error.message : String(error)]
       };
     }
   }
@@ -312,8 +312,8 @@ export class SemanticNonceChallenge {
       }
     };
 
-    const templates = challengeTemplates[category] || challengeTemplates.personal;
-    const prompts = templates[difficulty] || templates.easy;
+    const templates = challengeTemplates[category as keyof typeof challengeTemplates] || challengeTemplates.personal;
+    const prompts = templates[difficulty as keyof typeof templates] || templates.easy;
     const prompt = prompts[Math.floor(Math.random() * prompts.length)];
 
     // Generate constraints based on difficulty
@@ -585,7 +585,7 @@ export class SemanticNonceChallenge {
       hard: 12000,   // 12 seconds
       expert: 10000  // 10 seconds
     };
-    return timeWindows[difficulty] || this.DEFAULT_TIME_WINDOW_MS;
+    return timeWindows[difficulty as keyof typeof timeWindows] || this.DEFAULT_TIME_WINDOW_MS;
   }
 
   private selectChallengeCategory(context: any, difficulty: string): string {

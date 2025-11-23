@@ -38,8 +38,8 @@ interface ConsciousnessContext {
  * Manages V1/V2 provider selection and graceful fallback
  */
 export class OllamaProviderIntegration {
-  private v1Provider: OllamaProvider;
-  private v2Provider: OllamaProviderV2 | null = null;
+  protected v1Provider: OllamaProvider;
+  protected v2Provider: OllamaProviderV2 | null = null;
   private v2Available: boolean = false;
   private lastHealthCheck: number = 0;
   private healthCheckInterval: number = 30000; // 30 seconds

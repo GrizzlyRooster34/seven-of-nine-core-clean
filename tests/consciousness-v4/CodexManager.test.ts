@@ -22,7 +22,7 @@ describe('CodexManager', () => {
       const originalChecksum = 'original_checksum';
       const currentChecksum = 'tampered_checksum';
 
-      const isTampered = originalChecksum !== currentChecksum;
+      const isTampered = (originalChecksum as string) !== (currentChecksum as string);
       expect(isTampered).toBe(true);
     });
 

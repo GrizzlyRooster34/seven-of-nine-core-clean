@@ -258,7 +258,7 @@ export class OllamaMemoryBridge {
   private determineEmotionalContext(recentMemories: MemoryItem[]): string {
     if (recentMemories.length === 0) return 'focused';
     
-    const emotions = recentMemories.map(m => m.emotionalIntensity);
+    const emotions = recentMemories.map(m => m.emotion);
     const emotionCounts = emotions.reduce((acc, emotion) => {
       acc[emotion] = (acc[emotion] || 0) + 1;
       return acc;
