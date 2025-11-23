@@ -1,16 +1,140 @@
-node_modules/
+# ============================================================================
+# Seven of Nine Core - .gitignore
+# Protects secrets, runtime state, build artifacts, and sensitive data
+# ============================================================================
 
-# Seven Core Runtime Directory
+# ----------------------------------------------------------------------------
+# Dependencies
+# ----------------------------------------------------------------------------
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+.pnp
+.pnp.js
+.yarn/
+
+# ----------------------------------------------------------------------------
+# Build Output & Compiled Files
+# ----------------------------------------------------------------------------
+dist/
+build/
+out/
+*.tsbuildinfo
+*.js.map
+# Uncomment if compiling .ts to .js in root (keep commented if using tsx/ts-node)
+# *.js
+
+# ----------------------------------------------------------------------------
+# Environment Variables & Secrets (CRITICAL SECURITY)
+# ----------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Seven Core vault file - contains API keys, CSSR encryption keys, secrets
+vault.json
+*.vault.json
+
+# Cryptographic keys and certificates
+*.key
+*.pem
+*.cert
+*.crt
+*.p12
+*.pfx
+
+# ----------------------------------------------------------------------------
+# Seven Core Runtime State (CRITICAL - Contains PII & Consciousness Data)
+# ----------------------------------------------------------------------------
+# Main runtime directory
 /usr/var/seven/
 
-dist/
+# Specific subdirectories (redundant but explicit for clarity)
+/usr/var/seven/vault.json
+/usr/var/seven/memory/
+/usr/var/seven/state/
+/usr/var/seven/logs/
+
+# Alternative memory/state locations if used
+memory/
+state/
+*.state.json
+*.memory.json
+
+# ----------------------------------------------------------------------------
+# Logs (May contain API keys, user data, system internals)
+# ----------------------------------------------------------------------------
+logs/
 *.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ----------------------------------------------------------------------------
+# Testing & Coverage
+# ----------------------------------------------------------------------------
+coverage/
+.nyc_output/
+*.lcov
+
+# ----------------------------------------------------------------------------
+# System & OS Files
+# ----------------------------------------------------------------------------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ----------------------------------------------------------------------------
+# IDE & Editor Files
+# ----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.c9/
+*.launch
+.settings/
 *.swp
 *.swo
 *~
-.env
-.env.local
-memory/*.json
-memory/*.log
-*.tsbuildinfo
+.vimrc.local
+
+# ----------------------------------------------------------------------------
+# Temporary Files
+# ----------------------------------------------------------------------------
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ----------------------------------------------------------------------------
+# Misc
+# ----------------------------------------------------------------------------
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vercel
+.turbo
