@@ -5,10 +5,10 @@
  * Exports all available LLM providers for easy registration
  */
 
-export { ClaudeCLIProvider } from './claude-cli';
-export { OpenAIProvider } from './openai';
-export { AnthropicAPIProvider } from './anthropic-api';
-export { OllamaProvider } from './ollama';
+export { ClaudeCLIProvider } from './claude-cli.js';
+export { OpenAIProvider } from './openai.js';
+export { AnthropicAPIProvider } from './anthropic-api.js';
+export { OllamaProvider } from './ollama.js';
 
 // Provider factory for dynamic loading
 export function createProvider(name: string, config?: any) {

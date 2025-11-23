@@ -12,7 +12,7 @@ import {
   MergeConflict,
   ValidationError,
   IngestionSummary
-} from './VoyagerMemorySchema';
+} from './VoyagerMemorySchema.js';
 
 export class VoyagerMemoryIngestionEngine {
   private readonly CANONICAL_MEMORY_PATH = path.join(__dirname, 'voyager-canonical-memories.json');

@@ -1,4 +1,4 @@
-import SevenLLMUpgradeManager from './seven-llm-upgrade-manager';
+import SevenLLMUpgradeManager from './seven-llm-upgrade-manager.js';
 
 /**
  * SEVEN OF NINE - UNIVERSAL LLM PROVIDER SYSTEM

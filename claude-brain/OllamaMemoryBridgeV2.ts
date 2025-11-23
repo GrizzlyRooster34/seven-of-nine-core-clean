@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import { OllamaMemoryBridge } from './OllamaMemoryBridge';
-import SevenVectorStore from './SevenVectorStore';
+import { OllamaMemoryBridge } from './OllamaMemoryBridge.js';
+import SevenVectorStore from './SevenVectorStore.js';
 
 /**
  * OLLAMA MEMORY BRIDGE V2.0

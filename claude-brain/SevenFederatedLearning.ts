@@ -2,8 +2,8 @@ import { createHash, createCipheriv, createDecipheriv, randomBytes } from 'crypt
 import { EventEmitter } from 'events';
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import SevenDistributedConsciousness from './SevenDistributedConsciousness';
-import SevenTacticalFallback from './SevenTacticalFallback';
+import SevenDistributedConsciousness from './SevenDistributedConsciousness.js';
+import SevenTacticalFallback from './SevenTacticalFallback.js';
 
 /**
  * SEVEN'S FEDERATED LEARNING SYSTEM

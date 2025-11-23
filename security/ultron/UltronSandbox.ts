@@ -5,7 +5,7 @@
  * potentially unsafe code or AI-generated behaviors.
  */
 
-import { EgressFirewall } from './EgressFirewall';
+import { EgressFirewall } from './EgressFirewall.js';
 
 interface SandboxOptions {
   cpuLimit: number; // as a percentage

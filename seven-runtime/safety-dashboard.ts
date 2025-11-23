@@ -1,8 +1,8 @@
-import { QuadraLockCSSR, createQuadraLockCSSR } from '../core/safety/quadra-lock/index'
-import { QuadranLockSystem, createQuadranLock } from '../core/security/quadran-lock/index'
-import { runRestraintDoctrine } from '../scripts/safety/restraint-doctrine'
-import { SecurityMiddleware, SecurityContext, SecurityResult } from './security_middleware'
-import { systemMonitor, SystemMetrics, TelemetryAlert } from './system-monitor'
+import { QuadraLockCSSR, createQuadraLockCSSR } from '../core/safety/quadra-lock/index.js'
+import { QuadranLockSystem, createQuadranLock } from '../core/security/quadran-lock/index.js'
+import { runRestraintDoctrine } from '../scripts/safety/restraint-doctrine.js'
+import { SecurityMiddleware, SecurityContext, SecurityResult } from './security_middleware.js'
+import { systemMonitor, SystemMetrics, TelemetryAlert } from './system-monitor.js'
 
 /**
  * Seven Core Unified Safety Dashboard

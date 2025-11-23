@@ -1,5 +1,5 @@
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
-import { PersonalityMiddleware, FilterContext } from '../persona-v2/PersonalityMiddleware';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
+import { PersonalityMiddleware, FilterContext } from '../persona-v2/PersonalityMiddleware.js';
 
 /**
  * SEVEN OF NINE - TACTICAL VARIANTS SYSTEM

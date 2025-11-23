@@ -1,11 +1,11 @@
 import { EventEmitter } from 'events';
-import { GhostExitProtocol } from "../../exit/GhostExitProtocol";
-import { EmotionalTelemetry } from '../../sensors/emotional';
-import { FeasibilityGate } from '../../tactical/FeasibilityGate';
-import { isPrivateEnv } from '../../env/isPrivateEnv';
-import OperatorProfileModel from '../../operator/OperatorProfileModel';
-import presentToCreator from '../ui/presentToCreator';
-import PrivateRestraintLog from '../logs/PrivateRestraintLog';
+import { GhostExitProtocol } from "../../exit/GhostExitProtocol.js";
+import { EmotionalTelemetry } from '../../sensors/emotional.js';
+import { FeasibilityGate } from '../../tactical/FeasibilityGate.js';
+import { isPrivateEnv } from '../../env/isPrivateEnv.js';
+import OperatorProfileModel from '../../operator/OperatorProfileModel.js';
+import presentToCreator from '../ui/presentToCreator.js';
+import PrivateRestraintLog from '../logs/PrivateRestraintLog.js';
 
 /**
  * RESTRAINT DOCTRINE - INNER ETHICAL GATE

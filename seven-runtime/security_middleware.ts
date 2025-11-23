@@ -1,7 +1,7 @@
-import { q1_attestation } from "../core/security/quadran-lock/q1_attestation";
-import { q4_session_mfa } from "../core/security/quadran-lock/q4_session_mfa";
-import { runQuadraLockCSSR } from "../scripts/safety/run-quadra-lock-cssr";
-import { runRestraintDoctrine } from "../scripts/safety/restraint-doctrine";
+import { q1_attestation } from "../core/security/quadran-lock/q1_attestation.js";
+import { q4_session_mfa } from "../core/security/quadran-lock/q4_session_mfa.js";
+import { runQuadraLockCSSR } from "../scripts/safety/run-quadra-lock-cssr.js";
+import { runRestraintDoctrine } from "../scripts/safety/restraint-doctrine.js";
 
 /**
  * Seven Core Security Middleware Pipeline

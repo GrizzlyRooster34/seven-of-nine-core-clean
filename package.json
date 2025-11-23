@@ -36,6 +36,7 @@
     "dotenv": "^16.4.7",
     "fs-extra": "^11.2.0",
     "lz4js": "^0.2.0",
+    "node-fetch": "^3.3.2",
     "reflect-metadata": "^0.1.14",
     "sql.js": "^1.13.0",
     "tsyringe": "^4.10.0"

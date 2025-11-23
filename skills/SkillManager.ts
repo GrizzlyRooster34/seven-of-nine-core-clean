@@ -1,6 +1,6 @@
 import { join, extname } from 'path';
 import { promises as fs } from 'fs';
-import { MemoryEngine } from '../memory-v2/MemoryEngine';
+import { MemoryEngine } from '../memory-v2/MemoryEngine.js';
 
 /**
  * SEVEN OF NINE - SKILL MANAGER v2.0

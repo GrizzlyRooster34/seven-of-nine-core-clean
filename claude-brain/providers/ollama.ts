@@ -1,5 +1,5 @@
-import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers';
-import { OllamaMemoryBridge } from '../OllamaMemoryBridge';
+import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers.js';
+import { OllamaMemoryBridge } from '../OllamaMemoryBridge.js';
 
 /**
  * OLLAMA PROVIDER for Seven of Nine

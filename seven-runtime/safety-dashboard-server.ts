@@ -1,7 +1,7 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http'
 import { parse } from 'url'
-import { safetyDashboard, SafetyDashboard } from './safety-dashboard'
-import { systemMonitor } from './system-monitor'
+import { safetyDashboard, SafetyDashboard } from './safety-dashboard.js'
+import { systemMonitor } from './system-monitor.js'
 
 /**
  * Seven Core Safety Dashboard HTTP Server

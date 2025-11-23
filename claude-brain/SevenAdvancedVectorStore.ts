@@ -1,8 +1,8 @@
 import { EventEmitter } from 'events';
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import { SevenVectorStore } from './SevenVectorStore';
-import SevenTacticalFallback from './SevenTacticalFallback';
+import { SevenVectorStore } from './SevenVectorStore.js';
+import SevenTacticalFallback from './SevenTacticalFallback.js';
 
 /**
  * SEVEN'S ADVANCED VECTOR STORE SYSTEM

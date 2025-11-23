@@ -1,4 +1,4 @@
-import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers';
+import { LLMProvider, LLMConfig, LLMResponse } from '../llm-providers.js';
 
 /**
  * ANTHROPIC API PROVIDER for Seven of Nine

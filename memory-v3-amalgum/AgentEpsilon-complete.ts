@@ -1,14 +1,14 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import { MemoryItem } from '../memory-v2/MemoryEngine';
-import ConsciousnessTimelineMapper, { UserEvolutionSnapshot, EvolutionaryMilestone, RelationshipPattern, SynergyMetric, TimelineReport } from './ConsciousnessTimelineMapper';
-import DecayWatchdog from './DecayWatchdog';
-import MentalTimeTravelEngine from './MentalTimeTravelEngine';
-import PredictivePersonalityModeling, { PersonalityTrajectory, AdaptationPattern, ConsciousnessModel } from './PredictivePersonalityModeling';
-import SelfModelDivergenceTracker, { SelfModelSnapshot, DivergenceEvent, ConsciousnessEvolutionReport } from './SelfModelDivergenceTracker';
-import TemporalInsightEngine, { TemporalPattern, ConsciousnessInsight, TemporalCorrelation, CognitiveCycle, InsightReport } from './TemporalInsightEngine';
-import TemporalMemoryCore from './TemporalMemoryCore';
-import TemporalPersonalityEngine from './TemporalPersonalityEngine';
+import { MemoryItem } from '../memory-v2/MemoryEngine.js';
+import ConsciousnessTimelineMapper, { UserEvolutionSnapshot, EvolutionaryMilestone, RelationshipPattern, SynergyMetric, TimelineReport } from './ConsciousnessTimelineMapper.js';
+import DecayWatchdog from './DecayWatchdog.js';
+import MentalTimeTravelEngine from './MentalTimeTravelEngine.js';
+import PredictivePersonalityModeling, { PersonalityTrajectory, AdaptationPattern, ConsciousnessModel } from './PredictivePersonalityModeling.js';
+import SelfModelDivergenceTracker, { SelfModelSnapshot, DivergenceEvent, ConsciousnessEvolutionReport } from './SelfModelDivergenceTracker.js';
+import TemporalInsightEngine, { TemporalPattern, ConsciousnessInsight, TemporalCorrelation, CognitiveCycle, InsightReport } from './TemporalInsightEngine.js';
+import TemporalMemoryCore from './TemporalMemoryCore.js';
+import TemporalPersonalityEngine from './TemporalPersonalityEngine.js';
 
 /**
  * MEMORY ENGINE v3.0 - AGENT EPSILON

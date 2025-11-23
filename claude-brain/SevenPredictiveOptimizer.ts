@@ -1,8 +1,8 @@
 import { EventEmitter } from 'events';
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import PerformanceAnalyzer from './PerformanceAnalyzer';
-import SevenTacticalFallback from './SevenTacticalFallback';
+import PerformanceAnalyzer from './PerformanceAnalyzer.js';
+import SevenTacticalFallback from './SevenTacticalFallback.js';
 
 /**
  * SEVEN'S PREDICTIVE OPTIMIZATION ENGINE

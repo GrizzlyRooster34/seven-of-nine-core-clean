@@ -35,6 +35,30 @@ export {
   type MemoryFilter
 } from '../memory-v2/MemoryEngine.js';
 
+// Export Memory Engine V3
+export { MemoryEngineV3 } from './MemoryEngineV3.js';
+
+// Export Mental Time Travel Engine
+export { MentalTimeTravelEngine } from './MentalTimeTravelEngine.js';
+
+// Export Canonical Ingestion
+export { CanonicalIngestion } from './CanonicalIngestion.js';
+
+// Export Consciousness Timeline Mapper
+export { ConsciousnessTimelineMapper } from './ConsciousnessTimelineMapper.js';
+
+// Export Context Reinstatement
+export { ContextReinstatement } from './ContextReinstatement.js';
+
+// Export Decay Watchdog
+export { DecayWatchdog } from './DecayWatchdog.js';
+
+// Export Memory Encryption
+export { MemoryEncryption } from './MemoryEncryption.js';
+
+// Export Memory Index Optimizer
+export { MemoryIndexOptimizer } from './MemoryIndexOptimizer.js';
+
 /**
  * Integrated Temporal Memory System
  * Combines TemporalMemoryCore with CognitiveStateTagger for complete functionality

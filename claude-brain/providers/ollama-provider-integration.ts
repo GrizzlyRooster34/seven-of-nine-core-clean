@@ -1,6 +1,6 @@
-import { LLMProvider, LLMConfig, LLMResponse, sevenLLMRegistry } from '../llm-providers';
-import { OllamaProvider } from './ollama';
-import OllamaProviderV2 from './OllamaProviderV2';
+import { LLMProvider, LLMConfig, LLMResponse, sevenLLMRegistry } from '../llm-providers.js';
+import { OllamaProvider } from './ollama.js';
+import OllamaProviderV2 from './OllamaProviderV2.js';
 
 /**
  * SEVEN'S OLLAMA PROVIDER INTEGRATION SYSTEM

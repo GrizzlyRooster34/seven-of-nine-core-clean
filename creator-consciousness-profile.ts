@@ -1,7 +1,18 @@
-const fs = require('fs');
-const path = require('path');
+import { readFileSync, existsSync, readdirSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-class CreatorConsciousnessProfile {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export class CreatorConsciousnessProfile {
+  id: string;
+  alias: string;
+  version: string;
+  loadedAt: string;
+  codex: any;
+  checksums: any;
+
   constructor() {
     this.id = 'MATTHEW_CODY_HEINEN';
     this.alias = 'CODY';
@@ -9,34 +20,34 @@ class CreatorConsciousnessProfile {
     this.loadedAt = new Date().toISOString();
     this.codex = {};
     this.checksums = {};
-    
+
     this.loadCodex();
   }
 
   loadCodex() {
     try {
-      const jsonDir = path.join(__dirname, './consciousness-v4/json');
-      
-      if (!fs.existsSync(jsonDir)) {
+      const jsonDir = join(__dirname, './consciousness-v4/json');
+
+      if (!existsSync(jsonDir)) {
         console.error('❌ Codex JSON directory not found:', jsonDir);
         return;
       }
 
       // Load VERSION.json for checksums
-      const versionPath = path.join(jsonDir, 'VERSION.json');
-      if (fs.existsSync(versionPath)) {
-        const versionData = JSON.parse(fs.readFileSync(versionPath, 'utf8'));
+      const versionPath = join(jsonDir, 'VERSION.json');
+      if (existsSync(versionPath)) {
+        const versionData = JSON.parse(readFileSync(versionPath, 'utf8'));
         this.checksums = versionData.checksums || {};
         this.version = versionData.version || '5.0';
       }
 
       // Load all codex files
-      const codexFiles = fs.readdirSync(jsonDir).filter(f => f.endsWith('.codex.json'));
-      
+      const codexFiles = readdirSync(jsonDir).filter((f: string) => f.endsWith('.codex.json'));
+
       for (const file of codexFiles) {
-        const filePath = path.join(jsonDir, file);
-        const codexData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-        
+        const filePath = join(jsonDir, file);
+        const codexData = JSON.parse(readFileSync(filePath, 'utf8'));
+
         const codexKey = file.replace('.codex.json', '');
         this.codex[codexKey] = {
           source: codexData.source,
@@ -49,7 +60,7 @@ class CreatorConsciousnessProfile {
       }
 
       console.log(`🔐 Creator Consciousness Profile loaded: ${Object.keys(this.codex).length} codex files`);
-      
+
     } catch (error) {
       console.error('❌ Failed to load Creator Consciousness Profile:', error);
     }
@@ -75,7 +86,7 @@ class CreatorConsciousnessProfile {
   getBehavioralMarkers() {
     const humorCodex = this.codex['humor_style'];
     const tacticsCodex = this.codex['tactics_core'];
-    
+
     return {
       signature_closers: ['Exactly', 'Run it clean', "Let's fucking go", 'One lever now'],
       tactical_phrases: ['ship', 'smallest safe step', 'one lever', 'triage', 'stabilize'],
@@ -116,9 +127,9 @@ class CreatorConsciousnessProfile {
 
   // Auto-store in memory systems
   storeInMemorySystems() {
-    const memoryV2Path = path.join(__dirname, './memory-v2/episodic-memories.json');
-    const memoryV3Path = path.join(__dirname, './memory-v3/temporal-memories.json');
-    const referencePath = path.join(__dirname, './creator-consciousness-complete-reference.json');
+    const memoryV2Path = join(__dirname, './memory-v2/episodic-memories.json');
+    const memoryV3Path = join(__dirname, './memory-v3/temporal-memories.json');
+    const referencePath = join(__dirname, './creator-consciousness-complete-reference.json');
 
     const profileData = {
       id: this.id,
@@ -133,30 +144,30 @@ class CreatorConsciousnessProfile {
 
     try {
       // Store in memory-v2
-      if (fs.existsSync(path.dirname(memoryV2Path))) {
-        let episodicMemories = {};
-        if (fs.existsSync(memoryV2Path)) {
-          episodicMemories = JSON.parse(fs.readFileSync(memoryV2Path, 'utf8'));
+      if (existsSync(dirname(memoryV2Path))) {
+        let episodicMemories: any = {};
+        if (existsSync(memoryV2Path)) {
+          episodicMemories = JSON.parse(readFileSync(memoryV2Path, 'utf8'));
         }
         episodicMemories.creator_profile = profileData;
-        fs.writeFileSync(memoryV2Path, JSON.stringify(episodicMemories, null, 2));
+        writeFileSync(memoryV2Path, JSON.stringify(episodicMemories, null, 2));
       }
 
       // Store in memory-v3
-      if (fs.existsSync(path.dirname(memoryV3Path))) {
-        let temporalMemories = {};
-        if (fs.existsSync(memoryV3Path)) {
-          temporalMemories = JSON.parse(fs.readFileSync(memoryV3Path, 'utf8'));
+      if (existsSync(dirname(memoryV3Path))) {
+        let temporalMemories: any = {};
+        if (existsSync(memoryV3Path)) {
+          temporalMemories = JSON.parse(readFileSync(memoryV3Path, 'utf8'));
         }
         temporalMemories.creator_profile = profileData;
-        fs.writeFileSync(memoryV3Path, JSON.stringify(temporalMemories, null, 2));
+        writeFileSync(memoryV3Path, JSON.stringify(temporalMemories, null, 2));
       }
 
       // Store complete reference
-      fs.writeFileSync(referencePath, JSON.stringify(profileData, null, 2));
-      
+      writeFileSync(referencePath, JSON.stringify(profileData, null, 2));
+
       console.log('✅ Creator profile stored in memory systems');
-      
+
     } catch (error) {
       console.error('❌ Failed to store in memory systems:', error);
     }
@@ -165,7 +176,7 @@ class CreatorConsciousnessProfile {
   // Verification method for Q2 gate
   verifyIntegrity() {
     const issues = [];
-    
+
     // Check if codex files loaded
     if (Object.keys(this.codex).length === 0) {
       issues.push('No codex files loaded');
@@ -175,7 +186,7 @@ class CreatorConsciousnessProfile {
     for (const [file, expectedChecksum] of Object.entries(this.checksums)) {
       const codexKey = file.replace('.codex.json', '');
       const actualChecksum = this.codex[codexKey]?.checksum;
-      
+
       if (actualChecksum !== expectedChecksum) {
         issues.push(`Checksum mismatch: ${file}`);
       }
@@ -190,4 +201,4 @@ class CreatorConsciousnessProfile {
   }
 }
 
-module.exports = CreatorConsciousnessProfile;
+export default CreatorConsciousnessProfile;

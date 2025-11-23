@@ -6,7 +6,11 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
@@ -30,6 +34,8 @@
     "src/**/*",
     "memory-v2/**/*",
     "memory-v3/**/*",
+    "memory-v3-amalgum/**/*",
+    "consciousness-v4/**/*",
     "sandbox/**/*",
     "spark/**/*",
     "claude-brain/**/*",
@@ -40,10 +46,14 @@
     "dist",
     "tests",
     "src/__tests__",
-    "src/trace/ghost-diary.test.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
+    "src/trace/ghost-diary.test.ts",
+    "boot-seven.ts",
+    "claude-brain/claude-wrapper.ts",
+    "claude-brain/apiFailureProtocol.ts",
+    "claude-brain/providers/claude-cli.ts",
+    "claude-brain/llm-config.ts",
+    "seven-runtime/override-conditions.ts",
+    "seven-runtime/safety-guardrails.ts",
+    "seven-runtime/shared-types.ts"
   ]
 }

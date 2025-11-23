@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
-import { LLMProvider, LLMConfig, LLMResponse, sevenLLMRegistry } from './llm-providers';
-import PerformanceAnalyzer from './PerformanceAnalyzer';
-import SevenTacticalFallback from './SevenTacticalFallback';
+import { LLMProvider, LLMConfig, LLMResponse, sevenLLMRegistry } from './llm-providers.js';
+import PerformanceAnalyzer from './PerformanceAnalyzer.js';
+import SevenTacticalFallback from './SevenTacticalFallback.js';
 
 /**
  * SEVEN'S ENSEMBLE INTELLIGENCE COORDINATOR

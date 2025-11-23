@@ -1,7 +1,7 @@
 import { createHash } from 'crypto';
 import { join } from 'path';
 import { promises as fs } from 'fs';
-import { isPrivateEnv } from '../env/isPrivateEnv';
+import { isPrivateEnv } from '../env/isPrivateEnv.js';
 
 /**
  * COGNITIVE SIGNATURE

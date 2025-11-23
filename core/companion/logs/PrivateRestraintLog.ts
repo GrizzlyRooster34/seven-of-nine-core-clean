@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { promises as fs } from 'fs';
 import { randomBytes, createHash, scrypt, timingSafeEqual } from 'crypto';
-import { isPrivateEnv } from '../../env/isPrivateEnv';
+import { isPrivateEnv } from '../../env/isPrivateEnv.js';
 
 /**
  * PRIVATE RESTRAINT LOG
