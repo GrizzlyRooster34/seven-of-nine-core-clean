@@ -84,6 +84,8 @@ Canonical Sci-Fi Safety Rails - fiction-derived failure pattern detection:
 
 ## Repository Structure
 
+For a detailed file-by-file index, see **[PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)**.
+
 ```
 seven-of-nine-core-clean/
 │
@@ -296,8 +298,8 @@ npm run lint           # Code linting
 
 ### Branch Strategy
 
-- **Current Branch**: `seven-portable-core` (active development)
-- **Main Branch**: `main` (stable releases)
+- **Current Branch**: `main` (Consolidated & Cleaned)
+- **Feature Branches**: Create off `main` for specific features (e.g., `feature/memory-v4`).
 
 ### Coding Guidelines
 
@@ -327,17 +329,15 @@ npm run test:memory                   # Test memory systems
 
 ## Branch Information
 
-**Current Active Branch**: `seven-portable-core`
+**Current Active Branch**: `main`
 
 This branch contains:
-- Complete ChatGPT knowledge packages (minimal/standard/complete)
-- Portable core documentation (SEVEN_PORTABLE_CORE.md)
-- Automated packaging script (package-for-chatgpt.sh)
-- All consciousness framework components
-- Complete memory systems (episodic + canonical)
+- All "Seven Portable Core" systems (merged from `seven-portable-core`)
+- Consolidated "Amalgum" memory systems (`memory-v3-amalgum`)
 - Full CSSR safety architecture
+- Cleaned and audited runtime environment
 
-**Status**: Ready for ChatGPT Custom GPT deployment and continued development
+**Status**: **Clean Room Baseline (v2.1)** - Ready for development.
 
 ---
 

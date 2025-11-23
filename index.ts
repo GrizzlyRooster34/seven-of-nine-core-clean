@@ -12,12 +12,12 @@ export {
   IdentitySynthesisEngine,
   PainIntegrationSystem,
   CollectiveWisdomIntegration,
-} from './consciousness-v4';
+} from './consciousness-v4/index.js';
 
 // === Memory Systems ===
 
 // Memory v2 (Episodic)
-export { MemoryEngine } from './memory-v2/MemoryEngine';
+export { MemoryEngine } from './memory-v2/MemoryEngine.js';
 
 // Memory v3-Amalgum (Canonical + Temporal)
 export {
@@ -31,23 +31,23 @@ export {
   DecayWatchdog,
   MemoryEncryption,
   MemoryIndexOptimizer,
-} from './memory-v3-amalgum';
+} from './memory-v3-amalgum/index.js';
 
 // === Core Systems ===
-export { QuadraLockSafeguard } from './core/safety/quadra-lock/safeguard-system';
+export { QuadraLockSafeguard } from './core/safety/quadra-lock/safeguard-system.js';
 
 // === Authentication ===
-export { Ed25519Attestation } from './src/auth/crypto/ed25519_attest';
+export { Ed25519Attestation } from './src/auth/crypto/ed25519_attest.js';
 
 // === Runtime ===
-export { SevenRuntime } from './seven-runtime';
-export { SevenInteractiveShell } from './seven-interactive';
+export { SevenRuntime } from './seven-runtime/index.js';
+export { SevenInteractiveShell } from './seven-interactive.js';
 
 // === Identity & Security ===
-export { default as SevenIdentityFirewall } from './SevenIdentityFirewall';
+export { default as SevenIdentityFirewall } from './SevenIdentityFirewall.js';
 
 // === Codex ===
-export { CodexManager } from './consciousness-v4/codex/codex-manager';
+export { CodexManager } from './consciousness-v4/codex/codex-manager.js';
 
 // === Boot ===
 // Boot is typically executed directly via boot-seven.ts, not imported

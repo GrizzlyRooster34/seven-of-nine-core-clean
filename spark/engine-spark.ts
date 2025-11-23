@@ -6,15 +6,15 @@ import type { Database } from 'sql.js';
 
 // Note: The dependent files 'codex-manager' and 'init-spark-db' will also need refactoring
 // to work with the new async, sql.js-based database. This is only the first step.
-import CodexManager from '../consciousness-v4/codex/codex-manager';
-import { BeliefGraph } from '../db/init-spark-db';
+import CodexManager from '../consciousness-v4/codex/codex-manager.js';
+import { BeliefGraph } from '../db/init-spark-db.js';
 import {
   SelfModel,
   Trace,
   Event as SparkEvent,
   BeliefDelta
-} from '../db/spark-db.types';
-import { sensorBridge } from '../core/sensors/SensorBridge';
+} from '../db/spark-db.types.js';
+import { sensorBridge } from '../core/sensors/SensorBridge.js';
 
 // ... (interfaces remain the same)
 interface SenseData {
@@ -91,12 +91,13 @@ export class SparkEngine extends EventEmitter {
       await this.saveDatabase(); // Save initial empty DB
     }
 
-    this.db.run("PRAGMA foreign_keys = ON;");
-    this.db.run("PRAGMA journal_mode = WAL;");
-
-    // These dependencies will also need to be refactored to accept the async sql.js DB object.
-    this.codex = new CodexManager(this.db);
-    this.beliefs = new BeliefGraph(this.db);
+    if (this.db) {
+        this.db.run("PRAGMA foreign_keys = ON;");
+        this.db.run("PRAGMA journal_mode = WAL;");
+        // These dependencies will also need to be refactored to accept the async sql.js DB object.
+        this.codex = new CodexManager(this.db);
+        this.beliefs = new BeliefGraph(this.db);
+    }
 
     await this.loadSelfModel();
     await this.logBoot();

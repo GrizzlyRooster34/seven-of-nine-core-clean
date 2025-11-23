@@ -602,18 +602,49 @@ export class SemanticNonceChallenge {
   }
 
   private async assessTechnicalAccuracy(response: string): Promise<{ score: number; issues: string[] }> {
-    // Placeholder for technical accuracy assessment
-    return { score: 75, issues: [] };
+    const technicalTerms = ['memory', 'graph', 'node', 'tensor', 'vector', 'embedding', 'latency', 'throughput', 'architecture', 'module', 'interface', 'class', 'function', 'async', 'promise'];
+    const foundTerms = technicalTerms.filter(term => response.toLowerCase().includes(term));
+    // Simple heuristic: 5 terms = 100% score
+    const score = Math.min(100, (foundTerms.length / 5) * 100); 
+    const issues = score < 40 ? ['Lacks technical terminology'] : [];
+    return { score, issues };
   }
 
   private analyzeWordChoice(response: string, patterns: any): { score: number; issues: string[] } {
-    // Placeholder for word choice analysis
-    return { score: 60, issues: [] };
+    let score = 50; // Start neutral
+    const issues: string[] = [];
+    const lowerResponse = response.toLowerCase();
+
+    if (patterns?.preferredWords) {
+        const matches = patterns.preferredWords.filter((w: string) => lowerResponse.includes(w.toLowerCase()));
+        score += matches.length * 10;
+    }
+    if (patterns?.avoidedWords) {
+        const matches = patterns.avoidedWords.filter((w: string) => lowerResponse.includes(w.toLowerCase()));
+        score -= matches.length * 15;
+        if (matches.length > 0) issues.push(`Used avoided words: ${matches.join(', ')}`);
+    }
+    return { score: Math.max(0, Math.min(100, score)), issues };
   }
 
   private analyzeSentenceStructure(response: string): { score: number; issues: string[] } {
-    // Placeholder for sentence structure analysis
-    return { score: 55, issues: [] };
+    const sentences = response.split(/[.!?]+/).filter(s => s.trim().length > 0);
+    if (sentences.length === 0) return { score: 0, issues: ['No sentences detected'] };
+
+    const avgLength = sentences.reduce((acc, s) => acc + s.trim().split(/\s+/).length, 0) / sentences.length;
+    
+    // Creator style: Concise analytical (avg length 8-25 words)
+    let score = 50;
+    const issues: string[] = [];
+    
+    if (avgLength >= 8 && avgLength <= 25) {
+        score += 40; // High match
+    } else {
+        issues.push(`Sentence length divergence (avg: ${avgLength.toFixed(1)} words)`);
+        score -= 20;
+    }
+    
+    return { score: Math.max(0, Math.min(100, score)), issues };
   }
 
   private detectAntiPatterns(response: string, antiPatterns: string[]): { detected: boolean; patterns: string[] } {

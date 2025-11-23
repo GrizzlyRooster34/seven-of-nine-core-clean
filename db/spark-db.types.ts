@@ -8,6 +8,10 @@ export interface SelfModel {
   capabilities: string[];
   constraints: string[];
   lastUpdated: string;
+  state: {
+    boot_count: number;
+    [key: string]: any;
+  };
 }
 
 export interface Trace {

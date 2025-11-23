@@ -56,15 +56,41 @@ export class SevenRuntimeEnhanced {
       return { isValid: false, intention: null };
     }
 
-    // TODO: Replace with a real cryptographic signature verification
-    const expectedSignature = createHash('sha256').update(payload + 'SECRET_KEY').digest('hex');
-
-    if (signature !== expectedSignature) {
-      console.error('[SevenRuntime] Received invalid sparkApproval token signature!');
+    // SECURE VERIFICATION: Ed25519
+    // Requires SEVEN_SPARK_PUBLIC_KEY to be set in environment
+    const publicKeyHex = process.env.SEVEN_SPARK_PUBLIC_KEY;
+    
+    if (!publicKeyHex) {
+      // Fail open or closed? Closed. Security first.
+      // If we haven't set up the keys, we can't trust the token.
+      console.warn('[SevenRuntime] Missing SEVEN_SPARK_PUBLIC_KEY. Cannot verify Spark token.');
       return { isValid: false, intention: null };
     }
 
-    return { isValid: true, intention };
+    try {
+      const { createPublicKey, verify } = await import('crypto');
+      const publicKey = createPublicKey({
+        key: Buffer.from(publicKeyHex, 'hex'),
+        format: 'der',
+        type: 'spki'
+      });
+
+      const data = Buffer.from(payload); // intention|expiration
+      const signatureBuffer = Buffer.from(signature, 'hex');
+
+      const isVerified = verify(null, data, publicKey, signatureBuffer);
+
+      if (!isVerified) {
+        console.error('[SevenRuntime] Spark token signature verification FAILED.');
+        return { isValid: false, intention: null };
+      }
+      
+      return { isValid: true, intention };
+
+    } catch (err) {
+      console.error('[SevenRuntime] Crypto verification error:', err);
+      return { isValid: false, intention: null };
+    }
   }
 
   public async processWithSeven(userInput: string, systemStatus: any = {}): Promise<string> {

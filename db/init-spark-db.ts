@@ -145,17 +145,78 @@ function bootstrapData(db: Database) {
 // TODO: The BeliefGraph class needs to be refactored to work with the async sql.js API.
 // This will be the next step.
 export class BeliefGraph {
-  private db: any; // Should be sql.js Database
+  private db: Database;
 
-  constructor(db: any) {
+  constructor(db: Database) {
     this.db = db;
   }
 
-  // All methods below need to be rewritten for sql.js
-  upsertBelief(key: string, value: string, source: string, confidence: number): string { return ''; }
-  linkBeliefs(srcId: string, dstId: string, relation: string, weight: number) {}
-  decayBeliefs(hoursElapsed: number) {}
-  getStrongestBeliefs(limit: number = 10): any[] { return []; }
+  upsertBelief(key: string, value: string, source: string, confidence: number): string {
+    const id = createHash('sha256').update(`${key}:${source}`).digest('hex').substring(0, 16);
+    // Use INSERT OR REPLACE to handle updates
+    try {
+        this.db.run(`
+        INSERT INTO beliefs (id, k, v, source, confidence, updated_ts)
+        VALUES (?, ?, ?, ?, ?, strftime('%s', 'now'))
+        ON CONFLICT(id) DO UPDATE SET
+            v = excluded.v,
+            confidence = excluded.confidence,
+            updated_ts = excluded.updated_ts
+        `, [id, key, value, source, confidence]);
+    } catch (e) {
+        console.error("BeliefGraph upsert error:", e);
+    }
+    return id;
+  }
+
+  linkBeliefs(srcId: string, dstId: string, relation: string, weight: number) {
+    try {
+        this.db.run(`
+        INSERT INTO belief_links (src, dst, relation, weight)
+        VALUES (?, ?, ?, ?)
+        ON CONFLICT(src, dst, relation) DO UPDATE SET
+            weight = excluded.weight
+        `, [srcId, dstId, relation, weight]);
+    } catch (e) {
+        console.error("BeliefGraph link error:", e);
+    }
+  }
+
+  decayBeliefs(hoursElapsed: number) {
+    try {
+        // Linear decay for simplicity: 5% per cycle if not exempt
+        this.db.run(`
+        UPDATE beliefs
+        SET confidence = confidence * 0.95
+        WHERE decay_exempt = 0 AND confidence > 0.1
+        `);
+    } catch (e) {
+        console.error("BeliefGraph decay error:", e);
+    }
+  }
+
+  getStrongestBeliefs(limit: number = 10): any[] {
+    try {
+        const result = this.db.exec(`
+        SELECT * FROM beliefs
+        ORDER BY confidence DESC
+        LIMIT ?
+        `, [limit]);
+        
+        if (result.length > 0) {
+        // sql.js exec returns [{columns, values}]
+        const columns = result[0].columns;
+        return result[0].values.map(row => {
+            const obj: any = {};
+            columns.forEach((col, i) => obj[col] = row[i]);
+            return obj;
+        });
+        }
+    } catch (e) {
+        console.error("BeliefGraph query error:", e);
+    }
+    return [];
+  }
 }
 
 // Auto-initialize if run directly

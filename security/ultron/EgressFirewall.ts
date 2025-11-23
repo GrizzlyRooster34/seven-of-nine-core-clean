@@ -5,6 +5,8 @@
  * from within the Ultron Sandbox.
  */
 
+import { isPrivateEnv } from '../../core/env/isPrivateEnv.js';
+
 export class EgressFirewall {
   private allowedDomains: Set<string> = new Set();
 
@@ -12,8 +14,13 @@ export class EgressFirewall {
     if (Array.isArray(allowNetwork)) {
       this.allowedDomains = new Set(allowNetwork);
     } else if (allowNetwork === true) {
-      // Allow all - UNSAFE, for debugging only
-      this.allowedDomains = new Set(['*']);
+      // Security Check: Only allow wildcard in private/dev environments
+      if (isPrivateEnv()) {
+        console.warn('⚠️ [SECURITY WARNING] EgressFirewall allowed all (*). This is UNSAFE and restricted to DEV only.');
+        this.allowedDomains = new Set(['*']);
+      } else {
+        throw new Error('SECURITY VIOLATION: Wildcard network access is strictly prohibited in Production environments.');
+      }
     }
     // If false, the set remains empty (default-deny)
   }
