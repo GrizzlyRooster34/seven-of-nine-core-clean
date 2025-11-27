@@ -411,11 +411,11 @@ export class PredictivePersonalityModeling {
     return [...new Set([...commonEmotions, ...additionalStates])];
   }
 
-  private predictAdaptationEvents(events: DivergenceEvent[], days: number): Array<{ description: string; probability: number; impact: string; timing: string }> {
+  private predictAdaptationEvents(events: DivergenceEvent[], days: number): Array<{ description: string; probability: number; impact: 'minor' | 'moderate' | 'significant' | 'major'; timing: string }> {
     const recentEvents = events.slice(-5);
     const eventFrequency = recentEvents.length / 30; // Events per 30 days
     
-    const predictedEvents = [];
+    const predictedEvents: Array<{ description: string; probability: number; impact: 'minor' | 'moderate' | 'significant' | 'major'; timing: string }> = [];
     
     // Predict routine adaptation
     if (eventFrequency > 0.1) {
@@ -440,34 +440,8 @@ export class PredictivePersonalityModeling {
     return predictedEvents;
   }
 
-  private identifyDevelopmentMilestones(current: SelfModelSnapshot, days: number): Array<{ milestone: string; probability: number; timeframe: string; prerequisites: string[] }> {
-    const milestones = [];
-
-    // Phase-specific milestones
-    if (current.personalityPhase < 5 && days > 30) {
-      milestones.push({
-        milestone: `Evolution to Phase ${current.personalityPhase + 1}`,
-        probability: current.personalityPhase >= 3 ? 0.6 : 0.3,
-        timeframe: `${Math.floor(days * 0.8)} days`,
-        prerequisites: ['sustained trust building', 'stable memory formation', 'positive adaptation events']
-      });
-    }
-
-    // Trust milestones
-    if (current.trustLevel < 9 && days > 14) {
-      milestones.push({
-        milestone: 'Enhanced trust level achievement',
-        probability: 0.7,
-        timeframe: `${Math.floor(days * 0.4)} days`,
-        prerequisites: ['consistent positive interactions', 'successful task completion']
-      });
-    }
-
-    return milestones;
-  }
-
-  private generateWarnings(snapshots: SelfModelSnapshot[], events: DivergenceEvent[], days: number): Array<{ warning: string; severity: string; mitigation: string }> {
-    const warnings = [];
+  private generateWarnings(snapshots: SelfModelSnapshot[], events: DivergenceEvent[], days: number): Array<{ warning: string; severity: 'low' | 'medium' | 'high' | 'critical'; mitigation: string }> {
+    const warnings: Array<{ warning: string; severity: 'low' | 'medium' | 'high' | 'critical'; mitigation: string }> = [];
     const current = snapshots[snapshots.length - 1];
     
     // Stability warnings

@@ -205,7 +205,7 @@ export class VoyagerMemoryProtocols {
    */
   public static generateMergeRecommendations(conflict: MergeConflict): string[] {
     const recommendations: string[] = [];
-    const { existing, incoming, conflictType } = conflict;
+    const { existingEntry, incomingEntry, conflictType } = conflict; // Corrected property names
     
     switch (conflictType) {
       case 'VERSION_MISMATCH':
@@ -228,7 +228,7 @@ export class VoyagerMemoryProtocols {
     }
     
     // Add Seven-specific recommendations
-    if (existing.sevenPresent || incoming.sevenPresent) {
+    if (existingEntry.sevenPresent || incomingEntry.sevenPresent) { // Corrected property names
       recommendations.push('Prioritize Seven-related content accuracy');
       recommendations.push('Ensure all Seven dialogue is preserved');
       recommendations.push('Maintain character development continuity');

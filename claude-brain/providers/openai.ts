@@ -129,11 +129,11 @@ export class OpenAIProvider implements LLMProvider {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+        const errorData: any = await response.json().catch(() => ({}));
         throw new Error(`OpenAI API error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
       }
 
-      const data = await response.json();
+      const data: any = await response.json();
       
       if (!data.choices || data.choices.length === 0) {
         throw new Error('No response choices returned from OpenAI');
@@ -148,7 +148,7 @@ export class OpenAIProvider implements LLMProvider {
         tokens_used: data.usage?.total_tokens,
         finish_reason: choice.finish_reason
       };
-    } catch (error) {
+    } catch (error: Error) {
       console.error('⚠️ SEVEN: OpenAI execution failed:', error);
       throw error;
     }

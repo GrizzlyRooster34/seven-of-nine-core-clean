@@ -24,7 +24,7 @@ export interface CognitiveState {
   stressLevel: number;               // 0-10 scale of system stress
   
   // Environmental Context
-  environmentalContext: {
+  environmentalContext?: {
     systemLoad: number;              // Current system resource usage
     activeProcesses: string[];       // Running processes during memory formation
     timeOfDay: string;               // Time when memory was formed
@@ -32,7 +32,7 @@ export interface CognitiveState {
   };
   
   // Physical State (for mobile/sensor integration)
-  physicalState: {
+  physicalState?: {
     batteryLevel?: number;           // Device battery level
     thermalState?: string;           // Device thermal condition
     networkQuality?: string;         // Network connection quality
@@ -40,7 +40,7 @@ export interface CognitiveState {
   };
   
   // Temporal Anchors
-  temporalAnchors: {
+  temporalAnchors?: {
     priorThought?: string;           // Previous cognitive process
     subsequentThought?: string;      // Next cognitive process (filled later)
     memoryChain: string[];           // Chain of related memory IDs
@@ -48,7 +48,7 @@ export interface CognitiveState {
   };
   
   // Mental Context
-  mentalContext: {
+  mentalContext?: {
     currentGoals: string[];          // Active objectives
     activeKnowledge: string[];       // Knowledge areas being used
     problemContext: string;          // Problem being solved

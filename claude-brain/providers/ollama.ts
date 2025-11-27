@@ -340,8 +340,8 @@ export class OllamaProvider implements LLMProvider {
     return 'general';
   }
 
-  private selectOptimalModel(availableModels: string[], taskType: string): string {
-    const taskModelMap = {
+  private selectOptimalModel(availableModels: string[], taskType: keyof typeof taskModelMap): string {
+    const taskModelMap: { [key: string]: string[] } = {
       'coding': ['deepseek-coder:6.7b-instruct', 'codellama:7b-instruct', 'wizardcoder:7b-python'],
       'reasoning': ['llama3:8b-instruct', 'mistral:7b-instruct', 'openorca-mistral:7b'],
       'rapid': ['phi3:mini-instruct', 'dolphin-phi'],
@@ -352,7 +352,7 @@ export class OllamaProvider implements LLMProvider {
     const preferredModels = taskModelMap[taskType] || taskModelMap['general'];
     
     // Find best match
-    const selectedModel = preferredModels.find(preferred => 
+    const selectedModel = preferredModels.find((preferred: string) => 
       availableModels.some(available => 
         available.includes(preferred.split(':')[0])
       )
@@ -378,7 +378,7 @@ export class OllamaProvider implements LLMProvider {
       
       await this.memoryBridge.storeOllamaResponse(prompt, response, model, importance, tags);
       
-    } catch (error) {
+    } catch (error: Error) { // Explicitly type error
       console.log('⚠️ Memory storage failed:', error.message);
     }
   }

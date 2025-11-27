@@ -1420,6 +1420,48 @@ export class ContextReinstatementSystem {
 
   // And many more...
 
+  // --- MISSING STUBS INSERTED BY AUDIT ---
+  private calculateRelativePosition(target: TemporalMemoryItem, context: TemporalMemoryItem[]): string { return 'unknown'; }
+  private identifyTemporalAnchor(memory: TemporalMemoryItem): string { return 'none'; }
+  private calculateChronologicalSequence(target: TemporalMemoryItem, context: TemporalMemoryItem[]): number { return 0; }
+  private identifyPrecedingEvents(target: TemporalMemoryItem, context: TemporalMemoryItem[]): Array<{ event: string; timestamp: string; relevance: number }> { return []; }
+  private identifySimultaneousEvents(target: TemporalMemoryItem, context: TemporalMemoryItem[]): Array<{ event: string; context: string }> { return []; }
+  private identifyAnticipatedEvents(target: TemporalMemoryItem, context: TemporalMemoryItem[]): Array<{ event: string; probability: number }> { return []; }
+  private extractPastReflection(memory: TemporalMemoryItem): string[] { return []; }
+  private extractPresentFocus(memory: TemporalMemoryItem): string[] { return []; }
+  private extractFutureAnticipation(memory: TemporalMemoryItem): string[] { return []; }
+  private determineTemporalOrientation(memory: TemporalMemoryItem): string { return 'present'; }
+  private identifyBehavioralRhythms(context: TemporalMemoryItem[]): string[] { return []; }
+  private identifyCognitiveRhythms(context: TemporalMemoryItem[]): string[] { return []; }
+  private identifyEmotionalCycles(context: TemporalMemoryItem[]): string[] { return []; }
+  private calculateTemporalConsistency(context: TemporalMemoryItem[]): number { return 0.5; }
+  private classifySituationType(memory: TemporalMemoryItem): string { return 'routine'; }
+  private identifySituationalDemands(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyAvailableResources(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyConstraints(memory: TemporalMemoryItem): string[] { return []; }
+  private calculateTaskUrgency(memory: TemporalMemoryItem): number { return 0.5; }
+  private identifyGoalConflicts(memory: TemporalMemoryItem): string[] { return []; }
+  private estimateGoalProgress(memory: TemporalMemoryItem): number[] { return []; }
+  private classifyDecisionType(memory: TemporalMemoryItem): string { return 'routine'; }
+  private identifyAvailableOptions(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyDecisionCriteria(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyStakeholders(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyVisualStimuli(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyAuditoryStimuli(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyTactileStimuli(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyOlfactoryStimuli(memory: TemporalMemoryItem): string[] { return []; }
+  private calculateSensoryIntegration(memory: TemporalMemoryItem): number { return 0.5; }
+  private calculateSensoryFiltering(memory: TemporalMemoryItem): number { return 0.5; }
+  private identifySensoryAmplification(memory: TemporalMemoryItem): string[] { return []; }
+  private identifySensorySuppression(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyPerceptualBias(memory: TemporalMemoryItem): string[] { return []; }
+  private identifyPerceptualExpectations(memory: TemporalMemoryItem): string[] { return []; }
+  private calculatePerceptualNovelty(target: TemporalMemoryItem, context: TemporalMemoryItem[]): number { return 0.5; }
+  private calculateInteroceptiveAwareness(memory: TemporalMemoryItem): number { return 0.5; }
+  private calculateProprioceptiveFeedback(memory: TemporalMemoryItem): number { return 0.5; }
+  private calculateSensoriomotorMapping(memory: TemporalMemoryItem): number { return 0.5; }
+  private identifyEmbodiedMemories(memory: TemporalMemoryItem): string[] { return []; }
+
   /**
    * Clear context cache to free memory
    */

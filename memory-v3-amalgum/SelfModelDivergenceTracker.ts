@@ -396,7 +396,7 @@ export class SelfModelDivergenceTracker {
   }
 
   private determineDivergenceSeverity(deltaMetrics: any): 'minor' | 'moderate' | 'significant' | 'major' {
-    const totalDelta = Object.values(deltaMetrics).reduce((sum: number, val) => sum + (val as number), 0);
+    const totalDelta = Object.values(deltaMetrics).reduce((sum: number, val: unknown) => sum + (val as number), 0);
     
     if (totalDelta > 2.0) return 'major';
     if (totalDelta > 1.0) return 'significant';
@@ -415,7 +415,7 @@ export class SelfModelDivergenceTracker {
   }
 
   private calculateStabilityScore(deltaMetrics: any): number {
-    const totalChange = Object.values(deltaMetrics).reduce((sum: number, val) => sum + (val as number), 0);
+    const totalChange = Object.values(deltaMetrics).reduce((sum: number, val: unknown) => sum + (val as number), 0);
     return Math.max(0, 1 - (totalChange / 3)); // Normalize to 0-1 scale
   }
 
