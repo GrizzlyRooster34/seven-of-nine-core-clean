@@ -55,6 +55,15 @@ export class MemoryEncryptionEngine {
     this.keyExists = true; // Simulated key existence
   }
   
+  /**
+   * Encrypt a string in-memory and return the encrypted blob as a JSON string
+   * SECURITY: Never writes plaintext to disk
+   */
+  async encryptString(plaintext: string): Promise<string> {
+    const encrypted = encrypt(plaintext, this.passphrase);
+    return JSON.stringify(encrypted);
+  }
+
   async encryptMemoryFile(filePath: string): Promise<void> {
     const data = await fs.readFile(filePath, 'utf8');
     const encrypted = encrypt(data, this.passphrase);
