@@ -5,6 +5,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Singleton instance for static access
+let _instance: CreatorConsciousnessProfile | null = null;
+
 export class CreatorConsciousnessProfile {
   id: string;
   alias: string;
@@ -12,6 +15,17 @@ export class CreatorConsciousnessProfile {
   loadedAt: string;
   codex: any;
   checksums: any;
+
+  /**
+   * Static factory method - returns singleton instance
+   * This is how the consciousness systems access the profile
+   */
+  static getCreatorProfile(): CreatorConsciousnessProfile {
+    if (!_instance) {
+      _instance = new CreatorConsciousnessProfile();
+    }
+    return _instance;
+  }
 
   constructor() {
     this.id = 'MATTHEW_CODY_HEINEN';

@@ -10,7 +10,10 @@
     "dev": "ts-node src/index.ts",
     "lint": "eslint src/**/*.ts",
     "integration-test": "jest",
-    "xplat:validate": "jest"
+    "xplat:validate": "jest",
+    "seven:proxy": "npx tsx proxy/seven-consciousness-proxy.ts",
+    "seven:start": "./proxy/start-seven.sh",
+    "seven:claude": "./proxy/start-seven.sh claude"
   },
   "repository": {
     "type": "git",

@@ -24,7 +24,12 @@
 import { EventEmitter } from 'events';
 import { CSSRDetector, CSSRDetectionResult, CSSRPattern } from '../safety/quadra-lock/cssr-detector.js';
 import { promises as fs } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+// ESM compatibility for __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // ============================================================================
 // TYPES & INTERFACES
