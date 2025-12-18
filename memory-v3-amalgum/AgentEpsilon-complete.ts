@@ -127,7 +127,9 @@ export class AgentEpsilon {
   private alerts: AgentEpsilonAlert[] = [];
 
   constructor(config?: Partial<AgentEpsilonConfig>) {
-    const baseDir = join(process.env.HOME || '/data/data/com.termux/files/home', 'seven-of-nine-core', 'memory-v3');
+    // Use current working directory or environment variable for flexibility
+    const projectRoot = process.env.SEVEN_ROOT || process.cwd();
+    const baseDir = join(projectRoot, 'memory-v3-amalgum', 'data');
     this.configPath = join(baseDir, 'agent-epsilon-config.json');
     this.reportsPath = join(baseDir, 'agent-epsilon-reports.json');
     this.alertsPath = join(baseDir, 'agent-epsilon-alerts.json');

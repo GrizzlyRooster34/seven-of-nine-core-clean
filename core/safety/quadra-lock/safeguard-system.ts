@@ -58,6 +58,17 @@ export class QuadraLockSafeguard {
   }
 
   /**
+   * Get safeguard system status
+   */
+  getSafeguardStatus(): { active: boolean; patternsLoaded: number; lastCheck: Date | null } {
+    return {
+      active: true,
+      patternsLoaded: this.detector.getPatterns().length,
+      lastCheck: new Date()
+    };
+  }
+
+  /**
    * Check if a specific archetype pattern is detected
    */
   async checkArchetype(

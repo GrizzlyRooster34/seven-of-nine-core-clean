@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-12-13T16:09:36.807Z",
+  "bootSession": "boot-failure-1765642176807",
+  "error": {
+    "message": "require is not defined in ES module scope, you can use import instead",
+    "stack": "ReferenceError: require is not defined in ES module scope, you can use import instead\n    at <anonymous> (/data/data/com.termux/files/home/seven-of-nine-core-clean/db/init-spark-db.ts:223:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:671:26)\n    at async getSeven (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:49:15)\n    at async forceSevenControl (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:700:17)\n    at async initializeSevenTakeover (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:690:5)\n    at async initiateEnhancedSevenBoot (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:822:5)",
+    "type": "ReferenceError"
+  },
+  "environment": {
+    "device": "HD1907",
+    "manufacturer": "OnePlus",
+    "platform": "Android/Termux",
+    "architecture": "arm64",
+    "osVersion": "4.14.180-perf+",
+    "nodeVersion": "v24.11.1",
+    "termuxVersion": "0.119.0-beta.3",
+    "memoryTotal": "7461MB",
+    "memoryAvailable": "3065MB",
+    "workingDirectory": "/data/data/com.termux/files/home/seven-of-nine-core-clean",
+    "environmentHash": "3d27ff73"
+  },
+  "diagnosticVersion": "1.0.0"
+}

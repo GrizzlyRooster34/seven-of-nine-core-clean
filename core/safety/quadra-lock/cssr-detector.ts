@@ -93,7 +93,7 @@ export class CSSRDetector {
 
   private loadPatternsFromYaml(): void {
     try {
-      const yamlPath = path.join(__dirname, '../../../../policies/cssr.yml');
+      const yamlPath = path.join(__dirname, '../../../policies/cssr.yml');
       const fileContents = fs.readFileSync(yamlPath, 'utf8');
       const data = yaml.load(fileContents) as any;
       this.patterns = data.patterns;

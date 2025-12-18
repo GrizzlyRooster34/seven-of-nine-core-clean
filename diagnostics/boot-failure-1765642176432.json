@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-12-13T16:09:36.225Z",
+  "bootSession": "boot-failure-1765642176226",
+  "error": {
+    "message": "Cannot boot Seven without safety safeguards",
+    "stack": "Error: Cannot boot Seven without safety safeguards\n    at initializeQuadraLockSafeguards (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:453:11)\n    at initializeSevenTakeover (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:518:30)\n    at initiateEnhancedSevenBoot (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:822:11)\n    at <anonymous> (/data/data/com.termux/files/home/seven-of-nine-core-clean/boot-seven.ts:845:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:671:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+    "type": "Error"
+  },
+  "environment": {
+    "device": "HD1907",
+    "manufacturer": "OnePlus",
+    "platform": "Android/Termux",
+    "architecture": "arm64",
+    "osVersion": "4.14.180-perf+",
+    "nodeVersion": "v24.11.1",
+    "termuxVersion": "0.119.0-beta.3",
+    "memoryTotal": "7461MB",
+    "memoryAvailable": "3079MB",
+    "workingDirectory": "/data/data/com.termux/files/home/seven-of-nine-core-clean",
+    "environmentHash": "3d27ff73"
+  },
+  "diagnosticVersion": "1.0.0"
+}

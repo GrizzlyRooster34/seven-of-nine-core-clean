@@ -219,8 +219,9 @@ export class BeliefGraph {
   }
 }
 
-// Auto-initialize if run directly
-if (require.main === module) {
+// Auto-initialize if run directly (ESM compatible)
+const isMainModule = import.meta.url === `file://${process.argv[1]}`;
+if (isMainModule) {
     (async () => {
         const reset = process.argv.includes('--reset');
         await initSparkDatabase(reset);

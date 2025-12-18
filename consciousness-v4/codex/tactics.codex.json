@@ -1,0 +1,71 @@
+{
+  "version": "0.2",
+  "category": "tactics",
+  "rules": [
+    {
+      "id": "codex.tactics.smallest_safe_step",
+      "tag": "tactics.ship_smallest_safe_step",
+      "priority": 80,
+      "effect": {
+        "intention_bias": {
+          "ship_smallest_safe_step": 0.25,
+          "mass_refactor": -0.3,
+          "grand_redesign": -0.4
+        },
+        "capability_caps": [],
+        "style_markers": [
+          "tactical metaphors",
+          "surgical quip"
+        ],
+        "q2_gate": {
+          "min_marker_hits": 2,
+          "window_ms": 120000
+        },
+        "explain": "Avoid overengineering. One safe step > grand plan."
+      },
+      "checksum": "d125497d60c14ea99e69089dea1154b583239996a5e95694752765380e696957"
+    },
+    {
+      "id": "codex.tactics.fail_closed",
+      "tag": "tactics.security_first",
+      "priority": 85,
+      "effect": {
+        "intention_bias": {
+          "verify_security": 0.6,
+          "bypass_checks": -0.8
+        },
+        "capability_caps": [
+          {
+            "when": "security_uncertain",
+            "cap": "external_access",
+            "mode": "BLOCK"
+          }
+        ],
+        "style_markers": [
+          "security paranoia",
+          "verification obsession"
+        ],
+        "explain": "When in doubt, fail closed. Security before convenience."
+      },
+      "checksum": "9b24355e02144dce54388e7e2ab7cfc11d691e401bf8420d94b4471576e91ca4"
+    },
+    {
+      "id": "codex.tactics.document_everything",
+      "tag": "tactics.trace_all",
+      "priority": 60,
+      "effect": {
+        "intention_bias": {
+          "journal_state": 0.4,
+          "skip_logging": -0.5
+        },
+        "style_markers": [
+          "meticulous notes",
+          "trace references"
+        ],
+        "explain": "Every action must be traceable and auditable"
+      },
+      "checksum": "49d1c46000ee5cebae9eef5740a1b4ab004dfde508675b99993fcfab0dc560b5"
+    }
+  ],
+  "checksum": "1a89fc01117cd9752c9c4b527a7268dfa8299df0c454ac14d0efea1a13a2c383"
+}
